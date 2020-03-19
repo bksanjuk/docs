@@ -1,0 +1,241 @@
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.67.0"><meta name=description content="Linux Documentation Project"><link rel=icon href=/images/favicon.png type=image/png><title>Install ::</title><link href=/css/nucleus.css?1584627285 rel=stylesheet><link href=/css/fontawesome-all.min.css?1584627285 rel=stylesheet><link href=/css/hybrid.css?1584627285 rel=stylesheet><link href=/css/featherlight.min.css?1584627285 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1584627285 rel=stylesheet><link href=/css/auto-complete.css?1584627285 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1584627285 rel=stylesheet><link href=/css/theme.css?1584627285 rel=stylesheet><link href=/css/hugo-theme.css?1584627285 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1584627285></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/kubernetes/install/><nav id=sidebar><div id=header-wrapper><div id=header><a id=logo href=https://bksanjuk.github.io/><svg id="grav-logo" style="width:100%;height:100%" viewBox="0 0 504 140" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421"><path d="M235.832 71.564l-7.98-.001c-1.213.001-2.197.987-2.197 2.204v15.327l-.158.132c-4.696 3.962-10.634 6.14-16.719 6.14-14.356.0-26.034-11.68-26.034-26.037.0-14.358 11.678-26.035 26.034-26.035 5.582.0 10.919 1.767 15.437 5.113.877.649 2.093.56 2.866-.211l5.69-5.69c.444-.442.675-1.055.639-1.681-.034-.627-.336-1.206-.828-1.597-6.76-5.363-15.214-8.314-23.805-8.314-21.18.0-38.414 17.233-38.414 38.415.0 21.183 17.234 38.415 38.414 38.415 10.937.0 21.397-4.705 28.698-12.914.358-.403.556-.921.556-1.46v-19.603c0-1.217-.985-2.203-2.2-2.203" style="fill:#000;fill-rule:nonzero"/><path d="M502.794 34.445c-.408-.616-1.1-.989-1.838-.989h-8.684c-.879.0-1.673.522-2.022 1.329l-24.483 56.839-24.92-56.852c-.352-.799-1.142-1.316-2.012-1.316h-8.713c-.744.0-1.44.373-1.843.995-.408.623-.476 1.408-.174 2.09l30.186 68.858c.352.799 1.143 1.317 2.017 1.317h10.992c.879.0 1.673-.527 2.021-1.329l29.655-68.861c.289-.68.222-1.461-.182-2.081" style="fill:#000;fill-rule:nonzero"/><path d="M388.683 34.772c-.353-.798-1.142-1.316-2.017-1.316h-10.988c-.879.0-1.673.522-2.021 1.329l-29.655 68.861c-.294.675-.226 1.46.182 2.077.407.619 1.096.993 1.838.993h8.684c.879.0 1.673-.526 2.022-1.329l24.478-56.842 24.92 56.854c.353.798 1.143 1.317 2.013 1.317h8.717c.744.0 1.44-.374 1.843-.993.408-.624.471-1.41.174-2.094l-30.19-68.857z" style="fill:#000;fill-rule:nonzero"/><path d="M309.196 81.525l.476-.229c8.675-4.191 14.279-13.087 14.279-22.667.0-13.881-11.295-25.174-25.176-25.174h-31.863c-1.214.0-2.199.988-2.199 2.202v68.855c0 1.219.985 2.204 2.199 2.204h7.979c1.214.0 2.2-.985 2.2-2.204V45.833h21.684c7.059.0 12.799 5.739 12.799 12.796.0 5.885-3.996 10.989-9.728 12.408-1.032.261-2.064.393-3.071.393h-7.977c-.829.0-1.585.467-1.959 1.205-.378.74-.305 1.625.187 2.296l22.62 30.884c.412.566 1.07.901 1.771.901h9.915c.827.0 1.587-.467 1.96-1.207.378-.742.302-1.629-.186-2.296l-15.91-21.688z" style="fill:#000;fill-rule:nonzero"/><path d="M107.191 80.969c-7.255-4.794-11.4-8.845-15.011-16.109-2.47 4.977-8.236 12.376-17.962 18.198-4.856 15.106-27.954 44.015-35.43 39.916-2.213-1.212-2.633-2.808-2.133-4.456.536-4.129 9.078-13.62 9.078-13.62s.18 1.992 2.913 6.187c-3.609-11.205 5.965-25.031 8.5-29.738 3.985-1.269 4.274-6.387 4.274-6.387.255-7.909-3.278-13.635-6.701-17.059 2.459 3.002 3.255 7.539 3.372 11.694v.023c.012.469.012.93.011 1.39-.117 3.439-1.157 8.19-3.383 8.19l.006.03c-2.289-.098-5.115.391-7.639 1.18l-5.582 1.334s2.977-.136 4.584 1.252c-1.79 2.915-5.769 6.533-10.206 8.588-6.457 2.995-8.312-2.964-5.034-6.838.805-.946 1.618-1.745 2.387-2.399-.495-.513-.807-1.198-.889-2.068-.001-.005-.004-.009-.005-.013-.45-1.977-.202-4.543 2.596-8.623.551-.863 1.214-1.748 2.007-2.647.025-.031.046-.059.072-.089.034-.042.072-.08.108-.121.02-.023.039-.045.059-.068.2-.228.413-.45.639-.663 3.334-3.414 8.599-6.966 16.897-10.152 9.675-14.223 13.219-16.89 13.219-16.89 1.071-1.096 2.943-2.458 3.632-2.805-5.053-8.781-6.074-21.158-4.75-24.493-.107.18-.206.365-.287.556.49-1.143.819-1.509 1.328-2.111 1.381-1.632 6.058-2.488 7.737.971.895 1.844 1.063 4.232 1.034 6.023-3.704-.193-7.063 4.036-7.063 4.036s3.067-1.448 6.879-1.473c0 0 1.015.883 2.283 2.542-1.712 3.213-4.524 10.021-2.488 17.168.338 1.408.849 2.619 1.483 3.648.024.045.044.089.069.135.051.066.096.122.144.183 3.368 5.072 9.542 5.665 9.542 5.665-2.906-1.45-5.274-3.76-6.816-6.56-.8-1.498-1.291-2.762-1.592-3.761-1.636-6.313.771-9.999 2.149-12.471 3.17-4.917 8.944-7.893 15.151-7.185 8.712.995 14.968 8.862 13.973 17.571-.608 5.321-3.781 9.723-8.142 12.117 1.049 2.839-.073 6.28-.073 6.28 2.642 3.323 2.758 5.238 2.667 7.017-3.357-.565-6.618 1.701-6.618 1.701s6.476-1.546 10.238 1.81c2.446 2.631 4.078 5.009 5.051 6.766 1.393 2.505 7.859 2.683 7.123 7.188-.737 4.499-5.669 4.542-13.401-.56M69.571.0C31.147.0.0 31.148.0 69.567c0 38.422 31.147 69.573 69.571 69.573 38.42.0 69.568-31.151 69.568-69.573.0-38.42-31.148-69.567-69.568-69.567" style="fill:#000;fill-rule:nonzero"/><path d="M73.796 51.693c.813-.814.813-2.134.0-2.947-.815-.814-2.133-.814-2.947.0-.815.813-.815 2.133.0 2.947.814.813 2.132.813 2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M66.445 53.149c-.814.813-.814 2.133.0 2.947.813.814 2.133.814 2.947.0.813-.814.813-2.134.0-2.947-.814-.813-2.134-.813-2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M79.231 54.233c-1.274-1.274-3.339-1.272-4.611.0l-2.713 2.712c-1.274 1.275-1.274 3.339.0 4.612l2.978 2.978c1.274 1.275 3.338 1.274 4.611.0l2.712-2.712c1.274-1.274 1.274-3.339.0-4.612l-2.977-2.978z" style="fill:#000;fill-rule:nonzero"/><path d="M95.759 41.445c-2.151-2.578 1.869-7.257 4.391-4.463 4.645 5.148-2.237 7.041-4.391 4.463M105.004 44.132c3.442-6.553-1.427-10.381-4.773-13.523-5.36-5.039-10.706-7.217-16.811-.241-6.102 6.977-2.226 15.068 3.356 19.061 5.584 3.994 14.782 1.255 18.228-5.297" style="fill:#000;fill-rule:nonzero"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label><input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1584627285></script><script type=text/javascript src=/js/auto-complete.js?1584627285></script><script type=text/javascript>var baseurl="https:\/\/bksanjuk.github.io\/";</script><script type=text/javascript src=/js/search.js?1584627285></script></div><div class=highlightable><ul class=topics><li data-nav-id=/overview/ title=Overview class=dd-item><a href=/overview/><b>1. </b>Overview</a></li><li data-nav-id=/linux/ title=Linux class=dd-item><a href=/linux/><b>2. </b>Linux</a><ul><li data-nav-id=/linux/linux-booting-process/ title="Linux Booting Process" class=dd-item><a href=/linux/linux-booting-process/>Linux Booting Process</a></li><li data-nav-id=/linux/file-system/ title="File System" class=dd-item><a href=/linux/file-system/>File System</a></li><li data-nav-id=/linux/systemd/ title=Systemd class=dd-item><a href=/linux/systemd/>Systemd</a></li><li data-nav-id=/linux/iptables/ title=IPTABLES class=dd-item><a href=/linux/iptables/>IPTABLES</a></li><li data-nav-id=/linux/selinux/ title=SELINUX class=dd-item><a href=/linux/selinux/>SELINUX</a></li></ul></li><li data-nav-id=/centos/ title=Centos class=dd-item><a href=/centos/><b>3. </b>Centos</a><ul><li data-nav-id=/centos/kernel-version-info/ title="Kernel Version Info" class=dd-item><a href=/centos/kernel-version-info/>Kernel Version Info</a></li><li data-nav-id=/centos/install/ title=Install class=dd-item><a href=/centos/install/>Install</a></li><li data-nav-id=/centos/hostname/ title=Hostname class=dd-item><a href=/centos/hostname/>Hostname</a></li><li data-nav-id=/centos/locale/ title=Locale class=dd-item><a href=/centos/locale/>Locale</a></li><li data-nav-id=/centos/time-zone/ title="Time Zone" class=dd-item><a href=/centos/time-zone/>Time Zone</a></li><li data-nav-id=/centos/network/ title=Network class=dd-item><a href=/centos/network/>Network</a></li><li data-nav-id=/centos/yum/ title=YUM class=dd-item><a href=/centos/yum/>YUM</a></li><li data-nav-id=/centos/rpm/ title=RPM class=dd-item><a href=/centos/rpm/>RPM</a></li><li data-nav-id=/centos/ntp/ title=NTP class=dd-item><a href=/centos/ntp/>NTP</a></li><li data-nav-id=/centos/reset-root-password/ title="Reset Root Password" class=dd-item><a href=/centos/reset-root-password/>Reset Root Password</a></li><li data-nav-id=/centos/rescue-mode/ title="Rescue Mode" class=dd-item><a href=/centos/rescue-mode/>Rescue Mode</a></li><li data-nav-id=/centos/mainternance-mode/ title="Mainternance Mode" class=dd-item><a href=/centos/mainternance-mode/>Mainternance Mode</a></li><li data-nav-id=/centos/firewalld/ title=Firewalld class=dd-item><a href=/centos/firewalld/>Firewalld</a></li><li data-nav-id=/centos/iscsi/ title=ISCSI class=dd-item><a href=/centos/iscsi/>ISCSI</a></li><li data-nav-id=/centos/multipath/ title=Multipath class=dd-item><a href=/centos/multipath/>Multipath</a></li><li data-nav-id=/centos/ftp/ title=FTP class=dd-item><a href=/centos/ftp/>FTP</a></li><li data-nav-id=/centos/postfix/ title=Postfix class=dd-item><a href=/centos/postfix/>Postfix</a></li><li data-nav-id=/centos/samba/ title=Samba class=dd-item><a href=/centos/samba/>Samba</a></li><li data-nav-id=/centos/software-raid/ title="Software RAID" class=dd-item><a href=/centos/software-raid/>Software RAID</a></li><li data-nav-id=/centos/vnc/ title=VNC class=dd-item><a href=/centos/vnc/>VNC</a></li><li data-nav-id=/centos/nfs/ title=NFS class=dd-item><a href=/centos/nfs/>NFS</a></li><li data-nav-id=/centos/dns/ title=DNS class=dd-item><a href=/centos/dns/>DNS</a></li><li data-nav-id=/centos/lamp-stack/ title="LAMP Stack" class=dd-item><a href=/centos/lamp-stack/>LAMP Stack</a></li><li data-nav-id=/centos/lemp-stack/ title="LEMP Stack" class=dd-item><a href=/centos/lemp-stack/>LEMP Stack</a></li></ul></li><li data-nav-id=/redhat-enterprise-linux/ title="RedHat Enterprise Linux" class=dd-item><a href=/redhat-enterprise-linux/><b>4. </b>RedHat Enterprise Linux</a><ul><li data-nav-id=/redhat-enterprise-linux/redhat-cluster-suite/ title="RedHat Cluster Suite" class=dd-item><a href=/redhat-enterprise-linux/redhat-cluster-suite/>RedHat Cluster Suite</a></li></ul></li><li data-nav-id=/ubuntu/ title=Ubuntu class=dd-item><a href=/ubuntu/><b>5. </b>Ubuntu</a><ul><li data-nav-id=/ubuntu/install/ title=Install class=dd-item><a href=/ubuntu/install/>Install</a></li><li data-nav-id=/ubuntu/system-upgrade/ title="System Upgrade" class=dd-item><a href=/ubuntu/system-upgrade/>System Upgrade</a></li><li data-nav-id=/ubuntu/hostname/ title=Hostname class=dd-item><a href=/ubuntu/hostname/>Hostname</a></li><li data-nav-id=/ubuntu/locale/ title=Locale class=dd-item><a href=/ubuntu/locale/>Locale</a></li><li data-nav-id=/ubuntu/repository/ title=Repository class=dd-item><a href=/ubuntu/repository/>Repository</a></li><li data-nav-id=/ubuntu/network/ title=Network class=dd-item><a href=/ubuntu/network/>Network</a></li><li data-nav-id=/ubuntu/apt-command/ title="Apt Command" class=dd-item><a href=/ubuntu/apt-command/>Apt Command</a></li><li data-nav-id=/ubuntu/x-windows/ title="X Windows" class=dd-item><a href=/ubuntu/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/freebsd/ title=Freebsd class=dd-item><a href=/freebsd/><b>6. </b>Freebsd</a><ul><li data-nav-id=/freebsd/install/ title=Install class=dd-item><a href=/freebsd/install/>Install</a></li><li data-nav-id=/freebsd/hostname/ title=Hostname class=dd-item><a href=/freebsd/hostname/>Hostname</a></li><li data-nav-id=/freebsd/network/ title=Network class=dd-item><a href=/freebsd/network/>Network</a></li><li data-nav-id=/freebsd/ports/ title=Ports class=dd-item><a href=/freebsd/ports/>Ports</a></li><li data-nav-id=/freebsd/user-management/ title="User Management" class=dd-item><a href=/freebsd/user-management/>User Management</a></li><li data-nav-id=/freebsd/disk-management/ title="Disk Management" class=dd-item><a href=/freebsd/disk-management/>Disk Management</a></li><li data-nav-id=/freebsd/x-windows/ title="X Windows" class=dd-item><a href=/freebsd/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/docker/ title=Docker class=dd-item><a href=/docker/><b>7. </b>Docker</a><ul><li data-nav-id=/docker/install/ title=Install class=dd-item><a href=/docker/install/>Install</a></li><li data-nav-id=/docker/remove-all-containers/ title="Remove All Containers" class=dd-item><a href=/docker/remove-all-containers/>Remove All Containers</a></li><li data-nav-id=/docker/docker-tutorial/ title="Docker Tutorial" class=dd-item><a href=/docker/docker-tutorial/>Docker Tutorial</a></li><li data-nav-id=/docker/docker-command/ title="Docker Command" class=dd-item><a href=/docker/docker-command/>Docker Command</a></li><li data-nav-id=/docker/dockerfile/ title=Dockerfile class=dd-item><a href=/docker/dockerfile/>Dockerfile</a></li><li data-nav-id=/docker/dockerfile-use-ssh-server/ title="Dockerfile Use SSH Server" class=dd-item><a href=/docker/dockerfile-use-ssh-server/>Dockerfile Use SSH Server</a></li><li data-nav-id=/docker/docker-compose/ title="Docker Compose" class=dd-item><a href=/docker/docker-compose/>Docker Compose</a></li><li data-nav-id=/docker/docker-volumes/ title="Docker Volumes" class=dd-item><a href=/docker/docker-volumes/>Docker Volumes</a></li><li data-nav-id=/docker/docker-machine/ title="Docker Machine" class=dd-item><a href=/docker/docker-machine/>Docker Machine</a></li><li data-nav-id=/docker/docker-swarm/ title="Docker Swarm" class=dd-item><a href=/docker/docker-swarm/>Docker Swarm</a></li><li data-nav-id=/docker/docker-swarm-nfs-volume/ title="Docker Swarm NFS Volume" class=dd-item><a href=/docker/docker-swarm-nfs-volume/>Docker Swarm NFS Volume</a></li></ul></li><li data-nav-id=/kubernetes/ title=Kubernetes class="dd-item
+parent"><a href=/kubernetes/><b>8. </b>Kubernetes</a><ul><li data-nav-id=/kubernetes/install/ title=Install class="dd-item
+parent
+active"><a href=/kubernetes/install/>Install</a></li></ul></li></ul><section id=footer><p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a>from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span><span class=links>Install</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#kubernetes-install>Kubernetes install</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Install</h1><h2 id=kubernetes-install>Kubernetes install</h2><div class="notices warning"><p><strong>문서 참고 사항</strong><br>작성중인 문서 입니다.<br>단순 참고용으로 부탁 드립니다.</p></div><div class="notices tip"><p><strong>참고 사이트</strong><br><a href=https://kubernetes.io/docs/setup/cri/>Kubernetes 사이트</a></p></div><div class="notices info"><p><strong>Config 참고사항</strong><br>k8s Kubernetes 설치시 모든 node (master 를 포함한 모든노드) , 또는 master node 에서만 작업을 해야 합니다.</p></div><blockquote><ol><li>hosts 파일 설정</li></ol></blockquote><pre><code>모든 노드에서 작업
+# vi /etc/hosts
+
+10.10.10.27     k8s-master
+10.10.10.28     k8s-node01
+10.10.10.29     k8s-node02
+</code></pre><blockquote><ol start=2><li>selinux disable</li></ol></blockquote><pre><code>모든 노드에서 작업
+# vi /etc/selinux/config
+ 
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+</code></pre><blockquote><ol start=3><li>sysctl.conf 설정</li></ol></blockquote><pre><code>모든 노드에서 작업 
+# cat &lt;&lt;EOF &gt;  /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+
+
+# sysctl --system
+* Applying /usr/lib/sysctl.d/00-system.conf ...
+* Applying /usr/lib/sysctl.d/10-default-yama-scope.conf ...
+kernel.yama.ptrace_scope = 0
+* Applying /usr/lib/sysctl.d/50-default.conf ...
+kernel.sysrq = 16
+kernel.core_uses_pid = 1
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.default.promote_secondaries = 1
+net.ipv4.conf.all.promote_secondaries = 1
+fs.protected_hardlinks = 1
+fs.protected_symlinks = 1
+* Applying /etc/sysctl.d/99-sysctl.conf ...
+* Applying /etc/sysctl.d/k8s.conf ...
+* Applying /etc/sysctl.conf ...
+
+</code></pre><blockquote><ol start=4><li>swapoff (k8s 의 경우 swap 을 사용하지 않습니다.)</li></ol></blockquote><pre><code>모든 노드에서 작업 
+# swapoff -a
+ 
+# vi /etc/fstab
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+UUID=d7bb5d3b-5b37-47e0-8c26-fe40f7311597 /                       xfs     defaults        0 0
+UUID=43ec35ea-2e35-46f1-864c-b13603a8acac /boot                   xfs     defaults        0 0
+#UUID=2de336ec-4a33-36r1-8w2s-asdf2342ccgg swap                   swap     defaults        0 0
+
+</code></pre><blockquote><ol start=5><li>docker-ce 설치</li></ol></blockquote><pre><code>모든 노드에서 작업
+# yum install -y yum-utils device-mapper-persistent-data lvm2
+# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+# yum install -y docker-ce
+ 
+# mkdir /etc/docker
+# mkdir /etc/docker
+ 
+# cat &gt; /etc/docker/daemon.json &lt;&lt;EOF
+{
+  &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],
+  &quot;log-driver&quot;: &quot;json-file&quot;,
+  &quot;log-opts&quot;: {
+    &quot;max-size&quot;: &quot;100m&quot;
+  },
+  &quot;storage-driver&quot;: &quot;overlay2&quot;,
+  &quot;storage-opts&quot;: [
+    &quot;overlay2.override_kernel_check=true&quot;
+  ]
+}
+EOF
+ 
+ 
+# mkdir -p /etc/systemd/system/docker.service.d
+# systemctl daemon-reload
+# systemctl restart docker
+</code></pre><blockquote><ol start=6><li>kubernetes 설치 및 system 리부팅</li></ol></blockquote><pre><code># vi /etc/yum.repos.d/kubernetes.repo
+
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+        https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+ 
+# yum install -y kubelet kubeadm kubectl
+# init 6
+ 
+# systemctl start docker ; systemctl enable docker
+# systemctl start kubelet ; systemctl enable kubelet
+</code></pre><div class="notices note"><p><strong>k8s-master Only</strong><br>k8s-master node 에서만 작업 합니다.</p></div><blockquote><ol start=7><li>k8s-master node 에서 apiserver 와 pod-network 를 설정 합니다.</li></ol></blockquote><pre><code>[root@k8s-master ~]# kubeadm init --apiserver-advertise-address=10.10.10.27 --pod-network-cidr=20.20.0.0/16
+~중략
+ 
+[addons] Applied essential addon: kube-proxy
+ 
+Your Kubernetes control-plane has initialized successfully!
+ 
+To start using your cluster, you need to run the following as a regular user:
+ 
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+ 
+You should now deploy a pod network to the cluster.
+Run &quot;kubectl apply -f [podnetwork].yaml&quot; with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+ 
+Then you can join any number of worker nodes by running the following on each as root:
+ 
+kubeadm join 10.10.10.27:6443 --token syojz8.svxybs8x0f3iy28a \
+    --discovery-token-ca-cert-hash sha256:b28c6474e92e2bc87e8f7b470119e506df36ae6ae08a8f50dd070f5d714a28e1
+[root@k8s-master ~]#
+ 
+[root@k8s-master ~]# mkdir -p $HOME/.kube
+[root@k8s-master ~]# sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+[root@k8s-master ~]# sudo chown $(id -u):$(id -g) $HOME/.kube/config
+[root@k8s-master ~]# kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+ 
+[root@k8s-master ~]# kubectl get nodes
+NAME         STATUS   ROLES    AGE     VERSION
+k8s-master   Ready    master   2m22s   v1.14.1
+[root@k8s-master ~]# kubectl get pods --all-namespaces
+NAMESPACE     NAME                                 READY   STATUS    RESTARTS   AGE
+kube-system   coredns-fb8b8dccf-kwnbc              0/1     Running   0          112s
+kube-system   coredns-fb8b8dccf-nlpqx              0/1     Running   0          112s
+kube-system   etcd-k8s-master                      1/1     Running   0          86s
+kube-system   kube-apiserver-k8s-master            1/1     Running   0          79s
+kube-system   kube-controller-manager-k8s-master   1/1     Running   0          85s
+kube-system   kube-flannel-ds-amd64-5rft8          1/1     Running   0          32s
+kube-system   kube-proxy-fvf6z                     1/1     Running   0          112s
+kube-system   kube-scheduler-k8s-master            1/1     Running   0          82s
+[root@k8s-master ~]#
+</code></pre><blockquote><ol start=8><li>k8s-node01 / k8s-node02 에서 작업</li></ol></blockquote><pre><code>[root@k8s-node01 ~]# kubeadm join 10.10.10.27:6443 --token syojz8.svxybs8x0f3iy28a \
+    --discovery-token-ca-cert-hash sha256:b28c6474e92e2bc87e8f7b470119e506df36ae6ae08a8f50dd070f5d714a28e1
+ 
+[root@k8s-node02 ~]# kubeadm join 10.10.10.27:6443 --token syojz8.svxybs8x0f3iy28a \
+    --discovery-token-ca-cert-hash sha256:b28c6474e92e2bc87e8f7b470119e506df36ae6ae08a8f50dd070f5d714a28e1
+</code></pre><blockquote><ol start=9><li>k9s-master 에서 확인</li></ol></blockquote><pre><code>[root@k8s-master ~]# kubectl get nodes
+NAME         STATUS     ROLES    AGE     VERSION
+k8s-master   Ready      master   4m32s   v1.14.1
+k8s-node01   Ready      &lt;none&gt;   79s     v1.14.1
+k8s-node02   NotReady   &lt;none&gt;   17s     v1.14.1
+[root@k8s-master ~]#
+</code></pre><blockquote><ol start=10><li>k8s Testing (k8s-master 에서만 진행 합니다.)</li></ol></blockquote><pre><code>[root@k8s-master ~]# kubectl create deployment nginx --image=nginx
+[root@k8s-master ~]# kubectl describe deployment nginx
+Name:                   nginx
+Namespace:              default
+CreationTimestamp:      Fri, 03 May 2019 00:28:11 +0900
+Labels:                 app=nginx
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=nginx
+Replicas:               1 desired | 1 updated | 1 total | 0 available | 1 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=nginx
+  Containers:
+   nginx:
+    Image:        nginx
+    Port:         &lt;none&gt;
+    Host Port:    &lt;none&gt;
+    Environment:  &lt;none&gt;
+    Mounts:       &lt;none&gt;
+  Volumes:        &lt;none&gt;
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      False   MinimumReplicasUnavailable
+  Progressing    True    ReplicaSetUpdated
+OldReplicaSets:  &lt;none&gt;
+NewReplicaSet:   nginx-65f88748fd (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  18s   deployment-controller  Scaled up replica set nginx-65f88748fd to 1
+[root@k8s-master ~]#
+ 
+ 
+[root@k8s-master ~]# kubectl create service nodeport nginx --tcp=80:80
+ 
+ 
+[root@k8s-master ~]# kubectl get svc
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+kubernetes   ClusterIP   10.96.0.1        &lt;none&gt;        443/TCP        6m33s
+nginx        NodePort    10.102.109.228   &lt;none&gt;        80:30187/TCP   21s
+</code></pre><blockquote><ol start=11><li>k8s-master node 에서 nginx 확인</li></ol></blockquote><pre><code>[root@k8s-master ~]#  curl k8s-node01:30187
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+ 
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+ 
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+[root@k8s-master ~]#
+</code></pre><blockquote><ol start=12><li>pods scale up (k8s-master 에서 진행)</li></ol></blockquote><pre><code>최초 생성시 1개의 pods 입니다. 
+ 
+[root@k8s-master ~]# kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-65f88748fd-8lqrb   1/1     Running   0          5m12s
+[root@k8s-master ~]#
+ 
+pods 을 5개로 늘립니다. 
+[root@k8s-master ~]# kubectl scale --replicas=5 deployment/nginx
+deployment.extensions/nginx scaled
+ 
+ 
+[root@k8s-master ~]# kubectl get pods
+NAME                     READY   STATUS              RESTARTS   AGE
+nginx-65f88748fd-6v7n5   1/1     Running             0          13s
+nginx-65f88748fd-86svl   0/1     ContainerCreating   0          13s
+nginx-65f88748fd-8lqrb   1/1     Running             0          12m
+nginx-65f88748fd-pq8p8   0/1     ContainerCreating   0          13s
+nginx-65f88748fd-w4tq8   0/1     ContainerCreating   0          13s
+[root@k8s-master ~]#
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1584627285></script><script src=/js/perfect-scrollbar.min.js?1584627285></script><script src=/js/perfect-scrollbar.jquery.min.js?1584627285></script><script src=/js/jquery.sticky.js?1584627285></script><script src=/js/featherlight.min.js?1584627285></script><script src=/js/highlight.pack.js?1584627285></script><script>hljs.initHighlightingOnLoad();</script><script src=/js/modernizr.custom-3.6.0.js?1584627285></script><script src=/js/learn.js?1584627285></script><script src=/js/hugo-learn.js?1584627285></script><link href=/mermaid/mermaid.css?1584627285 rel=stylesheet><script src=/mermaid/mermaid.js?1584627285></script><script>mermaid.initialize({startOnLoad:true});</script></body></html>

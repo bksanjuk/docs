@@ -1,0 +1,651 @@
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.67.0"><meta name=description content="Linux Documentation Project"><link rel=icon href=/images/favicon.png type=image/png><title>Docker Command ::</title><link href=/css/nucleus.css?1584627284 rel=stylesheet><link href=/css/fontawesome-all.min.css?1584627284 rel=stylesheet><link href=/css/hybrid.css?1584627284 rel=stylesheet><link href=/css/featherlight.min.css?1584627284 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1584627284 rel=stylesheet><link href=/css/auto-complete.css?1584627284 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1584627284 rel=stylesheet><link href=/css/theme.css?1584627284 rel=stylesheet><link href=/css/hugo-theme.css?1584627284 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1584627284></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/docker/docker-command/><nav id=sidebar><div id=header-wrapper><div id=header><a id=logo href=https://bksanjuk.github.io/><svg id="grav-logo" style="width:100%;height:100%" viewBox="0 0 504 140" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421"><path d="M235.832 71.564l-7.98-.001c-1.213.001-2.197.987-2.197 2.204v15.327l-.158.132c-4.696 3.962-10.634 6.14-16.719 6.14-14.356.0-26.034-11.68-26.034-26.037.0-14.358 11.678-26.035 26.034-26.035 5.582.0 10.919 1.767 15.437 5.113.877.649 2.093.56 2.866-.211l5.69-5.69c.444-.442.675-1.055.639-1.681-.034-.627-.336-1.206-.828-1.597-6.76-5.363-15.214-8.314-23.805-8.314-21.18.0-38.414 17.233-38.414 38.415.0 21.183 17.234 38.415 38.414 38.415 10.937.0 21.397-4.705 28.698-12.914.358-.403.556-.921.556-1.46v-19.603c0-1.217-.985-2.203-2.2-2.203" style="fill:#000;fill-rule:nonzero"/><path d="M502.794 34.445c-.408-.616-1.1-.989-1.838-.989h-8.684c-.879.0-1.673.522-2.022 1.329l-24.483 56.839-24.92-56.852c-.352-.799-1.142-1.316-2.012-1.316h-8.713c-.744.0-1.44.373-1.843.995-.408.623-.476 1.408-.174 2.09l30.186 68.858c.352.799 1.143 1.317 2.017 1.317h10.992c.879.0 1.673-.527 2.021-1.329l29.655-68.861c.289-.68.222-1.461-.182-2.081" style="fill:#000;fill-rule:nonzero"/><path d="M388.683 34.772c-.353-.798-1.142-1.316-2.017-1.316h-10.988c-.879.0-1.673.522-2.021 1.329l-29.655 68.861c-.294.675-.226 1.46.182 2.077.407.619 1.096.993 1.838.993h8.684c.879.0 1.673-.526 2.022-1.329l24.478-56.842 24.92 56.854c.353.798 1.143 1.317 2.013 1.317h8.717c.744.0 1.44-.374 1.843-.993.408-.624.471-1.41.174-2.094l-30.19-68.857z" style="fill:#000;fill-rule:nonzero"/><path d="M309.196 81.525l.476-.229c8.675-4.191 14.279-13.087 14.279-22.667.0-13.881-11.295-25.174-25.176-25.174h-31.863c-1.214.0-2.199.988-2.199 2.202v68.855c0 1.219.985 2.204 2.199 2.204h7.979c1.214.0 2.2-.985 2.2-2.204V45.833h21.684c7.059.0 12.799 5.739 12.799 12.796.0 5.885-3.996 10.989-9.728 12.408-1.032.261-2.064.393-3.071.393h-7.977c-.829.0-1.585.467-1.959 1.205-.378.74-.305 1.625.187 2.296l22.62 30.884c.412.566 1.07.901 1.771.901h9.915c.827.0 1.587-.467 1.96-1.207.378-.742.302-1.629-.186-2.296l-15.91-21.688z" style="fill:#000;fill-rule:nonzero"/><path d="M107.191 80.969c-7.255-4.794-11.4-8.845-15.011-16.109-2.47 4.977-8.236 12.376-17.962 18.198-4.856 15.106-27.954 44.015-35.43 39.916-2.213-1.212-2.633-2.808-2.133-4.456.536-4.129 9.078-13.62 9.078-13.62s.18 1.992 2.913 6.187c-3.609-11.205 5.965-25.031 8.5-29.738 3.985-1.269 4.274-6.387 4.274-6.387.255-7.909-3.278-13.635-6.701-17.059 2.459 3.002 3.255 7.539 3.372 11.694v.023c.012.469.012.93.011 1.39-.117 3.439-1.157 8.19-3.383 8.19l.006.03c-2.289-.098-5.115.391-7.639 1.18l-5.582 1.334s2.977-.136 4.584 1.252c-1.79 2.915-5.769 6.533-10.206 8.588-6.457 2.995-8.312-2.964-5.034-6.838.805-.946 1.618-1.745 2.387-2.399-.495-.513-.807-1.198-.889-2.068-.001-.005-.004-.009-.005-.013-.45-1.977-.202-4.543 2.596-8.623.551-.863 1.214-1.748 2.007-2.647.025-.031.046-.059.072-.089.034-.042.072-.08.108-.121.02-.023.039-.045.059-.068.2-.228.413-.45.639-.663 3.334-3.414 8.599-6.966 16.897-10.152 9.675-14.223 13.219-16.89 13.219-16.89 1.071-1.096 2.943-2.458 3.632-2.805-5.053-8.781-6.074-21.158-4.75-24.493-.107.18-.206.365-.287.556.49-1.143.819-1.509 1.328-2.111 1.381-1.632 6.058-2.488 7.737.971.895 1.844 1.063 4.232 1.034 6.023-3.704-.193-7.063 4.036-7.063 4.036s3.067-1.448 6.879-1.473c0 0 1.015.883 2.283 2.542-1.712 3.213-4.524 10.021-2.488 17.168.338 1.408.849 2.619 1.483 3.648.024.045.044.089.069.135.051.066.096.122.144.183 3.368 5.072 9.542 5.665 9.542 5.665-2.906-1.45-5.274-3.76-6.816-6.56-.8-1.498-1.291-2.762-1.592-3.761-1.636-6.313.771-9.999 2.149-12.471 3.17-4.917 8.944-7.893 15.151-7.185 8.712.995 14.968 8.862 13.973 17.571-.608 5.321-3.781 9.723-8.142 12.117 1.049 2.839-.073 6.28-.073 6.28 2.642 3.323 2.758 5.238 2.667 7.017-3.357-.565-6.618 1.701-6.618 1.701s6.476-1.546 10.238 1.81c2.446 2.631 4.078 5.009 5.051 6.766 1.393 2.505 7.859 2.683 7.123 7.188-.737 4.499-5.669 4.542-13.401-.56M69.571.0C31.147.0.0 31.148.0 69.567c0 38.422 31.147 69.573 69.571 69.573 38.42.0 69.568-31.151 69.568-69.573.0-38.42-31.148-69.567-69.568-69.567" style="fill:#000;fill-rule:nonzero"/><path d="M73.796 51.693c.813-.814.813-2.134.0-2.947-.815-.814-2.133-.814-2.947.0-.815.813-.815 2.133.0 2.947.814.813 2.132.813 2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M66.445 53.149c-.814.813-.814 2.133.0 2.947.813.814 2.133.814 2.947.0.813-.814.813-2.134.0-2.947-.814-.813-2.134-.813-2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M79.231 54.233c-1.274-1.274-3.339-1.272-4.611.0l-2.713 2.712c-1.274 1.275-1.274 3.339.0 4.612l2.978 2.978c1.274 1.275 3.338 1.274 4.611.0l2.712-2.712c1.274-1.274 1.274-3.339.0-4.612l-2.977-2.978z" style="fill:#000;fill-rule:nonzero"/><path d="M95.759 41.445c-2.151-2.578 1.869-7.257 4.391-4.463 4.645 5.148-2.237 7.041-4.391 4.463M105.004 44.132c3.442-6.553-1.427-10.381-4.773-13.523-5.36-5.039-10.706-7.217-16.811-.241-6.102 6.977-2.226 15.068 3.356 19.061 5.584 3.994 14.782 1.255 18.228-5.297" style="fill:#000;fill-rule:nonzero"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label><input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1584627284></script><script type=text/javascript src=/js/auto-complete.js?1584627284></script><script type=text/javascript>var baseurl="https:\/\/bksanjuk.github.io\/";</script><script type=text/javascript src=/js/search.js?1584627284></script></div><div class=highlightable><ul class=topics><li data-nav-id=/overview/ title=Overview class=dd-item><a href=/overview/><b>1. </b>Overview</a></li><li data-nav-id=/linux/ title=Linux class=dd-item><a href=/linux/><b>2. </b>Linux</a><ul><li data-nav-id=/linux/linux-booting-process/ title="Linux Booting Process" class=dd-item><a href=/linux/linux-booting-process/>Linux Booting Process</a></li><li data-nav-id=/linux/file-system/ title="File System" class=dd-item><a href=/linux/file-system/>File System</a></li><li data-nav-id=/linux/systemd/ title=Systemd class=dd-item><a href=/linux/systemd/>Systemd</a></li><li data-nav-id=/linux/iptables/ title=IPTABLES class=dd-item><a href=/linux/iptables/>IPTABLES</a></li><li data-nav-id=/linux/selinux/ title=SELINUX class=dd-item><a href=/linux/selinux/>SELINUX</a></li></ul></li><li data-nav-id=/centos/ title=Centos class=dd-item><a href=/centos/><b>3. </b>Centos</a><ul><li data-nav-id=/centos/kernel-version-info/ title="Kernel Version Info" class=dd-item><a href=/centos/kernel-version-info/>Kernel Version Info</a></li><li data-nav-id=/centos/install/ title=Install class=dd-item><a href=/centos/install/>Install</a></li><li data-nav-id=/centos/hostname/ title=Hostname class=dd-item><a href=/centos/hostname/>Hostname</a></li><li data-nav-id=/centos/locale/ title=Locale class=dd-item><a href=/centos/locale/>Locale</a></li><li data-nav-id=/centos/time-zone/ title="Time Zone" class=dd-item><a href=/centos/time-zone/>Time Zone</a></li><li data-nav-id=/centos/network/ title=Network class=dd-item><a href=/centos/network/>Network</a></li><li data-nav-id=/centos/yum/ title=YUM class=dd-item><a href=/centos/yum/>YUM</a></li><li data-nav-id=/centos/rpm/ title=RPM class=dd-item><a href=/centos/rpm/>RPM</a></li><li data-nav-id=/centos/ntp/ title=NTP class=dd-item><a href=/centos/ntp/>NTP</a></li><li data-nav-id=/centos/reset-root-password/ title="Reset Root Password" class=dd-item><a href=/centos/reset-root-password/>Reset Root Password</a></li><li data-nav-id=/centos/rescue-mode/ title="Rescue Mode" class=dd-item><a href=/centos/rescue-mode/>Rescue Mode</a></li><li data-nav-id=/centos/mainternance-mode/ title="Mainternance Mode" class=dd-item><a href=/centos/mainternance-mode/>Mainternance Mode</a></li><li data-nav-id=/centos/firewalld/ title=Firewalld class=dd-item><a href=/centos/firewalld/>Firewalld</a></li><li data-nav-id=/centos/iscsi/ title=ISCSI class=dd-item><a href=/centos/iscsi/>ISCSI</a></li><li data-nav-id=/centos/multipath/ title=Multipath class=dd-item><a href=/centos/multipath/>Multipath</a></li><li data-nav-id=/centos/ftp/ title=FTP class=dd-item><a href=/centos/ftp/>FTP</a></li><li data-nav-id=/centos/postfix/ title=Postfix class=dd-item><a href=/centos/postfix/>Postfix</a></li><li data-nav-id=/centos/samba/ title=Samba class=dd-item><a href=/centos/samba/>Samba</a></li><li data-nav-id=/centos/software-raid/ title="Software RAID" class=dd-item><a href=/centos/software-raid/>Software RAID</a></li><li data-nav-id=/centos/vnc/ title=VNC class=dd-item><a href=/centos/vnc/>VNC</a></li><li data-nav-id=/centos/nfs/ title=NFS class=dd-item><a href=/centos/nfs/>NFS</a></li><li data-nav-id=/centos/dns/ title=DNS class=dd-item><a href=/centos/dns/>DNS</a></li><li data-nav-id=/centos/lamp-stack/ title="LAMP Stack" class=dd-item><a href=/centos/lamp-stack/>LAMP Stack</a></li><li data-nav-id=/centos/lemp-stack/ title="LEMP Stack" class=dd-item><a href=/centos/lemp-stack/>LEMP Stack</a></li></ul></li><li data-nav-id=/redhat-enterprise-linux/ title="RedHat Enterprise Linux" class=dd-item><a href=/redhat-enterprise-linux/><b>4. </b>RedHat Enterprise Linux</a><ul><li data-nav-id=/redhat-enterprise-linux/redhat-cluster-suite/ title="RedHat Cluster Suite" class=dd-item><a href=/redhat-enterprise-linux/redhat-cluster-suite/>RedHat Cluster Suite</a></li></ul></li><li data-nav-id=/ubuntu/ title=Ubuntu class=dd-item><a href=/ubuntu/><b>5. </b>Ubuntu</a><ul><li data-nav-id=/ubuntu/install/ title=Install class=dd-item><a href=/ubuntu/install/>Install</a></li><li data-nav-id=/ubuntu/system-upgrade/ title="System Upgrade" class=dd-item><a href=/ubuntu/system-upgrade/>System Upgrade</a></li><li data-nav-id=/ubuntu/hostname/ title=Hostname class=dd-item><a href=/ubuntu/hostname/>Hostname</a></li><li data-nav-id=/ubuntu/locale/ title=Locale class=dd-item><a href=/ubuntu/locale/>Locale</a></li><li data-nav-id=/ubuntu/repository/ title=Repository class=dd-item><a href=/ubuntu/repository/>Repository</a></li><li data-nav-id=/ubuntu/network/ title=Network class=dd-item><a href=/ubuntu/network/>Network</a></li><li data-nav-id=/ubuntu/apt-command/ title="Apt Command" class=dd-item><a href=/ubuntu/apt-command/>Apt Command</a></li><li data-nav-id=/ubuntu/x-windows/ title="X Windows" class=dd-item><a href=/ubuntu/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/freebsd/ title=Freebsd class=dd-item><a href=/freebsd/><b>6. </b>Freebsd</a><ul><li data-nav-id=/freebsd/install/ title=Install class=dd-item><a href=/freebsd/install/>Install</a></li><li data-nav-id=/freebsd/hostname/ title=Hostname class=dd-item><a href=/freebsd/hostname/>Hostname</a></li><li data-nav-id=/freebsd/network/ title=Network class=dd-item><a href=/freebsd/network/>Network</a></li><li data-nav-id=/freebsd/ports/ title=Ports class=dd-item><a href=/freebsd/ports/>Ports</a></li><li data-nav-id=/freebsd/user-management/ title="User Management" class=dd-item><a href=/freebsd/user-management/>User Management</a></li><li data-nav-id=/freebsd/disk-management/ title="Disk Management" class=dd-item><a href=/freebsd/disk-management/>Disk Management</a></li><li data-nav-id=/freebsd/x-windows/ title="X Windows" class=dd-item><a href=/freebsd/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/docker/ title=Docker class="dd-item
+parent"><a href=/docker/><b>7. </b>Docker</a><ul><li data-nav-id=/docker/install/ title=Install class=dd-item><a href=/docker/install/>Install</a></li><li data-nav-id=/docker/remove-all-containers/ title="Remove All Containers" class=dd-item><a href=/docker/remove-all-containers/>Remove All Containers</a></li><li data-nav-id=/docker/docker-tutorial/ title="Docker Tutorial" class=dd-item><a href=/docker/docker-tutorial/>Docker Tutorial</a></li><li data-nav-id=/docker/docker-command/ title="Docker Command" class="dd-item
+parent
+active"><a href=/docker/docker-command/>Docker Command</a></li><li data-nav-id=/docker/dockerfile/ title=Dockerfile class=dd-item><a href=/docker/dockerfile/>Dockerfile</a></li><li data-nav-id=/docker/dockerfile-use-ssh-server/ title="Dockerfile Use SSH Server" class=dd-item><a href=/docker/dockerfile-use-ssh-server/>Dockerfile Use SSH Server</a></li><li data-nav-id=/docker/docker-compose/ title="Docker Compose" class=dd-item><a href=/docker/docker-compose/>Docker Compose</a></li><li data-nav-id=/docker/docker-volumes/ title="Docker Volumes" class=dd-item><a href=/docker/docker-volumes/>Docker Volumes</a></li><li data-nav-id=/docker/docker-machine/ title="Docker Machine" class=dd-item><a href=/docker/docker-machine/>Docker Machine</a></li><li data-nav-id=/docker/docker-swarm/ title="Docker Swarm" class=dd-item><a href=/docker/docker-swarm/>Docker Swarm</a></li><li data-nav-id=/docker/docker-swarm-nfs-volume/ title="Docker Swarm NFS Volume" class=dd-item><a href=/docker/docker-swarm-nfs-volume/>Docker Swarm NFS Volume</a></li></ul></li><li data-nav-id=/kubernetes/ title=Kubernetes class=dd-item><a href=/kubernetes/><b>8. </b>Kubernetes</a><ul><li data-nav-id=/kubernetes/install/ title=Install class=dd-item><a href=/kubernetes/install/>Install</a></li></ul></li></ul><section id=footer><p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a>from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span><span class=links>Docker Command</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#docker-comamand>Docker Comamand</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Docker Command</h1><h2 id=docker-comamand>Docker Comamand</h2><div class="notices note"><p>Docker 명령어 사용법을 정리 합니다.<br>기본으로 사용하는 명령어 위주로 사용하시고 필요할 경우 찾아 보시는것이 좋습니다.</p></div><div class="notices info"><p>docker Command 참고<br>$ docker Command Option 형식으로 사용합니다.<br><a href=https://docs.docker.com/engine/reference/commandline/cli/>Docker 명령어 Site</a></p></div><blockquote><p><strong>docker help 명령어 확인</strong></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~$ docker help
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default &#34;/home/test/.docker&#34;)
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level (&#34;debug&#34;|&#34;info&#34;|&#34;warn&#34;|&#34;error&#34;|&#34;fatal&#34;) (default &#34;info&#34;)
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default &#34;/home/test/.docker/ca.pem&#34;)
+      --tlscert string     Path to TLS certificate file (default &#34;/home/test/.docker/cert.pem&#34;)
+      --tlskey string      Path to TLS key file (default &#34;/home/test/.docker/key.pem&#34;)
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  config      Manage Docker configs
+  container   Manage containers
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container&#39;s changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container&#39;s filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container&#39;s filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run &#39;docker COMMAND --help&#39; for more information on a command.
+test@ubuntu:~$
+</code></pre></div><ul><li><strong>docker attach</strong></li></ul><div class="notices note"><p>docker attach
+실행중인 컨테이너에 로컬 표준 입력, 출력 및 오류 스트림 첨부</p></div><blockquote><p>일반적으로 컨테이너에 접속 하기 위한 명령은 docker exec -it $컨테이너id /bin/bash 를 사용 합니다.</p></blockquote><blockquote><p><strong>docker attach example</strong><br>컨테이너를 실행 하고 docker attach 를 이용하여 컨테이너에 접속 합니다.<br>컨테이너에서 빠져 나올때는 Ctrl + p q 로 빠져 나옵니다.<br>컨테이너에서 빠져 나올때 Ctrl + d 로 빠져 나올 경우 컨테이너는 정지 합니다.<br>docker ps 로 컨테이너 구동상태를 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>$ docker run --name test -d -it debian
+Unable to find image &#39;debian:latest&#39; locally
+latest: Pulling from library/debian
+05d1a5232b46: Pull complete
+Digest: sha256:07fe888a6090482fc6e930c1282d1edf67998a39a09a0b339242fbfa2b602fff
+Status: Downloaded newer image for debian:latest
+8e14f3f3d4ffaad6bede08bfd076a3d07309ce646915cfe339f715261c94da90
+test@ubuntu:~/Workspace/Docker-test/test01$ docker attach test
+root@8e14f3f3d4ff:/#
+root@8e14f3f3d4ff:/#
+root@8e14f3f3d4ff:/#
+root@8e14f3f3d4ff:/# read escape sequence
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
+8e14f3f3d4ff        debian              &#34;bash&#34;              About a minute ago   Up About a minute                       test
+$
+</code></pre></div><blockquote><p>docker attach 로 컨테이너에 접속 하기 위해서는 docker run -d -it 옵션으로 컨테이너를 실행 해야 합니다.<br>-d 컨테이너를 생성하여 백그라운드에서 실행<br>-t 컨테이너 표준입력 열기<br>-t tty 사용</p></blockquote><ul><li><strong>docker build</strong></li></ul><div class="notices note"><p>docker build
+docker build 는 Dockerfile 을 이용하여 image 생성시 사용합니다.</p></div><blockquote><p><strong>docker build example</strong><br>Dockerfile 을 이용하여 image 를 생성 합니다.<br>docker ps 명령어로 만들어진 이미지를 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/test01$ vi Dockerfile
+FROM ubuntu:16.04
+MAINTAINER test &lt;test@anonymouse.com&gt;
+
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN echo &#34;\ndaemon off;&#34; &gt;&gt; /etc/nginx/nginx.conf
+RUN chown -R www-data:www-data /var/lib/nginx
+
+
+VOLUME /data
+
+WORKDIR /etc/nginx
+
+CMD [&#34;nginx&#34;]
+
+EXPOSE 80
+EXPOSE 443
+test@ubuntu:~/Workspace/test01$ docker build --tag nginx . 
+
+test@ubuntu:~/Workspace/test01$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+nginx               latest              10608766ca7a        6 seconds ago       212MB
+test@ubuntu:~/Workspace/test01$
+
+</code></pre></div><blockquote><p><strong>docker commit</strong></p></blockquote><div class="notices note"><p>docker commit<br>컨테이너 변경사항을 적용한 새로운 이미지를 만드는 작업 입니다.</p></div><blockquote><p><strong>docker commit example</strong><br>기존 ssh-server 컨테이너에 접속을 하여 git 패키지를 설치 합니다.<br>docker commit 명령어로 git 이 포함된 image를 생성 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                  PORTS                                                      NAMES
+eff6ba796e43        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   5 seconds ago       Up Less than a second   0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+189479f8c9aa        ssh-server            &#34;/usr/sbin/sshd -D&#34;      5 seconds ago       Up 3 seconds            0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+test@ubuntu:~/Workspace/ftp-server$ docker exec -it ssh-server /bin/bash
+root@189479f8c9aa:/# apt-get install -y git
+
+
+root@189479f8c9aa:/# exit 
+
+test@ubuntu:~/Workspace/ftp-server$ docker commit ssh-server ssh-server:git
+sha256:694b90275abfc328f3f5a5c370b280f341dfec46ca5ddab2c7ad38c0b0f27c75
+test@ubuntu:~/Workspace/ftp-server$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ssh-server          git                 694b90275abf        9 seconds ago       286MB   &lt;--- TAG 확인시 docker commit 을 한 git ssh-server 이미지를 확인할수 있습니다. 
+nginx               latest              10608766ca7a        21 hours ago        212MB
+ftp/pure-ftpd       14.04               05b750504fe5        2 days ago          401MB
+ssh-server          latest              212d3f646e97        2 days ago          211MB
+ubuntu              16.04               b9e15a5d1e1a        4 weeks ago         115MB
+ubuntu              14.04               c32fae490809        4 weeks ago         188MB
+ubuntu              latest              cd6d8154f1e1        4 weeks ago         84.1MB
+debian              latest              f2aae6ff5d89        4 weeks ago         101MB
+test@ubuntu:~/Workspace/ftp-server$  
+</code></pre></div><blockquote><p><strong>docker cp</strong></p></blockquote><div class="notices note"><p>docker cp<br>컨테이너의 파일을 카피할때 사용합니다.</p></div><blockquote><p><strong>docker cp example</strong><br>pure-ftpd 사용자 생성후 pureftpd.password 파일을 로컬 pure-ftpd 설정디렉토리로 카피 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>docker ps 명령어로 ftpd 의 컨테이너 ID 를 확인 합니다.  
+test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+eff6ba796e43        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   15 minutes ago      Up 15 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+189479f8c9aa        ssh-server            &#34;/usr/sbin/sshd -D&#34;      15 minutes ago      Up 15 minutes       0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+test@ubuntu:~/Workspace/ftp-server$ docker exec -it eff6ba796e43 /bin/bash
+root@eff6ba796e43:/# pure-pw useradd test1 -u ftpd-data -g ftpd-data -d /home/ftp
+Password:
+Enter it again:
+root@eff6ba796e43:/# pure-pw mkdb
+root@eff6ba796e43:/# exit
+test@ubuntu:~/Workspace/ftp-server$ cd pure-ftpd/
+test@ubuntu:~/Workspace/ftp-server/pure-ftpd$ ls
+Dockerfile  pureftpd.passwd
+test@ubuntu:~/Workspace/ftp-server/pure-ftpd$ docker cp eff6ba796e43:/etc/pure-ftpd/pureftpd.passwd .
+test@ubuntu:~/Workspace/ftp-server/pure-ftpd$ cat pureftpd.passwd
+test:$1$P4DB31/0$iIPf8.YJ6XP6k1zsmQtJq1:1000:1000::/home/ftp/./::::::::::::
+test1:$1$na2YwOw0$vXXwmKm1Vo014M5oRpGyu/:1000:1000::/home/ftp/./::::::::::::
+test@ubuntu:~/Workspace/ftp-server/pure-ftpd$
+</code></pre></div><blockquote><p><strong>docker create</strong></p></blockquote><div class="notices note"><p>docker create<br>docker create 는 컨테이너 생성시 사용합니다.<br>docker run 의 경우 컨테이너 생성후 실행을 하지만 docker create 는 컨테이너 생성만 합니다.</p></div><blockquote><p><strong>docker create example</strong><br>컨테이너를 생성후 docker ps 명령어로 컨테이너 실행 상태를 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker create -it --name web-service httpd /bin/bash
+Unable to find image &#39;httpd:latest&#39; locally
+latest: Pulling from library/httpd
+f189db1b88b3: Pull complete
+ba2d31d4e2e7: Pull complete
+23a65f5e3746: Pull complete
+5e8eccbd4bc6: Pull complete
+4c145eec18d8: Pull complete
+c64fd93430a0: Pull complete
+c9efc31823a2: Pull complete
+Digest: sha256:81bc5f68f994a3c7bffc5d6ecba9e4fde70488c43ee8d57846a45c4995c67a23
+Status: Downloaded newer image for httpd:latest
+130e40719b40f5d08a21a8bf5361fe2ec69d52a338e2e7b68e10c9f96395c727
+test@ubuntu:~/Workspace$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+test@ubuntu:~/Workspace$
+</code></pre></div><blockquote><p><strong>docker diff</strong></p></blockquote><div class="notices note"><p>docker diff<br>docker diff 명령어는 컨테이너에서 변경된 파일을 확인할때 사용합니다.</p></div><table><thead><tr><th>심볼</th><th>설명</th></tr></thead><tbody><tr><td>A</td><td>추가된 파일</td></tr><tr><td>D</td><td>삭제된 파일</td></tr><tr><td>C</td><td>변경된 파일</td></tr></tbody></table><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+e573cd7dca0b        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   16 seconds ago      Up 9 seconds        0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+45cd7a7269fd        ssh-server            &#34;/usr/sbin/sshd -D&#34;      16 seconds ago      Up 14 seconds       0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+test@ubuntu:~/Workspace/ftp-server$ docker diff e573cd7dca0b
+C /run
+A /run/pure-ftpd.pid
+test@ubuntu:~/Workspace/ftp-server$ docker diff 45cd7a7269fd
+C /home
+C /home/test
+A /home/test/ftp
+C /run
+A /run/sshd.pid
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker events</strong></p></blockquote><div class="notices note"><p>docker events
+docker events 는 리얼타임으로 이벤트 확인시 사용합니다.</p></div><blockquote><p><strong>docker events example</strong><br>ssh 터미널 2대에서 컨테이너 실행 / 컨테이너 이벤트를 확인 합니다.<br>터미널 1에서 docker events 명령어를 실행 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~$ docker events
+2018-10-06T16:09:42.490532152+09:00 network create 0830cf7d056864010175fcb5dd6a7311ce4b2e28bb1f7758ea9365a0926100c4 (name=ftpserver_default, type=bridge)
+2018-10-06T16:09:42.586646157+09:00 image tag sha256:212d3f646e97afe608dde49220e62e08c9d743062863b66e1c63103822eb26df (name=ssh-server:latest)
+2018-10-06T16:09:42.691771402+09:00 image tag sha256:9cae9b363b5a8cb0dc5b58ab43fd9cb6357a0011ad4cf2902f20a2f918b30520 (name=ftp/pure-ftpd:14.04)
+2018-10-06T16:09:42.861839801+09:00 container create 404ad93a5840cb3e379275cb64b4297d8238013771bd1f1532cb93ae78328392 (com.docker.compose.config-hash=e922fb1d53e3afd3b1e24ba8ed07b4d78f445e06d6037004800d89d7edd7d850, com.docker.compose.container-number=1, com.docker.compose.oneoff=False, com.docker.compose.project=ftpserver, com.docker.compose.service=ssh-server, com.docker.compose.version=1.19.0, image=ssh-server, name=ssh-server)
+</code></pre></div><blockquote><p>터미널 2에서 docker-compose 를 실행 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker-compose up -d --build
+</code></pre></div><blockquote><p><strong>docker exec</strong></p></blockquote><div class="notices note"><p>docker exec<br>docker exec 명령어는 실행중인 컨테이너에 접속할때 사용합니다.</p></div><blockquote><p><strong>docker exec example</strong><br>docker ps 명령어로 컨테이너ID 를 확인 합니다.<br>docker exec 명령어로 실행중인 컨테이너에 접속 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+6e97f63d80fa        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   3 minutes ago       Up 3 minutes        0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+404ad93a5840        ssh-server            &#34;/usr/sbin/sshd -D&#34;      3 minutes ago       Up 3 minutes        0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+test@ubuntu:~/Workspace/ftp-server$ docker exec -it 6e97f63d80fa /bin/bash
+root@6e97f63d80fa:/#
+</code></pre></div><blockquote><p><strong>docker export</strong></p></blockquote><div class="notices note"><p>docker export
+docker export 는 컨테이너 파일시스템을 tar 압축으로 만듭니다.</p></div><blockquote><p>docker 백업의 경우 차후 설명 하도록 하겠습니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker export ssh-server &gt; ./ssh-server.tar
+test@ubuntu:~/Workspace/ftp-server$ ls
+docker-compose.yml  pure-ftpd  ssh-server  ssh-server.tar
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker import</strong></p></blockquote><div class="notices note"><p>docker import
+docker import 는 export 한 tar 파일로 image를 생성 합니다.</p></div><ul><li>docker import example<br>docker export 로 생성한 ssh-server.tar 파일에서 ssh-server image 를 생성합니다.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ cat ssh-server.tar | docker import - ssh-server
+sha256:e18ecfd3f50a110175be67d5426acf1177ed79c25991d76da3fc04b00ee59e27
+test@ubuntu:~/Workspace/ftp-server$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ssh-server          latest              e18ecfd3f50a        6 seconds ago       181MB
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker history</strong></p></blockquote><div class="notices note"><p>docker history<br>docker history 는 컨테이너의 history 확인시 사용합니다.</p></div><blockquote><p>docker history example</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker history ssh-server
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+212d3f646e97        2 days ago          /bin/sh -c #(nop)  CMD [&#34;/usr/sbin/sshd&#34; &#34;-D…   0B
+d8289a15c096        2 days ago          /bin/sh -c #(nop)  EXPOSE 22                    0B
+94680df1ab14        2 days ago          /bin/sh -c echo &#34;export VISIBLE=now&#34; &gt;&gt; /etc…   594B
+c0315bd26cd4        2 days ago          /bin/sh -c #(nop)  ENV NOTVISIBLE=in users p…   0B
+cd9ea05ee59b        2 days ago          /bin/sh -c apt-get update &amp;&amp; apt-get install…   95.8MB
+c1d4c20408a7        2 days ago          /bin/sh -c #(nop)  MAINTAINER Sven Dowideit …   0B
+b9e15a5d1e1a        4 weeks ago         /bin/sh -c #(nop)  CMD [&#34;/bin/bash&#34;]            0B
+&lt;missing&gt;           4 weeks ago         /bin/sh -c mkdir -p /run/systemd &amp;&amp; echo &#39;do…   7B
+&lt;missing&gt;           4 weeks ago         /bin/sh -c sed -i &#39;s/^#\s*\(deb.*universe\)$…   2.76kB
+&lt;missing&gt;           4 weeks ago         /bin/sh -c rm -rf /var/lib/apt/lists/*          0B
+&lt;missing&gt;           4 weeks ago         /bin/sh -c set -xe   &amp;&amp; echo &#39;#!/bin/sh&#39; &gt; /…   745B
+&lt;missing&gt;           4 weeks ago         /bin/sh -c #(nop) ADD file:a83ab1826f43e88bc…   115MB
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker images</strong></p></blockquote><div class="notices note"><p>docker images<br>docker images 명령어는 System 에 가지고 있는 docker images 파일을 출력합니다.</p></div><blockquote><p>docker images example</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ftp/pure-ftpd       14.04               9cae9b363b5a        25 minutes ago      401MB
+ssh-server          git                 694b90275abf        About an hour ago   286MB
+nginx               latest              10608766ca7a        21 hours ago        212MB
+&lt;none&gt;              &lt;none&gt;              05b750504fe5        2 days ago          401MB
+ssh-server          latest              212d3f646e97        2 days ago          211MB
+httpd               latest              dabb52744997        10 days ago         178MB
+ubuntu              16.04               b9e15a5d1e1a        4 weeks ago         115MB
+ubuntu              14.04               c32fae490809        4 weeks ago         188MB
+ubuntu              latest              cd6d8154f1e1        4 weeks ago         84.1MB
+debian              latest              f2aae6ff5d89        4 weeks ago         101MB
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker info</strong></p></blockquote><div class="notices note"><p>docker info<br>docker info 는 docker 정보를 출력합니다.</p></div><blockquote><p>docker info example</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 1
+Server Version: 18.06.1-ce
+Storage Driver: overlay2
+ Backing Filesystem: extfs
+ Supports d_type: true
+ Native Overlay Diff: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Log: awslogs fluentd gcplogs gelf journald json-file logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: 468a545b9edcd5932818eb9de8e72413e616e86e
+runc version: 69663f0bd4b60df09991c08812a60108003fa340
+init version: fec3683
+Security Options:
+ apparmor
+ seccomp
+  Profile: default
+Kernel Version: 4.15.0-34-generic
+Operating System: Ubuntu 18.04.1 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: 2
+Total Memory: 3.83GiB
+Name: ubuntu
+ID: JRYG:BHQ3:H35K:4BQA:4IO7:2HG4:SZ2X:34NQ:2D7P:AHBC:TIDI:BNQQ
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+Labels:
+Experimental: false
+Insecure Registries:
+ 127.0.0.0/8
+Live Restore Enabled: false
+
+WARNING: No swap limit support
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker inspect</strong></p></blockquote><div class="notices note"><p>docker inspect<br>docker inspect 는 docker image 정보 확인시 사용합니다.</p></div><blockquote><p>docker inspect example</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker inspect ssh-server
+[
+    {
+        &#34;Id&#34;: &#34;sha256:e18ecfd3f50a110175be67d5426acf1177ed79c25991d76da3fc04b00ee59e27&#34;,
+        &#34;RepoTags&#34;: [
+            &#34;ssh-server:latest&#34;
+        ],
+        &#34;RepoDigests&#34;: [],
+        &#34;Parent&#34;: &#34;&#34;,
+        &#34;Comment&#34;: &#34;Imported from -&#34;,
+        &#34;Created&#34;: &#34;2018-10-06T07:49:25.398220135Z&#34;,
+        &#34;Container&#34;: &#34;&#34;,
+        &#34;ContainerConfig&#34;: {
+            &#34;Hostname&#34;: &#34;&#34;,
+            &#34;Domainname&#34;: &#34;&#34;,
+            &#34;User&#34;: &#34;&#34;,
+            &#34;AttachStdin&#34;: false,
+            &#34;AttachStdout&#34;: false,
+            &#34;AttachStderr&#34;: false,
+            &#34;Tty&#34;: false,
+            &#34;OpenStdin&#34;: false,
+            &#34;StdinOnce&#34;: false,
+            &#34;Env&#34;: null,
+            &#34;Cmd&#34;: null,
+            &#34;Image&#34;: &#34;&#34;,
+            &#34;Volumes&#34;: null,
+            &#34;WorkingDir&#34;: &#34;&#34;,
+            &#34;Entrypoint&#34;: null,
+            &#34;OnBuild&#34;: null,
+            &#34;Labels&#34;: null
+        },
+        &#34;DockerVersion&#34;: &#34;18.06.1-ce&#34;,
+        &#34;Author&#34;: &#34;&#34;,
+        &#34;Config&#34;: {
+            &#34;Hostname&#34;: &#34;&#34;,
+            &#34;Domainname&#34;: &#34;&#34;,
+            &#34;User&#34;: &#34;&#34;,
+            &#34;AttachStdin&#34;: false,
+            &#34;AttachStdout&#34;: false,
+            &#34;AttachStderr&#34;: false,
+            &#34;Tty&#34;: false,
+            &#34;OpenStdin&#34;: false,
+            &#34;StdinOnce&#34;: false,
+            &#34;Env&#34;: null,
+            &#34;Cmd&#34;: null,
+            &#34;Image&#34;: &#34;&#34;,
+            &#34;Volumes&#34;: null,
+            &#34;WorkingDir&#34;: &#34;&#34;,
+            &#34;Entrypoint&#34;: null,
+            &#34;OnBuild&#34;: null,
+            &#34;Labels&#34;: null
+        },
+        &#34;Architecture&#34;: &#34;amd64&#34;,
+        &#34;Os&#34;: &#34;linux&#34;,
+        &#34;Size&#34;: 180972435,
+        &#34;VirtualSize&#34;: 180972435,
+        &#34;GraphDriver&#34;: {
+            &#34;Data&#34;: {
+                &#34;MergedDir&#34;: &#34;/var/lib/docker/overlay2/304718b9632fc8c6d7dc30ac15c3e0338ae6085522e38c1e77dc7ee78902bda7/merged&#34;,
+                &#34;UpperDir&#34;: &#34;/var/lib/docker/overlay2/304718b9632fc8c6d7dc30ac15c3e0338ae6085522e38c1e77dc7ee78902bda7/diff&#34;,
+                &#34;WorkDir&#34;: &#34;/var/lib/docker/overlay2/304718b9632fc8c6d7dc30ac15c3e0338ae6085522e38c1e77dc7ee78902bda7/work&#34;
+            },
+            &#34;Name&#34;: &#34;overlay2&#34;
+        },
+        &#34;RootFS&#34;: {
+            &#34;Type&#34;: &#34;layers&#34;,
+            &#34;Layers&#34;: [
+                &#34;sha256:98dd9e2ccb30156580d099fd296c8ee19fb34fcb5ae192b82bd5d4b42c8e74a7&#34;
+            ]
+        },
+        &#34;Metadata&#34;: {
+            &#34;LastTagTime&#34;: &#34;2018-10-06T16:49:25.417762839+09:00&#34;
+        }
+    }
+]
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker kill</strong></p></blockquote><div class="notices note"><p>docker kill<br>docker kill 명령어는 컨테이너에 kill 시그널을 보낼때 사용합니다.</p></div><blockquote><p><strong>docker kill example</strong><br>docker kill 명령어로 컨테이너에 kill 시그널을 보낼수 있습니다.<br>docker kill $컨테이너 $컨테이너 형식으로 사용합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+74c9222eed72        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   5 seconds ago       Up 2 seconds        0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+beb0f4dd649d        ssh-server            &#34;/usr/sbin/sshd -D&#34;      5 seconds ago       Up 4 seconds        0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+test@ubuntu:~/Workspace/ftp-server$ docker kill ssh-server
+ssh-server
+test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+74c9222eed72        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   10 seconds ago      Up 7 seconds        0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker save</strong></p></blockquote><div class="notices note"><p>docker save<br>docker save 는 컨테이너를 tar 파일로 만들때 사용합니다.<br>docker save 로 만든 파일은 docker load 로 image 를 만들수 있습니다.</p></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>docker image 를 확인 합니다. 
+
+test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+78afd709f97f        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   50 seconds ago      Up 46 seconds       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+ad1316efdad9        ssh-server            &#34;/usr/sbin/sshd -D&#34;      50 seconds ago      Up 48 seconds       0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+test@ubuntu:~/Workspace/ftp-server$
+
+docker save 명령어로 iamges 파일을 tar 파일로 압축 합니다. 
+test@ubuntu:~/Workspace/ftp-server$ docker save -o ssh-server.tar ssh-server
+test@ubuntu:~/Workspace/ftp-server$ docker save -o ftpd.tar ftp/pure-ftpd:14.04
+test@ubuntu:~/Workspace/ftp-server$ ls
+docker-compose.yml  ftpd.tar  pure-ftpd  ssh-server  ssh-server.tar
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker load</strong></p></blockquote><div class="notices note"><p>docker load 는 tar 파일에서 image 로 load 할때 사용합니다.<br>docker Version 에 따라 상이 하지만 load 는 일반적으로 Docker save 로 image 를 만들때 사용합니다.<br>docker export 로 만든 tar 파일의 경우 docker load 로 image 가 안만들어질수 있습니다.</p></div><blockquote><p><strong>docker load example</strong><br>모든 컨테이너 이미지를 삭제 합니다.<br>docker save 로 tar 파일로 만든 이미지를 load 합니다.<br>docker-compose up -d 로 컨테이너를 구동하고 docker ps 로 컨테이너 작동상태를 확인 합니다.</p></blockquote><div class="notices warning"><p>docker load example<br>test 내역중 docker rmi -f 명령어는 모든 image를 삭제하는 명령어 입니다.<br>사용시 주의가 필요합니다.</p></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker rmi -f `docker images`
+test@ubuntu:~/Workspace/ftp-server$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+test@ubuntu:~/Workspace/ftp-server$
+test@ubuntu:~/Workspace/ftp-server$ docker load -i ssh-server.tar
+8823818c4748: Loading layer [==================================================&gt;]    119MB/119MB
+19d043c86cbc: Loading layer [==================================================&gt;]  15.87kB/15.87kB
+883eafdbe580: Loading layer [==================================================&gt;]  14.85kB/14.85kB
+4775b2f378bb: Loading layer [==================================================&gt;]  5.632kB/5.632kB
+75b79e19929c: Loading layer [==================================================&gt;]  3.072kB/3.072kB
+0e2fd56bd9bc: Loading layer [==================================================&gt;]  100.3MB/100.3MB
+4b6dd9f5e3bd: Loading layer [==================================================&gt;]  3.072kB/3.072kB
+Loaded image: ssh-server:latest
+test@ubuntu:~/Workspace/ftp-server$ docker load -i ftpd.tar
+aa4e7d478f39: Loading layer [==================================================&gt;]  196.9MB/196.9MB
+6d734414ae85: Loading layer [==================================================&gt;]  209.9kB/209.9kB
+52221a15d8f8: Loading layer [==================================================&gt;]  7.168kB/7.168kB
+616fe7ac49b1: Loading layer [==================================================&gt;]  5.632kB/5.632kB
+1ff19b5310ed: Loading layer [==================================================&gt;]  3.072kB/3.072kB
+88f620d0c1bf: Loading layer [==================================================&gt;]  196.9MB/196.9MB
+72bcad72424d: Loading layer [==================================================&gt;]  13.94MB/13.94MB
+2bc539ce1341: Loading layer [==================================================&gt;]  5.565MB/5.565MB
+7afabf3a346a: Loading layer [==================================================&gt;]  10.75kB/10.75kB
+6eb26301326c: Loading layer [==================================================&gt;]  4.224MB/4.224MB
+621d3211a1a4: Loading layer [==================================================&gt;]  580.6kB/580.6kB
+c9c6c8bd9cf4: Loading layer [==================================================&gt;]  368.1kB/368.1kB
+fe902615d94d: Loading layer [==================================================&gt;]  3.072kB/3.072kB
+442305c8d227: Loading layer [==================================================&gt;]   5.12kB/5.12kB
+d78b80eb41d2: Loading layer [==================================================&gt;]  3.072kB/3.072kB
+Loaded image: ftp/pure-ftpd:14.04
+test@ubuntu:~/Workspace/ftp-server$
+test@ubuntu:~/Workspace/ftp-server$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ftp/pure-ftpd       14.04               e1194eb48168        8 minutes ago       401MB
+ssh-server          latest              991f4ca29796        13 minutes ago      211MB
+test@ubuntu:~/Workspace/ftp-server$ docker-compose up -d
+Creating ftpd ... done
+Creating ftpd ...
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker pause</strong></p></blockquote><div class="notices note"><p>docker pause<br>docker pause 명령어는 컨테이너 내의 모든 프로세스를 일시 정지 합니다.</p></div><blockquote><p><strong>docker pause example</strong><br>docker pause 명령어로 ssh-server 를 일시 정지 상태로 만듭니다.<br>docker ps 명령어로 ssh-server STATUS 를 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+8505aabf31e1        ssh-server            &#34;/usr/sbin/sshd -D&#34;      4 minutes ago       Up 4 minutes        0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   4 minutes ago       Up 4 minutes        0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+test@ubuntu:~/Workspace/ftp-server$ docker pause ssh-server
+ssh-server
+test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                  PORTS                                                      NAMES
+8505aabf31e1        ssh-server            &#34;/usr/sbin/sshd -D&#34;      4 minutes ago       Up 4 minutes (Paused)   0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   4 minutes ago       Up 4 minutes            0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker unpause</strong></p></blockquote><div class="notices note"><p>docker unpause<br>docker unpause 명령어는 컨테이너의 일시 정지 상태에서 되돌아 올때 사용합니다.</p></div><blockquote><p>docker unpause example</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker unpause ssh-server
+ssh-server
+test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+8505aabf31e1        ssh-server            &#34;/usr/sbin/sshd -D&#34;      11 minutes ago      Up 11 minutes       0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   11 minutes ago      Up 11 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker port</strong></p></blockquote><div class="notices note"><p>docker port<br>docker port 명령어는 특정 컨테이너 port 연결정보를 확인할때 사용합니다.</p></div><blockquote><p>docker port example</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker port ssh-server
+22/tcp -&gt; 0.0.0.0:12341
+test@ubuntu:~/Workspace/ftp-server$
+
+</code></pre></div><blockquote><p><strong>docker ps</strong></p></blockquote><div class="notices note"><p>docker ps<br>docker ps 명령어는 작동중인 컨테이너 확인시 사용합니다.<br>docker ps -a 옵션으로 정지중인 컨테이너 정보를 확인 할수 있습니다.</p></div><blockquote><p><strong>docker ps example</strong><br>docker ps 명령어로 작동중인 컨테이너를 확인 합니다.<br>docker ps -a 옵션을 사용하여 정지중인 컨테이너를 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   15 minutes ago      Up 14 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+test@ubuntu:~/Workspace/ftp-server$ docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                     PORTS                                                      NAMES
+8505aabf31e1        ssh-server            &#34;/usr/sbin/sshd -D&#34;      15 minutes ago      Exited (0) 4 seconds ago                                                              ssh-server
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   15 minutes ago      Up 15 minutes              0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker search</strong></p></blockquote><div class="notices note"><p>docker search<br>docker search 명령어는 docker 이미지 저장소에서 images 검색시 사용합니다.</p></div><blockquote><p><strong>docker search example</strong><br>docker search 명령어를 이용하여 Apache 이미지를 검색합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker search httpd
+NAME                                    DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+httpd                                   The Apache HTTP Server Project                  2039                [OK]
+hypriot/rpi-busybox-httpd               Raspberry Pi compatible Docker Image with a …   44
+centos/httpd                                                                            21                                      [OK]
+centos/httpd-24-centos7                 Platform for running Apache httpd 2.4 or bui…   16
+armhf/httpd                             The Apache HTTP Server Project                  8
+macadmins/netboot-httpd                 use in combination with bruienne/bsdpy          6                                       [OK]
+tplatform/aws-linux-httpd24-php70       aws-linux-httpd24-php70                         2                                       [OK]
+salim1983hoop/httpd24                   Dockerfile running apache config                2                                       [OK]
+tplatform/aws-linux-httpd24-php71-fpm   aws-linux-httpd24-php71-fpm                     1                                       [OK]
+tplatform/aws-linux-httpd24-php71       aws-linux-httpd24-php71                         1                                       [OK]
+epflidevelop/os-wp-httpd                WP httpd                                        1                                       [OK]
+lead4good/httpd-fpm                     httpd server which connects via fcgi proxy h…   1                                       [OK]
+trollin/httpd                                                                           0
+manasip/httpd                                                                           0
+itsziget/httpd24                        Extended HTTPD Docker image based on the off…   0                                       [OK]
+dockerpinata/httpd                                                                      0
+tplatform/aws-linux-2-httpd24-php72     aws-linux-2-httpd24-php72                       0                                       [OK]
+interlutions/httpd                      httpd docker image with debian-based config …   0                                       [OK]
+manageiq/httpd_configmap_generator      Httpd Configmap Generator                       0                                       [OK]
+publici/httpd                           httpd:latest                                    0                                       [OK]
+mprahl/s2i-angular-httpd24              An S2I image for building and running Angula…   0                                       [OK]
+buzzardev/httpd                         Based on the official httpd image               0                                       [OK]
+amd64/httpd                             The Apache HTTP Server Project                  0
+manageiq/httpd                          Container with httpd, built on CentOS for Ma…   0                                       [OK]
+cilium/demo-httpd                                                                       0
+test@ubuntu:~/Workspace$
+</code></pre></div><blockquote><p><strong>docker pull</strong></p></blockquote><div class="notices note"><p>docker pull<br>docker pull 명령어는 docker image 저장소에서 image 를 Down 할때 사용합니다.</p></div><blockquote><p><strong>docker pull example</strong><br>Apache 마지막 버젼 이미지를 다운로드 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker pull httpd:latest
+latest: Pulling from library/httpd
+f189db1b88b3: Pull complete
+ba2d31d4e2e7: Pull complete
+23a65f5e3746: Pull complete
+5e8eccbd4bc6: Pull complete
+4c145eec18d8: Pull complete
+c64fd93430a0: Pull complete
+c9efc31823a2: Pull complete
+Digest: sha256:81bc5f68f994a3c7bffc5d6ecba9e4fde70488c43ee8d57846a45c4995c67a23
+Status: Downloaded newer image for httpd:latest
+test@ubuntu:~/Workspace$
+</code></pre></div><blockquote><p><strong>docker rename</strong></p></blockquote><div class="notices note"><p>docker rename<br>docker rename 은 컨테이너 이름 변경시 사용합니다.</p></div><blockquote><p><strong>docker rename example</strong><br>docker ps 로 작동중인 컨테이너를 확인 합니다.<br>docker rename 명령어로 기존 ftpd 컨테이너의 이름에서 pure-ftpd 로 변경합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   24 minutes ago      Up 24 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+test@ubuntu:~/Workspace$ docker rename ftpd pure-fptd
+test@ubuntu:~/Workspace$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   25 minutes ago      Up 25 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   pure-fptd
+test@ubuntu:~/Workspace$
+</code></pre></div><blockquote><p><strong>docker start</strong></p></blockquote><div class="notices note"><p>docker start<br>docker start 명령어는 컨테이너 실행시 사용됩니다.</p></div><blockquote><p>docker start example</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   28 minutes ago      Up 28 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   pure-fptd
+test@ubuntu:~/Workspace$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ftp/pure-ftpd       14.04               e1194eb48168        36 minutes ago      401MB
+ssh-server          latest              991f4ca29796        41 minutes ago      211MB
+httpd               latest              dabb52744997        10 days ago         178MB
+test@ubuntu:~/Workspace$ docker start ssh-server
+ssh-server
+test@ubuntu:~/Workspace$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+8505aabf31e1        ssh-server            &#34;/usr/sbin/sshd -D&#34;      28 minutes ago      Up 2 seconds        0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   28 minutes ago      Up 28 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   pure-fptd
+test@ubuntu:~/Workspace$
+</code></pre></div><blockquote><p><strong>docker stats</strong></p></blockquote><div class="notices note"><p>docker stats<br>docker status 명령어는 컨테이너 자원 사용량을 모니터링 할때 사용합니다.</p></div><blockquote><p>docker stats example</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker stats ssh-server
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT    MEM %               NET I/O             BLOCK I/O           PIDS
+8505aabf31e1        ssh-server          0.00%               1.852MiB / 3.83GiB   0.05%               796B / 0B           0B / 0B             1
+</code></pre></div><blockquote><p><strong>docker stop</strong></p></blockquote><div class="notices note"><p>docker stop<br>docker stop 명령어는 컨테이너를 정지 할때 사용합니다.</p></div><blockquote><p>docker stop example</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+8505aabf31e1        ssh-server            &#34;/usr/sbin/sshd -D&#34;      32 minutes ago      Up 4 minutes        0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   32 minutes ago      Up 32 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   pure-fptd
+test@ubuntu:~/Workspace$ docker stop ssh-server
+ssh-server
+test@ubuntu:~/Workspace$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   32 minutes ago      Up 32 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   pure-fptd
+test@ubuntu:~/Workspace$
+
+</code></pre></div><blockquote><p><strong>docker restart</strong></p></blockquote><div class="notices note"><p>docker restart<br>docker restart 명령어는 컨테이너 재시작시 사용합니다.</p></div><blockquote><p>docker restart example</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   32 minutes ago      Up 32 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   pure-fptd
+test@ubuntu:~/Workspace$ docker restart ssh-server
+ssh-server
+test@ubuntu:~/Workspace$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+8505aabf31e1        ssh-server            &#34;/usr/sbin/sshd -D&#34;      33 minutes ago      Up 1 second         0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   33 minutes ago      Up 33 minutes       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   pure-fptd
+test@ubuntu:~/Workspace$
+</code></pre></div><blockquote><p><strong>docker rm</strong></p></blockquote><div class="notices note"><p>docker rm<br>docker rm 명령어는 컨테이너를 삭제 할때 사용합니다.</p></div><blockquote><p><strong>docker rm example</strong><br>docker rm 명령어로 컨테이너를 삭제 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                     PORTS                                                      NAMES
+8505aabf31e1        ssh-server            &#34;/usr/sbin/sshd -D&#34;      3 hours ago         Exited (0) 6 seconds ago                                                              ssh-server
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   3 hours ago         Up 3 hours                 0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   pure-fptd
+test@ubuntu:~/Workspace$ docker rm ssh-server
+ssh-server
+test@ubuntu:~/Workspace$ docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+f6ead849c5db        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   3 hours ago         Up 3 hours          0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   pure-fptd
+test@ubuntu:~/Workspace$
+</code></pre></div><blockquote><p><strong>docker rmi</strong></p></blockquote><div class="notices note"><p>docker rmi<br>docker rmi 명령어는 도커 이미지를 삭제 합니다.</p></div><blockquote><p><strong>docker rmi example</strong><br>docker rmi 명령어를 이용하여 ssh-server image를 삭제 합니다.<br>docker rmi 명령어 사용시 imageID 를 사용하여 삭제합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>
+test@ubuntu:~/Workspace$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ftp/pure-ftpd       14.04               e1194eb48168        3 hours ago         401MB
+ssh-server          latest              991f4ca29796        3 hours ago         211MB
+httpd               latest              dabb52744997        10 days ago         178MB
+test@ubuntu:~/Workspace$ docker rmi 991f4ca29796
+Untagged: ssh-server:latest
+Deleted: sha256:991f4ca29796aa76fe238ebdf1eb00274f067522ee7a1821f04eb51f50f2d6e3
+Deleted: sha256:a6753658624e2a0ac74366be1ee3538d04cc7322e28142e688967b0262c8e96c
+Deleted: sha256:40d8eba6ec133c7a8c7f6383efdf27fcf64c60e15cb3f4d51cb7a7ffa37c5f34
+Deleted: sha256:479fa3c649ef40ba88c3ff090b963dca3189ad1b77d9d734f8cd4d9079ea3990
+Deleted: sha256:bd78a203e965358e5e95b20c5fa4b3e3599d1cbc58d00522324e233e7cbf8554
+Deleted: sha256:f5aad241af819c313bd6f5fbfeaae096f0fc977c0806fc9b1464d2260adacd22
+Deleted: sha256:7c82a79e7c32df5cd4d9f9ec8da86396c06e6dcfa99d5e991c2e98b8e804e8d0
+Deleted: sha256:8823818c474862932702f8a920abea43b2560ddceb910d145be9ba0eb149a643
+test@ubuntu:~/Workspace$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ftp/pure-ftpd       14.04               e1194eb48168        3 hours ago         401MB
+httpd               latest              dabb52744997        10 days ago         178MB
+test@ubuntu:~/Workspace$
+</code></pre></div><blockquote><p><strong>docker run</strong></p></blockquote><div class="notices note"><p>docker run<br>docker run 명령어는 컨테이너 실행시 사용합니다.<br>docker run 명령어는 image 파일을 pull / start 까지 하여 컨테이너를 구동상태로 만듭니다.</p></div><blockquote><p><strong>docker run example</strong><br>docker run 으로 Apache 를 구동 합니다.<br>&ndash;name 옵션을 사용하여 컨테이너 이름을 web-service 로 생성 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+test@ubuntu:~/Workspace$ docker run --name web-service -d -p 80:80 httpd
+Unable to find image &#39;httpd:latest&#39; locally
+latest: Pulling from library/httpd
+f189db1b88b3: Pull complete
+ba2d31d4e2e7: Pull complete
+23a65f5e3746: Pull complete
+5e8eccbd4bc6: Pull complete
+4c145eec18d8: Pull complete
+c64fd93430a0: Pull complete
+c9efc31823a2: Pull complete
+Digest: sha256:81bc5f68f994a3c7bffc5d6ecba9e4fde70488c43ee8d57846a45c4995c67a23
+Status: Downloaded newer image for httpd:latest
+cb3598dfd4df44c61ee0191a017030a30b7f462ab1cc7de3b7e9d1b82230f2aa
+test@ubuntu:~/Workspace$ docker ps
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS              PORTS                NAMES
+cb3598dfd4df        httpd               &#34;httpd-foreground&#34;   4 seconds ago       Up 2 seconds        0.0.0.0:80-&gt;80/tcp   web-service
+test@ubuntu:~/Workspace$
+</code></pre></div><blockquote><p><strong>docker tag</strong></p></blockquote><div class="notices note"><p>docker tag<br>docker tag 명령어는 source image 가 참조하는 target images 태그를 만듭니다.</p></div><blockquote><p><strong>docker tag example</strong><br>docker images 명령어로 이미지를 검색 합니다.<br>docker tag 를 이용하여 기존 httpd 이미지에 web-test 태그를 만듭니다.<br>이미지를 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>est@ubuntu:~/Workspace$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+httpd               latest              dabb52744997        10 days ago         178MB
+test@ubuntu:~/Workspace$ docker tag dabb52744997 web-test
+test@ubuntu:~/Workspace$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+httpd               latest              dabb52744997        10 days ago         178MB
+web-test            latest              dabb52744997        10 days ago         178MB
+test@ubuntu:~/Workspace$
+</code></pre></div><blockquote><p><strong>docker top</strong></p></blockquote><div class="notices note"><p>docker top<br>docker top 명령어는 컨테이너 에서 실행중인 프로세스를 표시합니다.</p></div><blockquote><p><strong>docker top example</strong><br>docker top 명령어로 web-service 에서 사용하는 프로세스를 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~$ docker ps
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS              PORTS                NAMES
+cb3598dfd4df        httpd               &#34;httpd-foreground&#34;   6 minutes ago       Up 6 minutes        0.0.0.0:80-&gt;80/tcp   web-service
+test@ubuntu:~$ docker top web-service
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                39246               39225               0                   20:04               ?                   00:00:00            httpd -DFOREGROUND
+daemon              39305               39246               0                   20:04               ?                   00:00:00            httpd -DFOREGROUND
+daemon              39306               39246               0                   20:04               ?                   00:00:00            httpd -DFOREGROUND
+daemon              39307               39246               0                   20:04               ?                   00:00:00            httpd -DFOREGROUND
+test@ubuntu:~$
+
+</code></pre></div><blockquote><p><strong>docker update</strong></p></blockquote><div class="notices note"><p>docker update<br>docker update 명령어는 하나이상의 컨테이너 구성을 업데이트 합니다.</p></div><blockquote><p><strong>docker update example</strong><br>docker update 명령어를 사용하여 컨테이너가 System 리부팅시에도 자동으로 시작될수 있도록 설정 합니다.<br>&ndash;restart=always 옵션을 사용합니다.<br>&ndash;restart=no 옵션은 always 의 반대 옵션입니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>
+test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS              PORTS                NAMES
+cb3598dfd4df        httpd               &#34;httpd-foreground&#34;   12 minutes ago      Up 12 minutes       0.0.0.0:80-&gt;80/tcp   web-service
+test@ubuntu:~/Workspace/ftp-server$ docker update --restart=always web-service
+web-service
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p><strong>docker version</strong></p></blockquote><div class="notices note"><p>docker version<br>docker version 명령어는 docker version 정보를 출력합니다.</p></div><blockquote><p><strong>docker version example</strong><br>docker version 을 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ docker version
+Client:
+ Version:           18.06.1-ce
+ API version:       1.38
+ Go version:        go1.10.3
+ Git commit:        e68fc7a
+ Built:             Tue Aug 21 17:24:51 2018
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server:
+ Engine:
+  Version:          18.06.1-ce
+  API version:      1.38 (minimum version 1.12)
+  Go version:       go1.10.3
+  Git commit:       e68fc7a
+  Built:            Tue Aug 21 17:23:15 2018
+  OS/Arch:          linux/amd64
+  Experimental:     false
+test@ubuntu:~/Workspace$
+</code></pre></div><p></p><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1584627284></script><script src=/js/perfect-scrollbar.min.js?1584627284></script><script src=/js/perfect-scrollbar.jquery.min.js?1584627284></script><script src=/js/jquery.sticky.js?1584627284></script><script src=/js/featherlight.min.js?1584627284></script><script src=/js/highlight.pack.js?1584627284></script><script>hljs.initHighlightingOnLoad();</script><script src=/js/modernizr.custom-3.6.0.js?1584627284></script><script src=/js/learn.js?1584627284></script><script src=/js/hugo-learn.js?1584627284></script><link href=/mermaid/mermaid.css?1584627284 rel=stylesheet><script src=/mermaid/mermaid.js?1584627284></script><script>mermaid.initialize({startOnLoad:true});</script></body></html>

@@ -1,0 +1,914 @@
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.67.0"><meta name=description content="Linux Documentation Project"><link rel=icon href=/images/favicon.png type=image/png><title>Docker Compose ::</title><link href=/css/nucleus.css?1584627284 rel=stylesheet><link href=/css/fontawesome-all.min.css?1584627284 rel=stylesheet><link href=/css/hybrid.css?1584627284 rel=stylesheet><link href=/css/featherlight.min.css?1584627284 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1584627284 rel=stylesheet><link href=/css/auto-complete.css?1584627284 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1584627284 rel=stylesheet><link href=/css/theme.css?1584627284 rel=stylesheet><link href=/css/hugo-theme.css?1584627284 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1584627284></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/docker/docker-compose/><nav id=sidebar><div id=header-wrapper><div id=header><a id=logo href=https://bksanjuk.github.io/><svg id="grav-logo" style="width:100%;height:100%" viewBox="0 0 504 140" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421"><path d="M235.832 71.564l-7.98-.001c-1.213.001-2.197.987-2.197 2.204v15.327l-.158.132c-4.696 3.962-10.634 6.14-16.719 6.14-14.356.0-26.034-11.68-26.034-26.037.0-14.358 11.678-26.035 26.034-26.035 5.582.0 10.919 1.767 15.437 5.113.877.649 2.093.56 2.866-.211l5.69-5.69c.444-.442.675-1.055.639-1.681-.034-.627-.336-1.206-.828-1.597-6.76-5.363-15.214-8.314-23.805-8.314-21.18.0-38.414 17.233-38.414 38.415.0 21.183 17.234 38.415 38.414 38.415 10.937.0 21.397-4.705 28.698-12.914.358-.403.556-.921.556-1.46v-19.603c0-1.217-.985-2.203-2.2-2.203" style="fill:#000;fill-rule:nonzero"/><path d="M502.794 34.445c-.408-.616-1.1-.989-1.838-.989h-8.684c-.879.0-1.673.522-2.022 1.329l-24.483 56.839-24.92-56.852c-.352-.799-1.142-1.316-2.012-1.316h-8.713c-.744.0-1.44.373-1.843.995-.408.623-.476 1.408-.174 2.09l30.186 68.858c.352.799 1.143 1.317 2.017 1.317h10.992c.879.0 1.673-.527 2.021-1.329l29.655-68.861c.289-.68.222-1.461-.182-2.081" style="fill:#000;fill-rule:nonzero"/><path d="M388.683 34.772c-.353-.798-1.142-1.316-2.017-1.316h-10.988c-.879.0-1.673.522-2.021 1.329l-29.655 68.861c-.294.675-.226 1.46.182 2.077.407.619 1.096.993 1.838.993h8.684c.879.0 1.673-.526 2.022-1.329l24.478-56.842 24.92 56.854c.353.798 1.143 1.317 2.013 1.317h8.717c.744.0 1.44-.374 1.843-.993.408-.624.471-1.41.174-2.094l-30.19-68.857z" style="fill:#000;fill-rule:nonzero"/><path d="M309.196 81.525l.476-.229c8.675-4.191 14.279-13.087 14.279-22.667.0-13.881-11.295-25.174-25.176-25.174h-31.863c-1.214.0-2.199.988-2.199 2.202v68.855c0 1.219.985 2.204 2.199 2.204h7.979c1.214.0 2.2-.985 2.2-2.204V45.833h21.684c7.059.0 12.799 5.739 12.799 12.796.0 5.885-3.996 10.989-9.728 12.408-1.032.261-2.064.393-3.071.393h-7.977c-.829.0-1.585.467-1.959 1.205-.378.74-.305 1.625.187 2.296l22.62 30.884c.412.566 1.07.901 1.771.901h9.915c.827.0 1.587-.467 1.96-1.207.378-.742.302-1.629-.186-2.296l-15.91-21.688z" style="fill:#000;fill-rule:nonzero"/><path d="M107.191 80.969c-7.255-4.794-11.4-8.845-15.011-16.109-2.47 4.977-8.236 12.376-17.962 18.198-4.856 15.106-27.954 44.015-35.43 39.916-2.213-1.212-2.633-2.808-2.133-4.456.536-4.129 9.078-13.62 9.078-13.62s.18 1.992 2.913 6.187c-3.609-11.205 5.965-25.031 8.5-29.738 3.985-1.269 4.274-6.387 4.274-6.387.255-7.909-3.278-13.635-6.701-17.059 2.459 3.002 3.255 7.539 3.372 11.694v.023c.012.469.012.93.011 1.39-.117 3.439-1.157 8.19-3.383 8.19l.006.03c-2.289-.098-5.115.391-7.639 1.18l-5.582 1.334s2.977-.136 4.584 1.252c-1.79 2.915-5.769 6.533-10.206 8.588-6.457 2.995-8.312-2.964-5.034-6.838.805-.946 1.618-1.745 2.387-2.399-.495-.513-.807-1.198-.889-2.068-.001-.005-.004-.009-.005-.013-.45-1.977-.202-4.543 2.596-8.623.551-.863 1.214-1.748 2.007-2.647.025-.031.046-.059.072-.089.034-.042.072-.08.108-.121.02-.023.039-.045.059-.068.2-.228.413-.45.639-.663 3.334-3.414 8.599-6.966 16.897-10.152 9.675-14.223 13.219-16.89 13.219-16.89 1.071-1.096 2.943-2.458 3.632-2.805-5.053-8.781-6.074-21.158-4.75-24.493-.107.18-.206.365-.287.556.49-1.143.819-1.509 1.328-2.111 1.381-1.632 6.058-2.488 7.737.971.895 1.844 1.063 4.232 1.034 6.023-3.704-.193-7.063 4.036-7.063 4.036s3.067-1.448 6.879-1.473c0 0 1.015.883 2.283 2.542-1.712 3.213-4.524 10.021-2.488 17.168.338 1.408.849 2.619 1.483 3.648.024.045.044.089.069.135.051.066.096.122.144.183 3.368 5.072 9.542 5.665 9.542 5.665-2.906-1.45-5.274-3.76-6.816-6.56-.8-1.498-1.291-2.762-1.592-3.761-1.636-6.313.771-9.999 2.149-12.471 3.17-4.917 8.944-7.893 15.151-7.185 8.712.995 14.968 8.862 13.973 17.571-.608 5.321-3.781 9.723-8.142 12.117 1.049 2.839-.073 6.28-.073 6.28 2.642 3.323 2.758 5.238 2.667 7.017-3.357-.565-6.618 1.701-6.618 1.701s6.476-1.546 10.238 1.81c2.446 2.631 4.078 5.009 5.051 6.766 1.393 2.505 7.859 2.683 7.123 7.188-.737 4.499-5.669 4.542-13.401-.56M69.571.0C31.147.0.0 31.148.0 69.567c0 38.422 31.147 69.573 69.571 69.573 38.42.0 69.568-31.151 69.568-69.573.0-38.42-31.148-69.567-69.568-69.567" style="fill:#000;fill-rule:nonzero"/><path d="M73.796 51.693c.813-.814.813-2.134.0-2.947-.815-.814-2.133-.814-2.947.0-.815.813-.815 2.133.0 2.947.814.813 2.132.813 2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M66.445 53.149c-.814.813-.814 2.133.0 2.947.813.814 2.133.814 2.947.0.813-.814.813-2.134.0-2.947-.814-.813-2.134-.813-2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M79.231 54.233c-1.274-1.274-3.339-1.272-4.611.0l-2.713 2.712c-1.274 1.275-1.274 3.339.0 4.612l2.978 2.978c1.274 1.275 3.338 1.274 4.611.0l2.712-2.712c1.274-1.274 1.274-3.339.0-4.612l-2.977-2.978z" style="fill:#000;fill-rule:nonzero"/><path d="M95.759 41.445c-2.151-2.578 1.869-7.257 4.391-4.463 4.645 5.148-2.237 7.041-4.391 4.463M105.004 44.132c3.442-6.553-1.427-10.381-4.773-13.523-5.36-5.039-10.706-7.217-16.811-.241-6.102 6.977-2.226 15.068 3.356 19.061 5.584 3.994 14.782 1.255 18.228-5.297" style="fill:#000;fill-rule:nonzero"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label><input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1584627284></script><script type=text/javascript src=/js/auto-complete.js?1584627284></script><script type=text/javascript>var baseurl="https:\/\/bksanjuk.github.io\/";</script><script type=text/javascript src=/js/search.js?1584627284></script></div><div class=highlightable><ul class=topics><li data-nav-id=/overview/ title=Overview class=dd-item><a href=/overview/><b>1. </b>Overview</a></li><li data-nav-id=/linux/ title=Linux class=dd-item><a href=/linux/><b>2. </b>Linux</a><ul><li data-nav-id=/linux/linux-booting-process/ title="Linux Booting Process" class=dd-item><a href=/linux/linux-booting-process/>Linux Booting Process</a></li><li data-nav-id=/linux/file-system/ title="File System" class=dd-item><a href=/linux/file-system/>File System</a></li><li data-nav-id=/linux/systemd/ title=Systemd class=dd-item><a href=/linux/systemd/>Systemd</a></li><li data-nav-id=/linux/iptables/ title=IPTABLES class=dd-item><a href=/linux/iptables/>IPTABLES</a></li><li data-nav-id=/linux/selinux/ title=SELINUX class=dd-item><a href=/linux/selinux/>SELINUX</a></li></ul></li><li data-nav-id=/centos/ title=Centos class=dd-item><a href=/centos/><b>3. </b>Centos</a><ul><li data-nav-id=/centos/kernel-version-info/ title="Kernel Version Info" class=dd-item><a href=/centos/kernel-version-info/>Kernel Version Info</a></li><li data-nav-id=/centos/install/ title=Install class=dd-item><a href=/centos/install/>Install</a></li><li data-nav-id=/centos/hostname/ title=Hostname class=dd-item><a href=/centos/hostname/>Hostname</a></li><li data-nav-id=/centos/locale/ title=Locale class=dd-item><a href=/centos/locale/>Locale</a></li><li data-nav-id=/centos/time-zone/ title="Time Zone" class=dd-item><a href=/centos/time-zone/>Time Zone</a></li><li data-nav-id=/centos/network/ title=Network class=dd-item><a href=/centos/network/>Network</a></li><li data-nav-id=/centos/yum/ title=YUM class=dd-item><a href=/centos/yum/>YUM</a></li><li data-nav-id=/centos/rpm/ title=RPM class=dd-item><a href=/centos/rpm/>RPM</a></li><li data-nav-id=/centos/ntp/ title=NTP class=dd-item><a href=/centos/ntp/>NTP</a></li><li data-nav-id=/centos/reset-root-password/ title="Reset Root Password" class=dd-item><a href=/centos/reset-root-password/>Reset Root Password</a></li><li data-nav-id=/centos/rescue-mode/ title="Rescue Mode" class=dd-item><a href=/centos/rescue-mode/>Rescue Mode</a></li><li data-nav-id=/centos/mainternance-mode/ title="Mainternance Mode" class=dd-item><a href=/centos/mainternance-mode/>Mainternance Mode</a></li><li data-nav-id=/centos/firewalld/ title=Firewalld class=dd-item><a href=/centos/firewalld/>Firewalld</a></li><li data-nav-id=/centos/iscsi/ title=ISCSI class=dd-item><a href=/centos/iscsi/>ISCSI</a></li><li data-nav-id=/centos/multipath/ title=Multipath class=dd-item><a href=/centos/multipath/>Multipath</a></li><li data-nav-id=/centos/ftp/ title=FTP class=dd-item><a href=/centos/ftp/>FTP</a></li><li data-nav-id=/centos/postfix/ title=Postfix class=dd-item><a href=/centos/postfix/>Postfix</a></li><li data-nav-id=/centos/samba/ title=Samba class=dd-item><a href=/centos/samba/>Samba</a></li><li data-nav-id=/centos/software-raid/ title="Software RAID" class=dd-item><a href=/centos/software-raid/>Software RAID</a></li><li data-nav-id=/centos/vnc/ title=VNC class=dd-item><a href=/centos/vnc/>VNC</a></li><li data-nav-id=/centos/nfs/ title=NFS class=dd-item><a href=/centos/nfs/>NFS</a></li><li data-nav-id=/centos/dns/ title=DNS class=dd-item><a href=/centos/dns/>DNS</a></li><li data-nav-id=/centos/lamp-stack/ title="LAMP Stack" class=dd-item><a href=/centos/lamp-stack/>LAMP Stack</a></li><li data-nav-id=/centos/lemp-stack/ title="LEMP Stack" class=dd-item><a href=/centos/lemp-stack/>LEMP Stack</a></li></ul></li><li data-nav-id=/redhat-enterprise-linux/ title="RedHat Enterprise Linux" class=dd-item><a href=/redhat-enterprise-linux/><b>4. </b>RedHat Enterprise Linux</a><ul><li data-nav-id=/redhat-enterprise-linux/redhat-cluster-suite/ title="RedHat Cluster Suite" class=dd-item><a href=/redhat-enterprise-linux/redhat-cluster-suite/>RedHat Cluster Suite</a></li></ul></li><li data-nav-id=/ubuntu/ title=Ubuntu class=dd-item><a href=/ubuntu/><b>5. </b>Ubuntu</a><ul><li data-nav-id=/ubuntu/install/ title=Install class=dd-item><a href=/ubuntu/install/>Install</a></li><li data-nav-id=/ubuntu/system-upgrade/ title="System Upgrade" class=dd-item><a href=/ubuntu/system-upgrade/>System Upgrade</a></li><li data-nav-id=/ubuntu/hostname/ title=Hostname class=dd-item><a href=/ubuntu/hostname/>Hostname</a></li><li data-nav-id=/ubuntu/locale/ title=Locale class=dd-item><a href=/ubuntu/locale/>Locale</a></li><li data-nav-id=/ubuntu/repository/ title=Repository class=dd-item><a href=/ubuntu/repository/>Repository</a></li><li data-nav-id=/ubuntu/network/ title=Network class=dd-item><a href=/ubuntu/network/>Network</a></li><li data-nav-id=/ubuntu/apt-command/ title="Apt Command" class=dd-item><a href=/ubuntu/apt-command/>Apt Command</a></li><li data-nav-id=/ubuntu/x-windows/ title="X Windows" class=dd-item><a href=/ubuntu/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/freebsd/ title=Freebsd class=dd-item><a href=/freebsd/><b>6. </b>Freebsd</a><ul><li data-nav-id=/freebsd/install/ title=Install class=dd-item><a href=/freebsd/install/>Install</a></li><li data-nav-id=/freebsd/hostname/ title=Hostname class=dd-item><a href=/freebsd/hostname/>Hostname</a></li><li data-nav-id=/freebsd/network/ title=Network class=dd-item><a href=/freebsd/network/>Network</a></li><li data-nav-id=/freebsd/ports/ title=Ports class=dd-item><a href=/freebsd/ports/>Ports</a></li><li data-nav-id=/freebsd/user-management/ title="User Management" class=dd-item><a href=/freebsd/user-management/>User Management</a></li><li data-nav-id=/freebsd/disk-management/ title="Disk Management" class=dd-item><a href=/freebsd/disk-management/>Disk Management</a></li><li data-nav-id=/freebsd/x-windows/ title="X Windows" class=dd-item><a href=/freebsd/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/docker/ title=Docker class="dd-item
+parent"><a href=/docker/><b>7. </b>Docker</a><ul><li data-nav-id=/docker/install/ title=Install class=dd-item><a href=/docker/install/>Install</a></li><li data-nav-id=/docker/remove-all-containers/ title="Remove All Containers" class=dd-item><a href=/docker/remove-all-containers/>Remove All Containers</a></li><li data-nav-id=/docker/docker-tutorial/ title="Docker Tutorial" class=dd-item><a href=/docker/docker-tutorial/>Docker Tutorial</a></li><li data-nav-id=/docker/docker-command/ title="Docker Command" class=dd-item><a href=/docker/docker-command/>Docker Command</a></li><li data-nav-id=/docker/dockerfile/ title=Dockerfile class=dd-item><a href=/docker/dockerfile/>Dockerfile</a></li><li data-nav-id=/docker/dockerfile-use-ssh-server/ title="Dockerfile Use SSH Server" class=dd-item><a href=/docker/dockerfile-use-ssh-server/>Dockerfile Use SSH Server</a></li><li data-nav-id=/docker/docker-compose/ title="Docker Compose" class="dd-item
+parent
+active"><a href=/docker/docker-compose/>Docker Compose</a></li><li data-nav-id=/docker/docker-volumes/ title="Docker Volumes" class=dd-item><a href=/docker/docker-volumes/>Docker Volumes</a></li><li data-nav-id=/docker/docker-machine/ title="Docker Machine" class=dd-item><a href=/docker/docker-machine/>Docker Machine</a></li><li data-nav-id=/docker/docker-swarm/ title="Docker Swarm" class=dd-item><a href=/docker/docker-swarm/>Docker Swarm</a></li><li data-nav-id=/docker/docker-swarm-nfs-volume/ title="Docker Swarm NFS Volume" class=dd-item><a href=/docker/docker-swarm-nfs-volume/>Docker Swarm NFS Volume</a></li></ul></li><li data-nav-id=/kubernetes/ title=Kubernetes class=dd-item><a href=/kubernetes/><b>8. </b>Kubernetes</a><ul><li data-nav-id=/kubernetes/install/ title=Install class=dd-item><a href=/kubernetes/install/>Install</a></li></ul></li></ul><section id=footer><p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a>from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span><span class=links>Docker Compose</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#what-is-dcoker-compose>What is dcoker-compose</a></li><li><a href=#docker-compose-install>Docker-compose install</a></li><li><a href=#how-to-use-docker-compose>How to use Docker-compose</a></li><li><a href=#dockerfile-use-ssh-server>Dockerfile use ssh-server</a></li><li><a href=#docker-compose-use-pure-ftpd-ssh-server>Docker-compose use pure-ftpd ssh-server</a></li><li><a href=#docker-compose-use-web-service>Docker-compose use Web-service</a></li><li><a href=#docker-compose-use-nginx-proxy>Docker-compose use nginx-proxy</a></li><li><a href=#docker-compose-use-nginx-proxy-add-nginx-web>Docker-compose use nginx-proxy add nginx-web</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Docker Compose</h1><p><img src=/docker/docker_tmp/D2.png alt=docker1></p><h2 id=what-is-dcoker-compose>What is dcoker-compose</h2><div class="notices note"><p>docker 의 경우 컨테이너 하나로 application 등의 컨테이너를 올리기에는 적합하나 여러대의<br>컨테이너 구성시 어려움이 있습니다. Docker-compose 를 이용하면 여러대의 컨테이너를 하나로 관리 할수 있습니다.</p></div><p></p><h2 id=docker-compose-install>Docker-compose install</h2><blockquote><p>curl 명령어를 통하여 docker-compose 설치를 진행 합니다.<br>설치가 끝난후 사용을 위하여 chmod 로 실행권한을 추가 합니다.<br>Docker-compose <a href=https://github.com/docker/compose/releases>Version</a><br>Install 참고 <a href=https://docs.docker.com/compose/install/>Docker site</a></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu-docs:~$ sudo curl -L &#34;https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose
+test@ubuntu-docs:~$ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre></div><p></p><h2 id=how-to-use-docker-compose>How to use Docker-compose</h2><blockquote><p><strong>Docker-compose Web-service</strong><br>docker-compose 를 이용하여 web-service 컨테이너를 구성 합니다.<br>Nginx 1.10.2 + pip71 + Mysql 5.7 컨테이너가 구성 되었습니다.</p></blockquote><blockquote><p>Web-service 디렉토리 구조</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web-service$ tree
+.
+├── docker-compose.yml
+├── nginx
+│   └── conf
+│       └── default.conf
+└── php
+    ├── Dockerfile
+    └── conf
+        └── php.ini
+
+4 directories, 4 files
+test@ubuntu:~/Workspace/web-service$
+</code></pre></div><blockquote><p>docker-compose.yml 파일 작성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web-service$ vi docker-compose.yml
+version: &#39;2&#39;
+
+services:
+    mysql:
+        image: mysql:5.7
+        ports:
+            - 3306:3306
+        volumes:
+            - ./mysql:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: docker
+            MYSQL_PASSWORD: docker
+            MYSQL_DATABASE: docker
+
+    nginx:
+        image: nginx:1.10.2
+        ports:
+            - 80:80
+        restart: always
+        volumes:
+            - ./nginx/conf:/etc/nginx/conf.d
+            - ~/Projects:/code
+        links:
+            - php
+        depends_on:
+            - php
+
+    php:
+        build: php
+        expose:
+            - 9000
+        restart: always
+        volumes:
+            - ./php/conf/php.ini:/usr/local/etc/php/conf.d/custom.ini
+            - ~/Projects:/code
+        links:
+            - mysql
+test@ubuntu:~/Workspace/web-service$
+</code></pre></div><blockquote><p>docker-compose version 은 2 Version 을 이용합니다.<br><a href=https://docs.docker.com/compose/compose-file/compose-file-v2/>version정보</a><br>services 항목의 경우 컨테이너를 지정 할수 있습니다.<br>mysql , nginx , php 컨테이너로 구성이 되어 있습니다.</p></blockquote><blockquote><p><strong>mysql 필드 설명</strong></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>    mysql:
+        image: mysql:5.7
+        ports:
+            - 3306:3306
+        volumes:
+            - ./mysql:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: docker
+            MYSQL_PASSWORD: docker
+            MYSQL_DATABASE: docker
+</code></pre></div><table><thead><tr><th>명령어</th><th>설명</th></tr></thead><tbody><tr><td>image</td><td>mysql 5.7 버젼을 사용합니다.</td></tr><tr><td>ports</td><td>3306 외부포트와 내부포트를 연결 합니다.</td></tr><tr><td>volumes</td><td>Database 저장 위치 설정을 위하여 Volume 을 연결 합니다.</td></tr><tr><td>restart</td><td>리부팅시에도 자동으로 실행합니다.</td></tr><tr><td>environment</td><td>MYSQL_ROOT_PASSWORD mysql 관리자 password 를 설정합니다.</td></tr><tr><td>environment</td><td>MYSQL_USER user 를 생성합니다.</td></tr><tr><td>environment</td><td>MYSQL_PASSWORD user password 를 설정합니다.</td></tr><tr><td>environment</td><td>MYSQL_DATABASE user 데이터베이스를 생성합니다.</td></tr></tbody></table><blockquote><p><strong>nginx 필드 설명</strong></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>   nginx:
+        image: nginx:1.10.2
+        ports:
+            - 80:80
+        restart: always
+        volumes:
+            - ./nginx/conf:/etc/nginx/conf.d
+            - ~/Projects:/code
+        links:
+            - php
+        depends_on:
+            - php
+</code></pre></div><table><thead><tr><th>명령어</th><th>설명</th></tr></thead><tbody><tr><td>image</td><td>nginx 1.10.2 버젼을 사용합니다.</td></tr><tr><td>ports</td><td>web-page 포트 80 포트를 외부 내부를 연결 합니다.</td></tr><tr><td>restart</td><td>리부팅시에도 자동으로 실행합니다.</td></tr><tr><td>volumes</td><td>nginx 설정디렉토리 conf.d 디렉토리를 연결하고 Webpage 디렉토리를 연결합니다.</td></tr><tr><td>links</td><td>php 컨테이너와 연결합니다.</td></tr><tr><td>depends_on</td><td>php 서비스간 종속성유지를 위하여 사용합니다.</td></tr></tbody></table><blockquote><p><strong>php 필드 설명</strong></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>    php:
+        build: php
+        expose:
+            - 9000
+        restart: always
+        volumes:
+            - ./php/conf/php.ini:/usr/local/etc/php/conf.d/custom.ini
+            - ~/Projects:/code
+        links:
+            - mysql
+</code></pre></div><table><thead><tr><th>명령어</th><th>설명</th></tr></thead><tbody><tr><td>build</td><td>Dockerfile 을 이용하여 build 합니다.</td></tr><tr><td>expose</td><td>외부 ports 접속이 아닌 내부 컨테이너 접속을 위하여 사용합니다.</td></tr><tr><td>restart</td><td>리부팅시에도 자동으로 실행합니다.</td></tr><tr><td>volumes</td><td>custom.ini 설정 파일 및 php code 디렉토리를 연결 합니다.</td></tr><tr><td>links</td><td>mysql 컨테이너와 연결합니다.</td></tr></tbody></table><div class="notices tip"><p>Docker-compose version 3 참고 사항<br>links 옵션의 경우 docer-compose version 3 에서는 더이상 사용하지 않을것으로 보입니다.<br>자세한 내용은 <a href=https://docs.docker.com/compose/compose-file/>Docker site</a> 에서 확인 가능 합니다.</p></div><blockquote><p>Link to containers in another service. Either specify both the service name and a link alias (SERVICE:ALIAS), or just the service name.</p></blockquote><div class="notices warning"><p>The &ndash;link flag is a legacy feature of Docker. It may eventually be removed. Unless you absolutely need to continue using it, we recommend that you use user-defined networks to facilitate communication between two containers instead of using &ndash;link. One feature that user-defined networks do not support that you can do with &ndash;link is sharing environmental variables between containers. However, you can use other mechanisms such as volumes to share environment variables between containers in a more controlled way.</p></div><blockquote><p>nginx default.conf 파일 생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web-service$ vi nginx/conf/default.conf
+server {
+    listen       80 default_server;
+    server_name  localhost _;
+    index        index.php index.html index.htm;
+    root         /code;
+
+    location / {
+        try_files   $uri $uri/ /index.php?$query_string;
+        autoindex on;
+    }
+
+    location ~ \.php$ {
+        try_files $uri /index.php =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass php:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+
+
+* php/Dockerfile 생성  
+test@ubuntu:~/Workspace/web-service$ vi php/Dockerfile
+FROM php:7.1-fpm
+ 
+RUN apt-get update
+ 
+# Some basic extensions
+RUN docker-php-ext-install -j$(nproc) json mbstring opcache pdo pdo_mysql mysqli
+ 
+# Curl
+RUN apt-get install -y libcurl4-openssl-dev
+RUN docker-php-ext-install -j$(nproc) curl
+ 
+# GD
+RUN apt-get install -y libpng-dev libjpeg-dev
+RUN docker-php-ext-install -j$(nproc) gd
+ 
+# Intl
+RUN apt-get install -y libicu-dev
+RUN docker-php-ext-install -j$(nproc) intl
+
+
+* php.ini 파일 생성  
+
+```no-highlight
+test@ubuntu:~/Workspace/web-service$ vi php/conf/php.ini
+display_errors = On
+display_startup_errors = On
+default_charset = &#34;UTF-8&#34;
+html_errors = On
+date.timezone = Asia/Seoul
+</code></pre></div><blockquote><p>docker-compose 실행<br>docker-compose.yml 파일이 있는 위치에서 실행을 해야 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web-service$ docker-compose up -d --build
+</code></pre></div><blockquote><p>컨테이너 동작 확인</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web-service$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
+bd2fb3813e0c        nginx:1.10.2        &#34;nginx -g &#39;daemon of…&#34;   9 minutes ago       Up 9 minutes        0.0.0.0:80-&gt;80/tcp, 443/tcp         webservice_nginx_1
+a3769c7d61b8        webservice_php      &#34;docker-php-entrypoi…&#34;   9 minutes ago       Up 9 minutes        9000/tcp                            webservice_php_1
+42e79bd2f599        mysql:5.7           &#34;docker-entrypoint.s…&#34;   9 minutes ago       Up 9 minutes        0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   webservice_mysql_1
+test@ubuntu:~/Workspace/web-service$
+</code></pre></div><blockquote><p><strong>phpinfo 페이지 생성</strong><br>일반적으로 docker-compose 구성시 디렉토리별 서비스를 생성하여 컨테이너를 관리 합니다.<br>특별한경우가 없다면 ~/workspace/service-name 별로 컨테이너를 생성하여 관리 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web-service$ sudo vi ~/Projects/info.php
+&lt;?php phpinfo(); ?&gt;
+</code></pre></div><blockquote><p>web page 확인</p></blockquote><p><img src=/docker/docker_tmp/D3.png alt=docker3></p><p></p><h2 id=dockerfile-use-ssh-server>Dockerfile use ssh-server</h2><div class="notices note"><p>ssh-server 의 경우 sshfs 볼륨 연결시 유용하게 사용될수 있습니다.<br>ftp 서버 운영시 외부의 공유 디렉토리 연결시 사용합니다.</p></div><blockquote><p><strong>Dockerfile 생성</strong><br>ssh-server 디렉토리 생성후 Dockerfile 을 생성 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ssh-server$ vi Dockerfile
+FROM ubuntu:16.04
+MAINTAINER Sven Dowideit &lt;SvenDowideit@docker.com&gt;
+ 
+#RUN apt-get update &amp;&amp; apt-get install -y openssh-server
+RUN apt-get update &amp;&amp; apt-get install -y openssh-server \
+&amp;&amp; mkdir /var/run/sshd \
+&amp;&amp; useradd -ms /bin/bash test \
+&amp;&amp; sed -ie &#39;s/test:!/test:\$6\$pIPlIFrg\$WZRTmOoouwD6L\/IDgz8fw97agQjdeXticOJyayjUYwmiuNKkJE92rBtr0XDXhVE4rSi9PkWv8rtnA0rCuR6ts\//g&#39; /etc/shadow \
+&amp;&amp; sed -i &#39;s/PermitRootLogin prohibit-password/PermitRootLogin yes/&#39; /etc/ssh/sshd_config \
+&amp;&amp; sed &#39;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#39; -i /etc/pam.d/sshd
+ 
+#COPY data/* /.ROOT/
+ 
+ENV NOTVISIBLE &#34;in users profile&#34;
+RUN echo &#34;export VISIBLE=now&#34; &gt;&gt; /etc/profile
+ 
+EXPOSE 22
+CMD [&#34;/usr/sbin/sshd&#34;, &#34;-D&#34;]
+</code></pre></div><blockquote><p>userid 는 test 이며 password 는 test1234입니다.<br>ports 22 번 포트를 expose 하여 차후 실행시 포트를 지정 하면 됩니다.</p></blockquote><blockquote><p><strong>Dockerfile build</strong></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ssh-server$ docker build --tag ssh-server .
+</code></pre></div><blockquote><p>images 확인</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ssh-server$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ssh-server          latest              3085e59c6e99        3 minutes ago       211MB
+ubuntu              16.04               b9e15a5d1e1a        3 weeks ago         115MB
+test@ubuntu:~/Workspace/ssh-server$
+</code></pre></div><blockquote><p><strong>컨테이너 실행</strong><br>ssh-server 연결용 디렉토릴르 생성 합니다.<br>docker build 로 생성한 컨테이너를 실행 합니다.<br>/home/test/ftp 디렉토리의 경우 sshfs 연결 목적으로 사용합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ssh-server$ mkdir ~/ftp
+test@ubuntu:~/Workspace/ssh-server$ docker run --name ssh-server -d -p 12341:22 -v /home/test/ftp:/home/test/ftp ssh-server
+e8927799de7e841a151a006019fc62dc0d5daa85688ed569372fd651032f5dac
+test@ubuntu:~/Workspace/ssh-server$
+</code></pre></div><blockquote><p>컨테이너 실행 확인</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ssh-server$ docker ps
+CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS                   NAMES
+e8927799de7e        ssh-server          &#34;/usr/sbin/sshd -D&#34;   50 seconds ago      Up 50 seconds       0.0.0.0:12341-&gt;22/tcp   ssh-server
+test@ubuntu:~/Workspace/ssh-server$
+</code></pre></div><blockquote><p>컨테이너 접속 확인
+접속포트는 12341 입니다<br>test user로 접속 하고 패스워드는 test1234 입니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~$ ssh -p 12341 test@192.168.0.10
+The authenticity of host &#39;[192.168.0.10]:12341 ([192.168.0.10]:12341)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:c1Z28xljDnrQnEHOFHYyxwZyoehNTWqdAef9wpwmRDc.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &#39;[192.168.0.10]:12341&#39; (ECDSA) to the list of known hosts.
+test@192.168.0.10&#39;s password:
+Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.15.0-34-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+test@e8927799de7e:~$
+</code></pre></div><blockquote><p>추가적인 부분은 Dockerfile 을 수정 하여 커스터마이징 하여 사용하시면 됩니다.</p></blockquote><p></p><h2 id=docker-compose-use-pure-ftpd-ssh-server>Docker-compose use pure-ftpd ssh-server</h2><div class="notices note"><p>Docker-compose 를 이용하여 pure-ftpd , sshfs 용 ssh-server 를 설정 합니다.</p></div><div class="notices info"><p>참고사항<br>pure-ftpd 컨테이너의 경우 Test시 문제가 있어 ubuntu Version 을 14.04 를 사용합니다.</p></div><div class="notices warning"><p>vmware 사용시 NAT 환경이 아닌 Bridge 모드로 해야 합니다.<br>NAT 환경 이용시 ftp에 접속을 못할수 있습니다.</p></div><blockquote><p>ftp-server 디렉토리 구조</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ tree
+.
+├── docker-compose.yml
+├── pure-ftpd
+│   ├── Dockerfile
+│   └── pureftpd.passwd
+└── ssh-server
+    └── Dockerfile
+
+2 directories, 4 files
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><blockquote><p>ftp-date 디렉토리를 생성 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ sudo mkdir /ftp-data
+</code></pre></div><blockquote><p>docker-compose.yml 파일생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ vi docker-compose.yml
+version: &#39;3&#39;
+
+services:
+  pure-ftpd:
+    build:
+      context: pure-ftpd
+    image: ftp/pure-ftpd:14.04
+    container_name: ftpd
+    ports:
+      - &#34;21:21&#34;
+      - &#34;20000-20099:20000-20099&#34;
+    volumes:
+      - &#34;/ftp-data:/home/ftp&#34;
+    restart: always
+
+  ssh-server:
+    build:
+      context: ssh-server
+    image: ssh-server
+    container_name: ssh-server
+    ports:
+      - &#34;12341:22&#34;
+    volumes:
+      - &#34;/ftp-data:/home/test/ftp:ro&#34;
+    restart: always
+</code></pre></div><blockquote><p>ftp 연결 포트의 경우 20000~20099 번까지 포트를 맵핑 합니다.<br>sshfs 사용 포트의 경우 12341 을 사용 합니다.</p></blockquote><blockquote><p><strong>ssh-server Dockerfile 생성</strong><br>test 유저를 생성하고 test1234 로 패스워드를 지정합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ vi ssh-server/Dockerfile
+FROM ubuntu:16.04
+MAINTAINER Sven Dowideit &lt;SvenDowideit@docker.com&gt;
+
+#RUN apt-get update &amp;&amp; apt-get install -y openssh-server
+RUN apt-get update &amp;&amp; apt-get install -y openssh-server \
+&amp;&amp; mkdir /var/run/sshd \
+&amp;&amp; useradd -ms /bin/bash test \
+&amp;&amp; sed -ie &#39;s/test:!/test:\$6\$pIPlIFrg\$WZRTmOoouwD6L\/IDgz8fw97agQjdeXticOJyayjUYwmiuNKkJE92rBtr0XDXhVE4rSi9PkWv8rtnA0rCuR6ts\//g&#39; /etc/shadow \
+&amp;&amp; sed -i &#39;s/PermitRootLogin prohibit-password/PermitRootLogin yes/&#39; /etc/ssh/sshd_config \
+&amp;&amp; sed &#39;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#39; -i /etc/pam.d/sshd
+
+#COPY data/* /.ROOT/
+
+ENV NOTVISIBLE &#34;in users profile&#34;
+RUN echo &#34;export VISIBLE=now&#34; &gt;&gt; /etc/profile
+
+EXPOSE 22
+CMD [&#34;/usr/sbin/sshd&#34;, &#34;-D&#34;]
+</code></pre></div><blockquote><p>pure-ftpd Dockerfile 생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ vi pure-ftpd/Dockerfile
+
+FROM ubuntu:14.04
+ 
+MAINTAINER test@test
+ 
+RUN apt-get update &amp;&amp; \
+apt-get install pure-ftpd openssl libpam-dev libcap2-dev libldap2-dev libmysqlclient-dev libmysqlclient15-dev libpq-dev libssl-dev po-debconf dpkg-dev debhelper -y
+ 
+RUN mkdir /tmp/pure-ftpd/ &amp;&amp; \
+        cd /tmp/pure-ftpd/ &amp;&amp; \
+        apt-get source pure-ftpd &amp;&amp; \
+        cd pure-ftpd-* &amp;&amp; \
+        sed -i &#39;/^optflags=/ s/$/ --without-capabilities/g&#39; ./debian/rules &amp;&amp; \
+        dpkg-buildpackage -b -uc
+RUN dpkg -i /tmp/pure-ftpd/pure-ftpd-common*.deb
+RUN apt-get -y install openbsd-inetd
+RUN dpkg -i /tmp/pure-ftpd/pure-ftpd_*.deb
+RUN apt-mark hold pure-ftpd pure-ftpd-common
+RUN cd /etc/pure-ftpd &amp;&amp; \
+adduser ftpd-data &amp;&amp; \
+mkdir /home/ftp &amp;&amp; \
+chown ftpd-data:ftpd-data -R /home/ftp &amp;&amp; \
+echo yes &gt; ./conf/ChrootEveryone &amp;&amp; \
+echo yes &gt; ./conf/DontResolve &amp;&amp; \
+echo yes &gt; ./conf/NoChmod &amp;&amp; \
+echo yes &gt; ./conf/ProhibitDotFilesWrite &amp;&amp; \
+echo yes &gt; ./conf/CustomerProof &amp;&amp; \
+echo &#39;20000 20099&#39; &gt; ./conf/PassivePortRange &amp;&amp; \
+echo &#39;,21&#39; &gt; ./conf/Bind &amp;&amp; \
+echo &#39;2&#39; &gt; ./conf/TLS &amp;&amp; \
+openssl req -x509 -nodes -days 1825 -newkey rsa:2048 -keyout /etc/ssl/private/pure-ftpd.pem -out /etc/ssl/private/pure-ftpd.pem -subj &#34;/C=KR/ST=SouthKorea/L=Seoul/O=test.com/OU=IT Department/CN=ftp.test.com&#34;
+ADD pureftpd.passwd /etc/pure-ftpd/
+RUN pure-pw mkdb
+RUN ln -sf /dev/stdout /var/log/pure-ftpd/transfer.log
+CMD /usr/sbin/pure-ftpd -l puredb:/etc/pure-ftpd/pureftpd.pdb -x -u 30 -H -S ,21 -O clf:/var/log/pure-ftpd/transfer.log -Z -A -p 20000:20099 -E -R -8 UTF-8 -Y 2
+EXPOSE 21/tcp 20000-20099/tcp
+</code></pre></div><blockquote><p><strong>pureftpd.passwd 파일생성</strong><br>ftp user 생성시 pureftpd.passwd 파일을 수정하시면 됩니다.<br>User test / Password test1234 생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ vi pure-ftpd/pureftpd.passwd
+test:$1$P4DB31/0$iIPf8.YJ6XP6k1zsmQtJq1:1000:1000::/home/ftp/./::::::::::::
+</code></pre></div><blockquote><p><strong>컨테이너 실행</strong><br>pure-ftpd 컨테이너와 ssh-server 컨테이너를 실행 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker-compose up -d --build
+test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+02161765e92c        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   21 seconds ago      Up 17 seconds       0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+f3e224722db6        ssh-server            &#34;/usr/sbin/sshd -D&#34;      21 seconds ago      Up 20 seconds       0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><p></p><blockquote><p><strong>FTP Client 에서 접속</strong><br>스크린샷에서는 192.x.x.x 로 되어 있지만 NAT 환경에서는 정상적으로 접속이 안됩니다.<br>ftp 접속시 인증서가 나오며 이후 세션에서 항상 신뢰를 체크 합니다.</p></blockquote><p><img src=/docker/docker_tmp/D4.png alt=docker4><br></p><blockquote><p><strong>FTP upload Tesst</strong><br>upload Test 를 진행합니다.</p></blockquote><p><img src=/docker/docker_tmp/D5.png alt=docker5></p><blockquote><p><strong>FTP User 생성</strong><br>ftp 유저를 생성하기 위해서는 컨테이너로 접속후 생성 해야 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                      NAMES
+8497bf8410c5        ssh-server            &#34;/usr/sbin/sshd -D&#34;      7 minutes ago       Up 7 minutes        0.0.0.0:12341-&gt;22/tcp                                      ssh-server
+039250964c0f        ftp/pure-ftpd:14.04   &#34;/bin/sh -c &#39;/usr/sb…&#34;   7 minutes ago       Up 7 minutes        0.0.0.0:21-&gt;21/tcp, 0.0.0.0:20000-20099-&gt;20000-20099/tcp   ftpd
+test@ubuntu:~/Workspace/ftp-server$ docker exec -it 039250964c0f /bin/bash
+root@039250964c0f:/# pure-pw useradd test1 -u ftpd-data -g ftpd-data -d /home/ftp
+Password:
+Enter it again:
+root@039250964c0f:/# pure-pw mkdb
+root@039250964c0f:/# cat /etc/pure-ftpd/pureftpd.passwd
+test:$1$P4DB31/0$iIPf8.YJ6XP6k1zsmQtJq1:1000:1000::/home/ftp/./::::::::::::
+test1:$1$RlCsZSv0$CrDL8oyE5eJG0/uUKhAyi/:1000:1000::/home/ftp/./::::::::::::
+root@039250964c0f:/#
+</code></pre></div><blockquote><p><strong>pureftpd.passwd 파일 수정</strong><br>컨테이너 내부로 접속하여 유저를 생성하여도 컨테이너 재시작시 해당 설정이 없어 지며,<br>pure-ftpd 디렉토리의 passwd 파일을 수정해 줘야 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/ftp-server$ cat pure-ftpd/pureftpd.passwd
+test:$1$P4DB31/0$iIPf8.YJ6XP6k1zsmQtJq1:1000:1000::/home/ftp/./::::::::::::
+test@ubuntu:~/Workspace/ftp-server$
+</code></pre></div><p></p><h2 id=docker-compose-use-web-service>Docker-compose use Web-service</h2><div class="notices note"><p>How to use Docker-compose 내용의 경우 일반적으로 사용하는 내용에 대하여 설명한 내용입니다.<br>실제로 Web-service 운영한다면 docker-compose.yml 파일 디렉토리 아래 web page 디렉토리가 있는것이 관리상<br>편합니다. database 의 경우 동일 합니다.</p></div><blockquote><p>설정내용 설명은 <a href=http://112.187.207.248/docker/docker/#how-to-use-docker-compose>How to use Dcoker-compose</a> 를 참고 해 주세요.<br>설정 디렉토리 /home/test/Workspace/Web-service
+Workspcae/Web-service 디렉토리를 생성 합니다.</p></blockquote><blockquote><p><strong>Web-service 디렉토리 구조</strong></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ tree
+.
+├── docker-compose.yml
+├── mariadb
+├── nginx
+│   └── conf
+│       └── default.conf
+├── php
+│   ├── Dockerfile
+│   └── conf
+│       └── php.ini
+└── www
+
+6 directories, 4 files
+test@ubuntu:~/Workspace/Web-service$
+</code></pre></div><blockquote><p>docker-compose.yml 파일</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ vi docker-compose.yml
+version: &#39;2&#39;
+
+services:
+    mariadb:
+        image: mariadb:10.1
+        ports:
+            - 3306:3306
+        volumes:
+            - ./mariadb:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: docker
+            MYSQL_PASSWORD: docker
+            MYSQL_DATABASE: docker
+
+    nginx:
+        image: nginx:latest
+        ports:
+            - 80:80
+        restart: always
+        volumes:
+            - ./nginx/conf:/etc/nginx/conf.d
+            - ./www:/code
+        links:
+            - php
+        depends_on:
+            - php
+
+    php:
+        build: php
+        expose:
+            - 9000
+        restart: always
+        volumes:
+            - ./php/conf/php.ini:/usr/local/etc/php/conf.d/custom.ini
+            - ./www:/code
+        links:
+            - mariadb
+test@ubuntu:~/Workspace/Web-service$
+</code></pre></div><blockquote><p>Nginx default.conf 파일</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ cat nginx/conf/default.conf
+server {
+    listen       80 default_server;
+    server_name  localhost _;
+    index        index.php index.html index.htm;
+    root         /code;
+
+    location / {
+        try_files   $uri $uri/ /index.php?$query_string;
+        autoindex on;
+    }
+
+    location ~ \.php$ {
+        try_files $uri /index.php =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass php:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+test@ubuntu:~/Workspace/Web-service$
+</code></pre></div><blockquote><p>php/Dockerfile 파일</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ vi php/Dockerfile
+FROM php:7.1-fpm
+
+RUN apt-get update
+
+# Some basic extensions
+RUN docker-php-ext-install -j$(nproc) json mbstring opcache pdo pdo_mysql mysqli
+
+# Curl
+RUN apt-get install -y libcurl4-openssl-dev
+RUN docker-php-ext-install -j$(nproc) curl
+
+# GD
+RUN apt-get install -y libpng-dev libjpeg-dev
+RUN docker-php-ext-install -j$(nproc) gd
+
+# Intl
+RUN apt-get install -y libicu-dev
+RUN docker-php-ext-install -j$(nproc) intl
+test@ubuntu:~/Workspace/Web-service$
+</code></pre></div><blockquote><p>php/conf/php.ini 파일</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ vi php/conf/php.ini
+display_errors = On
+display_startup_errors = On
+default_charset = &#34;UTF-8&#34;
+html_errors = On
+date.timezone = Asia/Seoul
+test@ubuntu:~/Workspace/Web-service$
+</code></pre></div><blockquote><p>docker-compose 실행</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ docker-compose up -d --build
+</code></pre></div><blockquote><p>컨테이너 상태 확인</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+47c7a871f381        nginx:latest        &#34;nginx -g &#39;daemon of…&#34;   18 seconds ago      Up 15 seconds       0.0.0.0:80-&gt;80/tcp       webservice_nginx_1
+39cb0e8c6212        webservice_php      &#34;docker-php-entrypoi…&#34;   19 seconds ago      Up 17 seconds       9000/tcp                 webservice_php_1
+dcbfcbc4cb03        mariadb:10.1        &#34;docker-entrypoint.s…&#34;   20 seconds ago      Up 18 seconds       0.0.0.0:3306-&gt;3306/tcp   webservice_mariadb_1
+test@ubuntu:~/Workspace/Web-service$
+</code></pre></div><blockquote><p>phpinfo 확인</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ vi www/test.php
+&lt;?php phpinfo(); ?&gt;
+</code></pre></div><blockquote><p>web page 확인</p></blockquote><p><img src=/docker/docker_tmp/D6.png alt=docker6></p><p></p><div class="notices tip"><p>Wordpress 사용시 참고<br>DB 사용시 외부에서 사용하지 않는다면 expose 만 하여 사용합니다.<br>Wordpress 사용시 컨테이너 이름으로 host를 지정하여 사용하시면 됩니다.</p></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ cat docker-compose.yml
+version: &#39;2&#39;
+
+services:
+    mariadb:
+        image: mariadb:10.1
+        expose:
+            - 3306
+~ 중략
+</code></pre></div><blockquote><p>컨테이너 이름 확인</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+9cdfc297133f        nginx:latest        &#34;nginx -g &#39;daemon of…&#34;   5 minutes ago       Up 5 minutes        0.0.0.0:80-&gt;80/tcp   webservice_nginx_1
+774f8cfc9466        webservice_php      &#34;docker-php-entrypoi…&#34;   5 minutes ago       Up 5 minutes        9000/tcp             webservice_php_1
+a4327cb937ac        mariadb:10.1        &#34;docker-entrypoint.s…&#34;   5 minutes ago       Up 5 minutes        3306/tcp             webservice_mariadb_1
+test@ubuntu:~/Workspace/Web-service$
+</code></pre></div><blockquote><p>Wordpress 입력 참고<br>데이터베이스 호스트 : webservice_mariadb_1 (DB 컨테이너 이름을 입력합니다.)</p></blockquote><p><img src=/docker/docker_tmp/D7.png alt=docker1><br></p><blockquote><p><strong>mariadb 명령어 참고</strong><br>docker-compose 에서 mariadb expose 설정을 하였을시에는 직접 컨테이너로 접속하여 db 를 생성해야 합니다.<br>environment 에서 사용할 유저/데이터 베이스를 미리 생성하여도 됩니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/Web-service$ mysql -h127.0.0.1 -uroot -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 24
+Server version: 5.5.5-10.1.36-MariaDB-1~bionic mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+
+mysql&gt; use mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; create database wp;
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; GRANT ALL ON wp.* TO &#39;wp&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; quit;
+Bye
+
+
+
+database 삭제 
+mysql&gt; drop database wp;
+
+유저 확인 
+mysql&gt;  SELECT User, Host FROM mysql.user WHERE User=&#39;wp&#39; AND Host=&#39;%&#39;;
++------+------+
+| User | Host |
++------+------+
+| wp   | %    |
++------+------+
+1 row in set (0.00 sec)
+
+유저 삭제 
+mysql&gt; DROP USER &#39;wp&#39;@&#39;%&#39;;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt;  SELECT User, Host FROM mysql.user WHERE User=&#39;wp&#39; AND Host=&#39;%&#39;;
+Empty set (0.00 sec)
+
+mysql&gt;
+</code></pre></div><p></p><h2 id=docker-compose-use-nginx-proxy>Docker-compose use nginx-proxy</h2><div class="notices note"><p>nginx-proxy<br>Docker 로 여러대의 Web-Service 운영시 nginx-proxy 를 이용하여<br>Multi Web-Service 를 구성할수 있습니다.</p></div><blockquote><p><strong>nginx-proxy multi-wordpress site</strong><br>구성정보<br><a href=https://www.draw.io/>draw.io</a></p></blockquote><p><img src=/docker/docker_tmp/D8.png alt=docker8></p><blockquote><p>nginx-proxy docker-compose.yml 파일생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/nginx-proxy$ vi docker-compose.yml
+## notice ##  $ docker network create nginx-proxy
+version: &#34;3&#34;
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - &#34;80:80&#34;
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    restart: always
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
+</code></pre></div><blockquote><p>docker network 생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/nginx-proxy$ docker network create nginx-proxy
+3cbc08acdd956c3e86378114c1958949ffa01515ffbb27ad124240692d3f3f46
+test@ubuntu:~/Workspace/nginx-proxy$ docker network ls
+NETWORK ID          NAME                 DRIVER              SCOPE
+5d0bb683d2e4        bridge               bridge              local
+50afc3109ff3        ftpserver_default    bridge              local
+f479dbb309b5        host                 host                local
+3cbc08acdd95        nginx-proxy          bridge              local
+ea229616bede        none                 null                local
+5ba40d49b37c        webservice_default   bridge              local
+test@ubuntu:~/Workspace/nginx-proxy$
+</code></pre></div><blockquote><p>nginx-proxy 컨테이너 실행</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/nginx-proxy$ docker-compose up -d --build
+</code></pre></div><blockquote><p><strong>blog1.test.com 컨테이너 생성</strong><br>blog1.test.com 컨테이너 에서 사용할 디렉토리 및 docker-compose.yml 파일을 생성합니다.<br>VIRTUAL_HOST 부분에서 사용할 도메인을 설정 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ mkdir -p blog1/web-data
+test@ubuntu:~/Workspace$ mkdir -p blog1/db-data
+test@ubuntu:~/Workspace/blog1$ vi docker-compose.yml
+version: &#34;3&#34;
+
+services:
+  db:
+     image: mariadb
+     volumes:
+       - ./db-data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: test1234
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: test1234
+     container_name: wp_blog_db
+
+  wordpress:
+     image: wordpress:latest
+     expose:
+       - 80
+     restart: always
+     volumes:
+       - ./web-data:/var/www/html
+     environment:
+       VIRTUAL_HOST: blog1.test.com
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: test1234
+     container_name: wp_blog
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
+
+</code></pre></div><blockquote><p>blog1.test.com 컨테이너 실행</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/blog1$ docker-compose up -d --build
+</code></pre></div><blockquote><p>web page 확인<br>blog1.test.com 으로 접속 합니다.</p></blockquote><p><img src=/docker/docker_tmp/D9.png alt=docker9><br></p><blockquote><p><strong>blog2.test.com 컨테이너 생성</strong><br>blog2.test.com 컨테이너 에서 사용할 디렉토리 및 docker-compose.yml 파일을 생성합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ mkdir -p blog2/db-data
+test@ubuntu:~/Workspace$ mkdir -p blog2/web-data
+test@ubuntu:~/Workspace$ cd blog2/
+test@ubuntu:~/Workspace/blog2$ vi docker-compose.yml
+version: &#34;3&#34;
+
+services:
+  db2:
+     image: mariadb
+     volumes:
+       - ./db-data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: test1234
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: test1234
+     container_name: wp_blog_db2
+
+  wordpress2:
+     image: wordpress:latest
+     expose:
+       - 80
+     restart: always
+     volumes:
+       - ./web-data:/var/www/html
+     environment:
+       VIRTUAL_HOST: blog2.test.com
+       WORDPRESS_DB_HOST: db2:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: test1234
+     container_name: wp_blog2
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
+
+</code></pre></div><blockquote><p>blog2.test.com 컨테이너 실행</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/blog2$ docker-compose up -d --build
+</code></pre></div><blockquote><p>web page 확인</p></blockquote><p><img src=/docker/docker_tmp/D10.png alt=docker1><br></p><p></p><h2 id=docker-compose-use-nginx-proxy-add-nginx-web>Docker-compose use nginx-proxy add nginx-web</h2><div class="notices note"><p>nginx-web Service<br>nginx-web Service 를 추가 하는 방법을 기술 합니다.<br>mariadb 컨테이너 생성시 설정파일을 추가 하여 컨테이너를 구동하도록 설정 하였습니다.</p></div><blockquote><p>nginx-web Service 에서 사용할 디렉토리를 생성 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace$ mkdir web1
+test@ubuntu:~/Workspace$ cd web1/
+test@ubuntu:~/Workspace/web1$ mkdir www-data
+test@ubuntu:~/Workspace/web1$ mkdir -p mariadb/db-data
+test@ubuntu:~/Workspace/web1$ mkdir -p nginx/conf
+test@ubuntu:~/Workspace/web1$ mkdir -p php/conf
+</code></pre></div><blockquote><p>docker-compose.yml 파일을 생성합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web1$ vi docker-compose.yml
+version: &#39;2&#39;
+services:
+  mysql:
+    image: mariadb:10.3.1
+    volumes:
+      - ./mariadb/db-data/:/var/lib/mysql
+      - ./mariadb/my.cnf:/etc/mysql/mariadb.conf.d/custom.cnf
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      MYSQL_DATABASE: docker
+    container_name: mariadb-www
+
+  nginx-www:
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./www-data:/www
+
+    environment:
+      - VIRTUAL_HOST=www.test.com
+    container_name: nginx-www
+
+  php:
+    build: php
+    expose:
+      - 9000
+    restart: always
+    volumes:
+      - ./php/conf/php.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./www-data:/www
+    container_name: php-www
+
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
+</code></pre></div><blockquote><p>nginx/conf/default.conf 파일 생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web1$ vi nginx/conf/default.conf
+server {
+    listen       80 default_server;
+    server_name  localhost _;
+    index        index.php index.html index.htm;
+    root         /www;
+
+    location / {
+        try_files   $uri $uri/ /index.php?$query_string;
+        autoindex on;
+    }
+
+    location ~ \.php$ {
+        try_files $uri /index.php =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass php:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+</code></pre></div><blockquote><p>php/Dockerfile 파일 생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web1$ vi php/Dockerfile
+FROM php:7.1-fpm
+
+RUN apt-get update
+
+# Some basic extensions
+RUN docker-php-ext-install -j$(nproc) json mbstring opcache pdo pdo_mysql mysqli
+
+# Curl
+RUN apt-get install -y libcurl4-openssl-dev
+RUN docker-php-ext-install -j$(nproc) curl
+
+# GD
+RUN apt-get install -y libpng-dev libjpeg-dev
+RUN docker-php-ext-install -j$(nproc) gd
+
+# Intl
+RUN apt-get install -y libicu-dev
+RUN docker-php-ext-install -j$(nproc) intl
+</code></pre></div><blockquote><p>php/conf/php.ini 파일 생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web1$ vi php/conf/php.ini
+display_errors = On
+display_startup_errors = On
+default_charset = &#34;UTF-8&#34;
+html_errors = On
+date.timezone = Asia/Seoul
+</code></pre></div><blockquote><p>mariadb/my.cnf 파일 생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web1$ vi mariadb/my.cnf
+# MariaDB database server configuration file.
+#
+# You can copy this file to one of:
+# - &#34;/etc/mysql/my.cnf&#34; to set global options,
+# - &#34;~/.my.cnf&#34; to set user-specific options.
+#
+# One can use all long options that the program supports.
+# Run program with --help to get a list of available options and with
+# --print-defaults to see which it would actually understand and use.
+#
+# For explanations see
+# http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+ 
+# This will be passed to all mysql clients
+# It has been reported that passwords should be enclosed with ticks/quotes
+# escpecially if they contain &#34;#&#34; chars...
+# Remember to edit /etc/mysql/debian.cnf when changing the socket location.
+[client]
+port            = 3306
+socket          = /var/run/mysqld/mysqld.sock
+default-character-set = utf8mb4
+ 
+ 
+# Here is entries for some specific programs
+# The following values assume you have at least 32M ram
+ 
+# This was formally known as [safe_mysqld]. Both versions are currently parsed.
+[mysqld_safe]
+socket          = /var/run/mysqld/mysqld.sock
+nice            = 0
+ 
+[mysqld]
+#
+# * Basic Settings
+#
+#user           = mysql
+pid-file        = /var/run/mysqld/mysqld.pid
+socket          = /var/run/mysqld/mysqld.sock
+port            = 3306
+basedir         = /usr
+datadir         = /var/lib/mysql
+tmpdir          = /tmp
+lc_messages_dir = /usr/share/mysql
+lc_messages     = en_US
+skip-external-locking
+#
+# Instead of skip-networking the default is now to listen only on
+# localhost which is more compatible and is not less secure.
+#bind-address           = 127.0.0.1
+#
+# * Fine Tuning
+#
+max_connections         = 100
+connect_timeout         = 5
+wait_timeout            = 600
+max_allowed_packet      = 16M
+thread_cache_size       = 128
+sort_buffer_size        = 4M
+bulk_insert_buffer_size = 16M
+tmp_table_size          = 32M
+max_heap_table_size     = 32M
+#
+# * MyISAM
+#
+# This replaces the startup script and checks MyISAM tables if needed
+# the first time they are touched. On error, make copy and try a repair.
+myisam_recover_options = BACKUP
+key_buffer_size         = 128M
+#open-files-limit       = 2000
+table_open_cache        = 400
+myisam_sort_buffer_size = 512M
+concurrent_insert       = 2
+read_buffer_size        = 2M
+read_rnd_buffer_size    = 1M
+#
+# * Query Cache Configuration
+#
+# Cache only tiny result sets, so we can fit more in the query cache.
+query_cache_limit               = 128K
+query_cache_size                = 64M
+# for more write intensive setups, set to DEMAND or OFF
+#query_cache_type               = DEMAND
+#
+# * Logging and Replication
+#
+# Both location gets rotated by the cronjob.
+# Be aware that this log type is a performance killer.
+# As of 5.1 you can enable the log at runtime!
+#general_log_file        = /var/log/mysql/mysql.log
+#general_log             = 1
+#
+# Error logging goes to syslog due to /etc/mysql/conf.d/mysqld_safe_syslog.cnf.
+#
+# we do want to know about network errors and such
+#log_warnings           = 2
+#
+# Enable the slow query log to see queries with especially long duration
+#slow_query_log[={0|1}]
+slow_query_log_file     = /var/log/mysql/mariadb-slow.log
+long_query_time = 10
+#log_slow_rate_limit    = 1000
+#log_slow_verbosity     = query_plan
+ 
+#log-queries-not-using-indexes
+#log_slow_admin_statements
+#
+# The following can be used as easy to replay backup logs or for replication.
+# note: if you are setting up a replication slave, see README.Debian about
+#       other settings you may need to change.
+#server-id              = 1
+#report_host            = master1
+#auto_increment_increment = 2
+#auto_increment_offset  = 1
+#log_bin                        = /var/log/mysql/mariadb-bin
+#log_bin_index          = /var/log/mysql/mariadb-bin.index
+# not fab for performance, but safer
+#sync_binlog            = 1
+expire_logs_days        = 10
+max_binlog_size         = 100M
+# slaves
+#relay_log              = /var/log/mysql/relay-bin
+#relay_log_index        = /var/log/mysql/relay-bin.index
+#relay_log_info_file    = /var/log/mysql/relay-bin.info
+#log_slave_updates
+#read_only
+#
+# If applications support it, this stricter sql_mode prevents some
+# mistakes like inserting invalid dates etc.
+#sql_mode               = NO_ENGINE_SUBSTITUTION,TRADITIONAL
+#
+# * InnoDB
+#
+# InnoDB is enabled by default with a 10MB datafile in /var/lib/mysql/.
+# Read the manual for more InnoDB related options. There are many!
+default_storage_engine  = InnoDB
+# you can&#39;t just change log file size, requires special procedure
+#innodb_log_file_size   = 50M
+innodb_buffer_pool_size = 256M
+innodb_log_buffer_size  = 8M
+innodb_file_per_table   = 1
+innodb_open_files       = 400
+innodb_io_capacity      = 400
+innodb_flush_method     = O_DIRECT
+#
+# * Security Features
+#
+# Read the manual, too, if you want chroot!
+# chroot = /var/lib/mysql/
+#
+# For generating SSL certificates I recommend the OpenSSL GUI &#34;tinyca&#34;.
+#
+# ssl-ca=/etc/mysql/cacert.pem
+# ssl-cert=/etc/mysql/server-cert.pem
+# ssl-key=/etc/mysql/server-key.pem
+ 
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+ 
+ 
+ 
+#
+# * Galera-related settings
+#
+[galera]
+# Mandatory settings
+#wsrep_on=ON
+#wsrep_provider=
+#wsrep_cluster_address=
+#binlog_format=row
+#default_storage_engine=InnoDB
+#innodb_autoinc_lock_mode=2
+#
+# Allow server to accept connections on all interfaces.
+#
+#bind-address=0.0.0.0
+#
+# Optional setting
+#wsrep_slave_threads=1
+#innodb_flush_log_at_trx_commit=0
+ 
+[mysqldump]
+quick
+quote-names
+max_allowed_packet      = 16M
+ 
+[mysql]
+#no-auto-rehash # faster start of mysql but no tab completion
+ 
+[isamchk]
+key_buffer              = 16M
+ 
+#
+# * IMPORTANT: Additional settings that can override those from this file!
+#   The files must end with &#39;.cnf&#39;, otherwise they&#39;ll be ignored.
+#
+!includedir /etc/mysql/conf.d/
+</code></pre></div><blockquote><p>docker-compose 실행</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web1$ docker-compose up -d --build
+</code></pre></div><blockquote><p>phpinfo 테스트</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>test@ubuntu:~/Workspace/web1$ vi www-data/test.php
+&lt;?php phpinfo(); ?&gt;
+</code></pre></div><blockquote><p>web page 확인</p></blockquote><p><img src=/docker/docker_tmp/D11.png alt=docker11><br></p><blockquote><p>그누보드 설치 테스트<br>Host 정보 입력시 컨테이너 이름 으로 설정해야 합니다.<br>Host mariadb-www</p></blockquote><p><img src=/docker/docker_tmp/D12.png alt=docker12><br></p><blockquote><p>관리자 로그인후 확인</p></blockquote><p><img src=/docker/docker_tmp/D13.png alt=docker13></p><p></p><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1584627284></script><script src=/js/perfect-scrollbar.min.js?1584627284></script><script src=/js/perfect-scrollbar.jquery.min.js?1584627284></script><script src=/js/jquery.sticky.js?1584627284></script><script src=/js/featherlight.min.js?1584627284></script><script src=/js/highlight.pack.js?1584627284></script><script>hljs.initHighlightingOnLoad();</script><script src=/js/modernizr.custom-3.6.0.js?1584627284></script><script src=/js/learn.js?1584627284></script><script src=/js/hugo-learn.js?1584627284></script><link href=/mermaid/mermaid.css?1584627284 rel=stylesheet><script src=/mermaid/mermaid.js?1584627284></script><script>mermaid.initialize({startOnLoad:true});</script></body></html>
