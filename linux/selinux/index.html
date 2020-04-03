@@ -1,5 +1,526 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.67.0"><meta name=description content="Linux Documentation Project"><link rel=icon href=/images/favicon.png type=image/png><title>SELINUX ::</title><link href=/css/nucleus.css?1584628994 rel=stylesheet><link href=/css/fontawesome-all.min.css?1584628994 rel=stylesheet><link href=/css/hybrid.css?1584628994 rel=stylesheet><link href=/css/featherlight.min.css?1584628994 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1584628994 rel=stylesheet><link href=/css/auto-complete.css?1584628994 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1584628994 rel=stylesheet><link href=/css/theme.css?1584628994 rel=stylesheet><link href=/css/hugo-theme.css?1584628994 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1584628994></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/linux/selinux/><nav id=sidebar><div id=header-wrapper><div id=header><a id=logo href=https://bksanjuk.github.io/><svg id="grav-logo" style="width:100%;height:100%" viewBox="0 0 504 140" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421"><path d="M235.832 71.564l-7.98-.001c-1.213.001-2.197.987-2.197 2.204v15.327l-.158.132c-4.696 3.962-10.634 6.14-16.719 6.14-14.356.0-26.034-11.68-26.034-26.037.0-14.358 11.678-26.035 26.034-26.035 5.582.0 10.919 1.767 15.437 5.113.877.649 2.093.56 2.866-.211l5.69-5.69c.444-.442.675-1.055.639-1.681-.034-.627-.336-1.206-.828-1.597-6.76-5.363-15.214-8.314-23.805-8.314-21.18.0-38.414 17.233-38.414 38.415.0 21.183 17.234 38.415 38.414 38.415 10.937.0 21.397-4.705 28.698-12.914.358-.403.556-.921.556-1.46v-19.603c0-1.217-.985-2.203-2.2-2.203" style="fill:#000;fill-rule:nonzero"/><path d="M502.794 34.445c-.408-.616-1.1-.989-1.838-.989h-8.684c-.879.0-1.673.522-2.022 1.329l-24.483 56.839-24.92-56.852c-.352-.799-1.142-1.316-2.012-1.316h-8.713c-.744.0-1.44.373-1.843.995-.408.623-.476 1.408-.174 2.09l30.186 68.858c.352.799 1.143 1.317 2.017 1.317h10.992c.879.0 1.673-.527 2.021-1.329l29.655-68.861c.289-.68.222-1.461-.182-2.081" style="fill:#000;fill-rule:nonzero"/><path d="M388.683 34.772c-.353-.798-1.142-1.316-2.017-1.316h-10.988c-.879.0-1.673.522-2.021 1.329l-29.655 68.861c-.294.675-.226 1.46.182 2.077.407.619 1.096.993 1.838.993h8.684c.879.0 1.673-.526 2.022-1.329l24.478-56.842 24.92 56.854c.353.798 1.143 1.317 2.013 1.317h8.717c.744.0 1.44-.374 1.843-.993.408-.624.471-1.41.174-2.094l-30.19-68.857z" style="fill:#000;fill-rule:nonzero"/><path d="M309.196 81.525l.476-.229c8.675-4.191 14.279-13.087 14.279-22.667.0-13.881-11.295-25.174-25.176-25.174h-31.863c-1.214.0-2.199.988-2.199 2.202v68.855c0 1.219.985 2.204 2.199 2.204h7.979c1.214.0 2.2-.985 2.2-2.204V45.833h21.684c7.059.0 12.799 5.739 12.799 12.796.0 5.885-3.996 10.989-9.728 12.408-1.032.261-2.064.393-3.071.393h-7.977c-.829.0-1.585.467-1.959 1.205-.378.74-.305 1.625.187 2.296l22.62 30.884c.412.566 1.07.901 1.771.901h9.915c.827.0 1.587-.467 1.96-1.207.378-.742.302-1.629-.186-2.296l-15.91-21.688z" style="fill:#000;fill-rule:nonzero"/><path d="M107.191 80.969c-7.255-4.794-11.4-8.845-15.011-16.109-2.47 4.977-8.236 12.376-17.962 18.198-4.856 15.106-27.954 44.015-35.43 39.916-2.213-1.212-2.633-2.808-2.133-4.456.536-4.129 9.078-13.62 9.078-13.62s.18 1.992 2.913 6.187c-3.609-11.205 5.965-25.031 8.5-29.738 3.985-1.269 4.274-6.387 4.274-6.387.255-7.909-3.278-13.635-6.701-17.059 2.459 3.002 3.255 7.539 3.372 11.694v.023c.012.469.012.93.011 1.39-.117 3.439-1.157 8.19-3.383 8.19l.006.03c-2.289-.098-5.115.391-7.639 1.18l-5.582 1.334s2.977-.136 4.584 1.252c-1.79 2.915-5.769 6.533-10.206 8.588-6.457 2.995-8.312-2.964-5.034-6.838.805-.946 1.618-1.745 2.387-2.399-.495-.513-.807-1.198-.889-2.068-.001-.005-.004-.009-.005-.013-.45-1.977-.202-4.543 2.596-8.623.551-.863 1.214-1.748 2.007-2.647.025-.031.046-.059.072-.089.034-.042.072-.08.108-.121.02-.023.039-.045.059-.068.2-.228.413-.45.639-.663 3.334-3.414 8.599-6.966 16.897-10.152 9.675-14.223 13.219-16.89 13.219-16.89 1.071-1.096 2.943-2.458 3.632-2.805-5.053-8.781-6.074-21.158-4.75-24.493-.107.18-.206.365-.287.556.49-1.143.819-1.509 1.328-2.111 1.381-1.632 6.058-2.488 7.737.971.895 1.844 1.063 4.232 1.034 6.023-3.704-.193-7.063 4.036-7.063 4.036s3.067-1.448 6.879-1.473c0 0 1.015.883 2.283 2.542-1.712 3.213-4.524 10.021-2.488 17.168.338 1.408.849 2.619 1.483 3.648.024.045.044.089.069.135.051.066.096.122.144.183 3.368 5.072 9.542 5.665 9.542 5.665-2.906-1.45-5.274-3.76-6.816-6.56-.8-1.498-1.291-2.762-1.592-3.761-1.636-6.313.771-9.999 2.149-12.471 3.17-4.917 8.944-7.893 15.151-7.185 8.712.995 14.968 8.862 13.973 17.571-.608 5.321-3.781 9.723-8.142 12.117 1.049 2.839-.073 6.28-.073 6.28 2.642 3.323 2.758 5.238 2.667 7.017-3.357-.565-6.618 1.701-6.618 1.701s6.476-1.546 10.238 1.81c2.446 2.631 4.078 5.009 5.051 6.766 1.393 2.505 7.859 2.683 7.123 7.188-.737 4.499-5.669 4.542-13.401-.56M69.571.0C31.147.0.0 31.148.0 69.567c0 38.422 31.147 69.573 69.571 69.573 38.42.0 69.568-31.151 69.568-69.573.0-38.42-31.148-69.567-69.568-69.567" style="fill:#000;fill-rule:nonzero"/><path d="M73.796 51.693c.813-.814.813-2.134.0-2.947-.815-.814-2.133-.814-2.947.0-.815.813-.815 2.133.0 2.947.814.813 2.132.813 2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M66.445 53.149c-.814.813-.814 2.133.0 2.947.813.814 2.133.814 2.947.0.813-.814.813-2.134.0-2.947-.814-.813-2.134-.813-2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M79.231 54.233c-1.274-1.274-3.339-1.272-4.611.0l-2.713 2.712c-1.274 1.275-1.274 3.339.0 4.612l2.978 2.978c1.274 1.275 3.338 1.274 4.611.0l2.712-2.712c1.274-1.274 1.274-3.339.0-4.612l-2.977-2.978z" style="fill:#000;fill-rule:nonzero"/><path d="M95.759 41.445c-2.151-2.578 1.869-7.257 4.391-4.463 4.645 5.148-2.237 7.041-4.391 4.463M105.004 44.132c3.442-6.553-1.427-10.381-4.773-13.523-5.36-5.039-10.706-7.217-16.811-.241-6.102 6.977-2.226 15.068 3.356 19.061 5.584 3.994 14.782 1.255 18.228-5.297" style="fill:#000;fill-rule:nonzero"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label><input data-search-input id=search-by type=search placeholder=Search...>
-<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1584628994></script><script type=text/javascript src=/js/auto-complete.js?1584628994></script><script type=text/javascript>var baseurl="https:\/\/bksanjuk.github.io\/";</script><script type=text/javascript src=/js/search.js?1584628994></script></div><div class=highlightable><ul class=topics><li data-nav-id=/overview/ title=Overview class=dd-item><a href=/overview/><b>1. </b>Overview</a></li><li data-nav-id=/linux/ title=Linux class="dd-item
-parent"><a href=/linux/><b>2. </b>Linux</a><ul><li data-nav-id=/linux/linux-booting-process/ title="Linux Booting Process" class=dd-item><a href=/linux/linux-booting-process/>Linux Booting Process</a></li><li data-nav-id=/linux/file-system/ title="File System" class=dd-item><a href=/linux/file-system/>File System</a></li><li data-nav-id=/linux/systemd/ title=Systemd class=dd-item><a href=/linux/systemd/>Systemd</a></li><li data-nav-id=/linux/iptables/ title=IPTABLES class=dd-item><a href=/linux/iptables/>IPTABLES</a></li><li data-nav-id=/linux/selinux/ title=SELINUX class="dd-item
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.67.0"><meta name=description content="Linux Documentation Project"><link rel=icon href=/images/favicon.png type=image/png><title>SELINUX ::</title><link href=/css/nucleus.css?1585906001 rel=stylesheet><link href=/css/fontawesome-all.min.css?1585906001 rel=stylesheet><link href=/css/hybrid.css?1585906001 rel=stylesheet><link href=/css/featherlight.min.css?1585906001 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1585906001 rel=stylesheet><link href=/css/auto-complete.css?1585906001 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1585906001 rel=stylesheet><link href=/css/theme.css?1585906001 rel=stylesheet><link href=/css/hugo-theme.css?1585906001 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1585906001></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/linux/selinux/><nav id=sidebar><div id=header-wrapper><div id=header><a id=logo href=https://docs.crois.net/><svg id="grav-logo" style="width:100%;height:100%" viewBox="0 0 504 140" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421"><path d="M235.832 71.564l-7.98-.001c-1.213.001-2.197.987-2.197 2.204v15.327l-.158.132c-4.696 3.962-10.634 6.14-16.719 6.14-14.356.0-26.034-11.68-26.034-26.037.0-14.358 11.678-26.035 26.034-26.035 5.582.0 10.919 1.767 15.437 5.113.877.649 2.093.56 2.866-.211l5.69-5.69c.444-.442.675-1.055.639-1.681-.034-.627-.336-1.206-.828-1.597-6.76-5.363-15.214-8.314-23.805-8.314-21.18.0-38.414 17.233-38.414 38.415.0 21.183 17.234 38.415 38.414 38.415 10.937.0 21.397-4.705 28.698-12.914.358-.403.556-.921.556-1.46v-19.603c0-1.217-.985-2.203-2.2-2.203" style="fill:#000;fill-rule:nonzero"/><path d="M502.794 34.445c-.408-.616-1.1-.989-1.838-.989h-8.684c-.879.0-1.673.522-2.022 1.329l-24.483 56.839-24.92-56.852c-.352-.799-1.142-1.316-2.012-1.316h-8.713c-.744.0-1.44.373-1.843.995-.408.623-.476 1.408-.174 2.09l30.186 68.858c.352.799 1.143 1.317 2.017 1.317h10.992c.879.0 1.673-.527 2.021-1.329l29.655-68.861c.289-.68.222-1.461-.182-2.081" style="fill:#000;fill-rule:nonzero"/><path d="M388.683 34.772c-.353-.798-1.142-1.316-2.017-1.316h-10.988c-.879.0-1.673.522-2.021 1.329l-29.655 68.861c-.294.675-.226 1.46.182 2.077.407.619 1.096.993 1.838.993h8.684c.879.0 1.673-.526 2.022-1.329l24.478-56.842 24.92 56.854c.353.798 1.143 1.317 2.013 1.317h8.717c.744.0 1.44-.374 1.843-.993.408-.624.471-1.41.174-2.094l-30.19-68.857z" style="fill:#000;fill-rule:nonzero"/><path d="M309.196 81.525l.476-.229c8.675-4.191 14.279-13.087 14.279-22.667.0-13.881-11.295-25.174-25.176-25.174h-31.863c-1.214.0-2.199.988-2.199 2.202v68.855c0 1.219.985 2.204 2.199 2.204h7.979c1.214.0 2.2-.985 2.2-2.204V45.833h21.684c7.059.0 12.799 5.739 12.799 12.796.0 5.885-3.996 10.989-9.728 12.408-1.032.261-2.064.393-3.071.393h-7.977c-.829.0-1.585.467-1.959 1.205-.378.74-.305 1.625.187 2.296l22.62 30.884c.412.566 1.07.901 1.771.901h9.915c.827.0 1.587-.467 1.96-1.207.378-.742.302-1.629-.186-2.296l-15.91-21.688z" style="fill:#000;fill-rule:nonzero"/><path d="M107.191 80.969c-7.255-4.794-11.4-8.845-15.011-16.109-2.47 4.977-8.236 12.376-17.962 18.198-4.856 15.106-27.954 44.015-35.43 39.916-2.213-1.212-2.633-2.808-2.133-4.456.536-4.129 9.078-13.62 9.078-13.62s.18 1.992 2.913 6.187c-3.609-11.205 5.965-25.031 8.5-29.738 3.985-1.269 4.274-6.387 4.274-6.387.255-7.909-3.278-13.635-6.701-17.059 2.459 3.002 3.255 7.539 3.372 11.694v.023c.012.469.012.93.011 1.39-.117 3.439-1.157 8.19-3.383 8.19l.006.03c-2.289-.098-5.115.391-7.639 1.18l-5.582 1.334s2.977-.136 4.584 1.252c-1.79 2.915-5.769 6.533-10.206 8.588-6.457 2.995-8.312-2.964-5.034-6.838.805-.946 1.618-1.745 2.387-2.399-.495-.513-.807-1.198-.889-2.068-.001-.005-.004-.009-.005-.013-.45-1.977-.202-4.543 2.596-8.623.551-.863 1.214-1.748 2.007-2.647.025-.031.046-.059.072-.089.034-.042.072-.08.108-.121.02-.023.039-.045.059-.068.2-.228.413-.45.639-.663 3.334-3.414 8.599-6.966 16.897-10.152 9.675-14.223 13.219-16.89 13.219-16.89 1.071-1.096 2.943-2.458 3.632-2.805-5.053-8.781-6.074-21.158-4.75-24.493-.107.18-.206.365-.287.556.49-1.143.819-1.509 1.328-2.111 1.381-1.632 6.058-2.488 7.737.971.895 1.844 1.063 4.232 1.034 6.023-3.704-.193-7.063 4.036-7.063 4.036s3.067-1.448 6.879-1.473c0 0 1.015.883 2.283 2.542-1.712 3.213-4.524 10.021-2.488 17.168.338 1.408.849 2.619 1.483 3.648.024.045.044.089.069.135.051.066.096.122.144.183 3.368 5.072 9.542 5.665 9.542 5.665-2.906-1.45-5.274-3.76-6.816-6.56-.8-1.498-1.291-2.762-1.592-3.761-1.636-6.313.771-9.999 2.149-12.471 3.17-4.917 8.944-7.893 15.151-7.185 8.712.995 14.968 8.862 13.973 17.571-.608 5.321-3.781 9.723-8.142 12.117 1.049 2.839-.073 6.28-.073 6.28 2.642 3.323 2.758 5.238 2.667 7.017-3.357-.565-6.618 1.701-6.618 1.701s6.476-1.546 10.238 1.81c2.446 2.631 4.078 5.009 5.051 6.766 1.393 2.505 7.859 2.683 7.123 7.188-.737 4.499-5.669 4.542-13.401-.56M69.571.0C31.147.0.0 31.148.0 69.567c0 38.422 31.147 69.573 69.571 69.573 38.42.0 69.568-31.151 69.568-69.573.0-38.42-31.148-69.567-69.568-69.567" style="fill:#000;fill-rule:nonzero"/><path d="M73.796 51.693c.813-.814.813-2.134.0-2.947-.815-.814-2.133-.814-2.947.0-.815.813-.815 2.133.0 2.947.814.813 2.132.813 2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M66.445 53.149c-.814.813-.814 2.133.0 2.947.813.814 2.133.814 2.947.0.813-.814.813-2.134.0-2.947-.814-.813-2.134-.813-2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M79.231 54.233c-1.274-1.274-3.339-1.272-4.611.0l-2.713 2.712c-1.274 1.275-1.274 3.339.0 4.612l2.978 2.978c1.274 1.275 3.338 1.274 4.611.0l2.712-2.712c1.274-1.274 1.274-3.339.0-4.612l-2.977-2.978z" style="fill:#000;fill-rule:nonzero"/><path d="M95.759 41.445c-2.151-2.578 1.869-7.257 4.391-4.463 4.645 5.148-2.237 7.041-4.391 4.463M105.004 44.132c3.442-6.553-1.427-10.381-4.773-13.523-5.36-5.039-10.706-7.217-16.811-.241-6.102 6.977-2.226 15.068 3.356 19.061 5.584 3.994 14.782 1.255 18.228-5.297" style="fill:#000;fill-rule:nonzero"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label><input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1585906001></script><script type=text/javascript src=/js/auto-complete.js?1585906001></script><script type=text/javascript>var baseurl="https:\/\/docs.crois.net\/";</script><script type=text/javascript src=/js/search.js?1585906001></script></div><div class=highlightable><ul class=topics><li data-nav-id=/overview/ title=Overview class=dd-item><a href=/overview/><b>1. </b>Overview</a></li><li data-nav-id=/linux/ title=Linux class="dd-item
+parent"><a href=/linux/><b>2. </b>Linux</a><ul><li data-nav-id=/linux/linux-booting-process/ title="Linux Booting Process" class=dd-item><a href=/linux/linux-booting-process/>Linux Booting Process</a></li><li data-nav-id=/linux/file-system/ title="File System" class=dd-item><a href=/linux/file-system/>File System</a></li><li data-nav-id=/linux/linux-directory/ title="Linux Directory" class=dd-item><a href=/linux/linux-directory/>Linux Directory</a></li><li data-nav-id=/linux/basic-linux-command/ title="Basic Linux Command" class=dd-item><a href=/linux/basic-linux-command/>Basic Linux Command</a></li><li data-nav-id=/linux/systemd/ title=Systemd class=dd-item><a href=/linux/systemd/>Systemd</a></li><li data-nav-id=/linux/iptables/ title=IPTABLES class=dd-item><a href=/linux/iptables/>IPTABLES</a></li><li data-nav-id=/linux/selinux/ title=SELINUX class="dd-item
 parent
-active"><a href=/linux/selinux/>SELINUX</a></li></ul></li><li data-nav-id=/centos/ title=Centos class=dd-item><a href=/centos/><b>3. </b>Centos</a><ul><li data-nav-id=/centos/kernel-version-info/ title="Kernel Version Info" class=dd-item><a href=/centos/kernel-version-info/>Kernel Version Info</a></li><li data-nav-id=/centos/install/ title=Install class=dd-item><a href=/centos/install/>Install</a></li><li data-nav-id=/centos/hostname/ title=Hostname class=dd-item><a href=/centos/hostname/>Hostname</a></li><li data-nav-id=/centos/locale/ title=Locale class=dd-item><a href=/centos/locale/>Locale</a></li><li data-nav-id=/centos/time-zone/ title="Time Zone" class=dd-item><a href=/centos/time-zone/>Time Zone</a></li><li data-nav-id=/centos/network/ title=Network class=dd-item><a href=/centos/network/>Network</a></li><li data-nav-id=/centos/yum/ title=YUM class=dd-item><a href=/centos/yum/>YUM</a></li><li data-nav-id=/centos/rpm/ title=RPM class=dd-item><a href=/centos/rpm/>RPM</a></li><li data-nav-id=/centos/ntp/ title=NTP class=dd-item><a href=/centos/ntp/>NTP</a></li><li data-nav-id=/centos/reset-root-password/ title="Reset Root Password" class=dd-item><a href=/centos/reset-root-password/>Reset Root Password</a></li><li data-nav-id=/centos/rescue-mode/ title="Rescue Mode" class=dd-item><a href=/centos/rescue-mode/>Rescue Mode</a></li><li data-nav-id=/centos/mainternance-mode/ title="Mainternance Mode" class=dd-item><a href=/centos/mainternance-mode/>Mainternance Mode</a></li><li data-nav-id=/centos/firewalld/ title=Firewalld class=dd-item><a href=/centos/firewalld/>Firewalld</a></li><li data-nav-id=/centos/iscsi/ title=ISCSI class=dd-item><a href=/centos/iscsi/>ISCSI</a></li><li data-nav-id=/centos/multipath/ title=Multipath class=dd-item><a href=/centos/multipath/>Multipath</a></li><li data-nav-id=/centos/ftp/ title=FTP class=dd-item><a href=/centos/ftp/>FTP</a></li><li data-nav-id=/centos/postfix/ title=Postfix class=dd-item><a href=/centos/postfix/>Postfix</a></li><li data-nav-id=/centos/samba/ title=Samba class=dd-item><a href=/centos/samba/>Samba</a></li><li data-nav-id=/centos/software-raid/ title="Software RAID" class=dd-item><a href=/centos/software-raid/>Software RAID</a></li><li data-nav-id=/centos/vnc/ title=VNC class=dd-item><a href=/centos/vnc/>VNC</a></li><li data-nav-id=/centos/nfs/ title=NFS class=dd-item><a href=/centos/nfs/>NFS</a></li><li data-nav-id=/centos/dns/ title=DNS class=dd-item><a href=/centos/dns/>DNS</a></li><li data-nav-id=/centos/lamp-stack/ title="LAMP Stack" class=dd-item><a href=/centos/lamp-stack/>LAMP Stack</a></li><li data-nav-id=/centos/lemp-stack/ title="LEMP Stack" class=dd-item><a href=/centos/lemp-stack/>LEMP Stack</a></li></ul></li><li data-nav-id=/redhat-enterprise-linux/ title="RedHat Enterprise Linux" class=dd-item><a href=/redhat-enterprise-linux/><b>4. </b>RedHat Enterprise Linux</a><ul><li data-nav-id=/redhat-enterprise-linux/redhat-cluster-suite/ title="RedHat Cluster Suite" class=dd-item><a href=/redhat-enterprise-linux/redhat-cluster-suite/>RedHat Cluster Suite</a></li></ul></li><li data-nav-id=/ubuntu/ title=Ubuntu class=dd-item><a href=/ubuntu/><b>5. </b>Ubuntu</a><ul><li data-nav-id=/ubuntu/install/ title=Install class=dd-item><a href=/ubuntu/install/>Install</a></li><li data-nav-id=/ubuntu/system-upgrade/ title="System Upgrade" class=dd-item><a href=/ubuntu/system-upgrade/>System Upgrade</a></li><li data-nav-id=/ubuntu/hostname/ title=Hostname class=dd-item><a href=/ubuntu/hostname/>Hostname</a></li><li data-nav-id=/ubuntu/locale/ title=Locale class=dd-item><a href=/ubuntu/locale/>Locale</a></li><li data-nav-id=/ubuntu/repository/ title=Repository class=dd-item><a href=/ubuntu/repository/>Repository</a></li><li data-nav-id=/ubuntu/network/ title=Network class=dd-item><a href=/ubuntu/network/>Network</a></li><li data-nav-id=/ubuntu/apt-command/ title="Apt Command" class=dd-item><a href=/ubuntu/apt-command/>Apt Command</a></li><li data-nav-id=/ubuntu/x-windows/ title="X Windows" class=dd-item><a href=/ubuntu/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/freebsd/ title=Freebsd class=dd-item><a href=/freebsd/><b>6. </b>Freebsd</a><ul><li data-nav-id=/freebsd/install/ title=Install class=dd-item><a href=/freebsd/install/>Install</a></li><li data-nav-id=/freebsd/hostname/ title=Hostname class=dd-item><a href=/freebsd/hostname/>Hostname</a></li><li data-nav-id=/freebsd/network/ title=Network class=dd-item><a href=/freebsd/network/>Network</a></li><li data-nav-id=/freebsd/ports/ title=Ports class=dd-item><a href=/freebsd/ports/>Ports</a></li><li data-nav-id=/freebsd/user-management/ title="User Management" class=dd-item><a href=/freebsd/user-management/>User Management</a></li><li data-nav-id=/freebsd/disk-management/ title="Disk Management" class=dd-item><a href=/freebsd/disk-management/>Disk Management</a></li><li data-nav-id=/freebsd/x-windows/ title="X Windows" class=dd-item><a href=/freebsd/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/docker/ title=Docker class=dd-item><a href=/docker/><b>7. </b>Docker</a><ul><li data-nav-id=/docker/install/ title=Install class=dd-item><a href=/docker/install/>Install</a></li><li data-nav-id=/docker/remove-all-containers/ title="Remove All Containers" class=dd-item><a href=/docker/remove-all-containers/>Remove All Containers</a></li><li data-nav-id=/docker/docker-tutorial/ title="Docker Tutorial" class=dd-item><a href=/docker/docker-tutorial/>Docker Tutorial</a></li><li data-nav-id=/docker/docker-command/ title="Docker Command" class=dd-item><a href=/docker/docker-command/>Docker Command</a></li><li data-nav-id=/docker/dockerfile/ title=Dockerfile class=dd-item><a href=/docker/dockerfile/>Dockerfile</a></li><li data-nav-id=/docker/dockerfile-use-ssh-server/ title="Dockerfile Use SSH Server" class=dd-item><a href=/docker/dockerfile-use-ssh-server/>Dockerfile Use SSH Server</a></li><li data-nav-id=/docker/docker-compose/ title="Docker Compose" class=dd-item><a href=/docker/docker-compose/>Docker Compose</a></li><li data-nav-id=/docker/docker-volumes/ title="Docker Volumes" class=dd-item><a href=/docker/docker-volumes/>Docker Volumes</a></li><li data-nav-id=/docker/docker-machine/ title="Docker Machine" class=dd-item><a href=/docker/docker-machine/>Docker Machine</a></li><li data-nav-id=/docker/docker-swarm/ title="Docker Swarm" class=dd-item><a href=/docker/docker-swarm/>Docker Swarm</a></li><li data-nav-id=/docker/docker-swarm-nfs-volume/ title="Docker Swarm NFS Volume" class=dd-item><a href=/docker/docker-swarm-nfs-volume/>Docker Swarm NFS Volume</a></li></ul></li><li data-nav-id=/kubernetes/ title=Kubernetes class=dd-item><a href=/kubernetes/><b>8. </b>Kubernetes</a><ul><li data-nav-id=/kubernetes/install/ title=Install class=dd-item><a href=/kubernetes/install/>Install</a></li></ul></li></ul><section id=footer><p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a>from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span><span class=links>SELINUX</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#selinux>SELINUX</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>SELINUX</h1><h2 id=selinux>SELINUX</h2><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1584628994></script><script src=/js/perfect-scrollbar.min.js?1584628994></script><script src=/js/perfect-scrollbar.jquery.min.js?1584628994></script><script src=/js/jquery.sticky.js?1584628994></script><script src=/js/featherlight.min.js?1584628994></script><script src=/js/highlight.pack.js?1584628994></script><script>hljs.initHighlightingOnLoad();</script><script src=/js/modernizr.custom-3.6.0.js?1584628994></script><script src=/js/learn.js?1584628994></script><script src=/js/hugo-learn.js?1584628994></script><link href=/mermaid/mermaid.css?1584628994 rel=stylesheet><script src=/mermaid/mermaid.js?1584628994></script><script>mermaid.initialize({startOnLoad:true});</script></body></html>
+active"><a href=/linux/selinux/>SELINUX</a></li></ul></li><li data-nav-id=/centos/ title=Centos class=dd-item><a href=/centos/><b>3. </b>Centos</a><ul><li data-nav-id=/centos/kernel-version-info/ title="Kernel Version Info" class=dd-item><a href=/centos/kernel-version-info/>Kernel Version Info</a></li><li data-nav-id=/centos/install/ title=Install class=dd-item><a href=/centos/install/>Install</a></li><li data-nav-id=/centos/hostname/ title=Hostname class=dd-item><a href=/centos/hostname/>Hostname</a></li><li data-nav-id=/centos/locale/ title=Locale class=dd-item><a href=/centos/locale/>Locale</a></li><li data-nav-id=/centos/time-zone/ title="Time Zone" class=dd-item><a href=/centos/time-zone/>Time Zone</a></li><li data-nav-id=/centos/network/ title=Network class=dd-item><a href=/centos/network/>Network</a></li><li data-nav-id=/centos/yum/ title=YUM class=dd-item><a href=/centos/yum/>YUM</a></li><li data-nav-id=/centos/rpm/ title=RPM class=dd-item><a href=/centos/rpm/>RPM</a></li><li data-nav-id=/centos/ntp/ title=NTP class=dd-item><a href=/centos/ntp/>NTP</a></li><li data-nav-id=/centos/reset-root-password/ title="Reset Root Password" class=dd-item><a href=/centos/reset-root-password/>Reset Root Password</a></li><li data-nav-id=/centos/rescue-mode/ title="Rescue Mode" class=dd-item><a href=/centos/rescue-mode/>Rescue Mode</a></li><li data-nav-id=/centos/mainternance-mode/ title="Mainternance Mode" class=dd-item><a href=/centos/mainternance-mode/>Mainternance Mode</a></li><li data-nav-id=/centos/firewalld/ title=Firewalld class=dd-item><a href=/centos/firewalld/>Firewalld</a></li><li data-nav-id=/centos/iscsi/ title=ISCSI class=dd-item><a href=/centos/iscsi/>ISCSI</a></li><li data-nav-id=/centos/multipath/ title=Multipath class=dd-item><a href=/centos/multipath/>Multipath</a></li><li data-nav-id=/centos/ftp/ title=FTP class=dd-item><a href=/centos/ftp/>FTP</a></li><li data-nav-id=/centos/postfix/ title=Postfix class=dd-item><a href=/centos/postfix/>Postfix</a></li><li data-nav-id=/centos/samba/ title=Samba class=dd-item><a href=/centos/samba/>Samba</a></li><li data-nav-id=/centos/software-raid/ title="Software RAID" class=dd-item><a href=/centos/software-raid/>Software RAID</a></li><li data-nav-id=/centos/vnc/ title=VNC class=dd-item><a href=/centos/vnc/>VNC</a></li><li data-nav-id=/centos/nfs/ title=NFS class=dd-item><a href=/centos/nfs/>NFS</a></li><li data-nav-id=/centos/dns/ title=DNS class=dd-item><a href=/centos/dns/>DNS</a></li><li data-nav-id=/centos/lamp-stack/ title="LAMP Stack" class=dd-item><a href=/centos/lamp-stack/>LAMP Stack</a></li><li data-nav-id=/centos/lemp-stack/ title="LEMP Stack" class=dd-item><a href=/centos/lemp-stack/>LEMP Stack</a></li></ul></li><li data-nav-id=/redhat-enterprise-linux/ title="RedHat Enterprise Linux" class=dd-item><a href=/redhat-enterprise-linux/><b>4. </b>RedHat Enterprise Linux</a><ul><li data-nav-id=/redhat-enterprise-linux/redhat-cluster-suite/ title="RedHat Cluster Suite" class=dd-item><a href=/redhat-enterprise-linux/redhat-cluster-suite/>RedHat Cluster Suite</a></li></ul></li><li data-nav-id=/ubuntu/ title=Ubuntu class=dd-item><a href=/ubuntu/><b>5. </b>Ubuntu</a><ul><li data-nav-id=/ubuntu/install/ title=Install class=dd-item><a href=/ubuntu/install/>Install</a></li><li data-nav-id=/ubuntu/system-upgrade/ title="System Upgrade" class=dd-item><a href=/ubuntu/system-upgrade/>System Upgrade</a></li><li data-nav-id=/ubuntu/hostname/ title=Hostname class=dd-item><a href=/ubuntu/hostname/>Hostname</a></li><li data-nav-id=/ubuntu/locale/ title=Locale class=dd-item><a href=/ubuntu/locale/>Locale</a></li><li data-nav-id=/ubuntu/repository/ title=Repository class=dd-item><a href=/ubuntu/repository/>Repository</a></li><li data-nav-id=/ubuntu/network/ title=Network class=dd-item><a href=/ubuntu/network/>Network</a></li><li data-nav-id=/ubuntu/apt-command/ title="Apt Command" class=dd-item><a href=/ubuntu/apt-command/>Apt Command</a></li><li data-nav-id=/ubuntu/x-windows/ title="X Windows" class=dd-item><a href=/ubuntu/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/freebsd/ title=Freebsd class=dd-item><a href=/freebsd/><b>6. </b>Freebsd</a><ul><li data-nav-id=/freebsd/install/ title=Install class=dd-item><a href=/freebsd/install/>Install</a></li><li data-nav-id=/freebsd/hostname/ title=Hostname class=dd-item><a href=/freebsd/hostname/>Hostname</a></li><li data-nav-id=/freebsd/network/ title=Network class=dd-item><a href=/freebsd/network/>Network</a></li><li data-nav-id=/freebsd/ports/ title=Ports class=dd-item><a href=/freebsd/ports/>Ports</a></li><li data-nav-id=/freebsd/user-management/ title="User Management" class=dd-item><a href=/freebsd/user-management/>User Management</a></li><li data-nav-id=/freebsd/disk-management/ title="Disk Management" class=dd-item><a href=/freebsd/disk-management/>Disk Management</a></li><li data-nav-id=/freebsd/x-windows/ title="X Windows" class=dd-item><a href=/freebsd/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/docker/ title=Docker class=dd-item><a href=/docker/><b>7. </b>Docker</a><ul><li data-nav-id=/docker/install/ title=Install class=dd-item><a href=/docker/install/>Install</a></li><li data-nav-id=/docker/remove-all-containers/ title="Remove All Containers" class=dd-item><a href=/docker/remove-all-containers/>Remove All Containers</a></li><li data-nav-id=/docker/docker-tutorial/ title="Docker Tutorial" class=dd-item><a href=/docker/docker-tutorial/>Docker Tutorial</a></li><li data-nav-id=/docker/docker-command/ title="Docker Command" class=dd-item><a href=/docker/docker-command/>Docker Command</a></li><li data-nav-id=/docker/dockerfile/ title=Dockerfile class=dd-item><a href=/docker/dockerfile/>Dockerfile</a></li><li data-nav-id=/docker/dockerfile-use-ssh-server/ title="Dockerfile Use SSH Server" class=dd-item><a href=/docker/dockerfile-use-ssh-server/>Dockerfile Use SSH Server</a></li><li data-nav-id=/docker/docker-compose/ title="Docker Compose" class=dd-item><a href=/docker/docker-compose/>Docker Compose</a></li><li data-nav-id=/docker/docker-volumes/ title="Docker Volumes" class=dd-item><a href=/docker/docker-volumes/>Docker Volumes</a></li><li data-nav-id=/docker/docker-machine/ title="Docker Machine" class=dd-item><a href=/docker/docker-machine/>Docker Machine</a></li><li data-nav-id=/docker/docker-swarm/ title="Docker Swarm" class=dd-item><a href=/docker/docker-swarm/>Docker Swarm</a></li></ul></li><li data-nav-id=/kubernetes/ title=Kubernetes class=dd-item><a href=/kubernetes/><b>8. </b>Kubernetes</a><ul><li data-nav-id=/kubernetes/install/ title=Install class=dd-item><a href=/kubernetes/install/>Install</a></li></ul></li></ul><section id=footer><p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a>from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span><span class=links>SELINUX</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#what-is-selinux>What is SELINUX</a></li><li><a href=#httpd-디렉토리-selinux-적용>httpd 디렉토리 selinux 적용</a></li><li><a href=#mariadb-디렉토리-selinux-적용>mariadb 디렉토리 selinux 적용</a></li><li><a href=#https-설정>https 설정</a></li><li><a href=#nfs-설정>NFS 설정</a></li><li><a href=#samba-설정>SAMBA 설정</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>SELINUX</h1><h2 id=what-is-selinux>What is SELINUX</h2><blockquote><p>SELinux(Security-Enhanced Linux)는 관리자가 시스템 액세스 권한을 효과적으로 제어할 수 있게 하는 Linux® 시스템용 보안 아키텍처입니다.<br>미국 국가안보국(NSA)이 LSM(Linux Security Module)을 사용하여 Linux 커널에 대한 일련의 패치로 개발한것 이며, 2000년 오픈소스 커뮤니티에서 릴리즈 되어<br>2003년 업스트림 Linux kernel 로 통합되었습니다.</p></blockquote><div class="notices note"><p>본 문서에서는 SELINUX 를 활성화 하여 Apache , NFS , SAMBA 설정방법을 소개 합니다.</p></div><div class="notices warning"><p>SELINUX 사용시 충분한 테스트를 하신후 사용을 권장 합니다.</p></div><ul><li>SELINUX ENABLE</li></ul><blockquote><p>SELINUX 를 사용하지 않는 경우 /etc/selinux/config 파일의 SELINUX=disabled 로 수정합니다.<br>enforcing 로 설정 할경우 selinux 를 사용 하며, permissive 의 경우 selinux 위반 경고를 출력합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@centos7 ~]# vi /etc/selinux/config
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=enforcing  
+# SELINUXTYPE= can take one of three values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted
+</code></pre></div><div class="notices tip"><p>selinux 관련 명령어를 사용하기 위해서는 policycoreutils-python 패키지 설치가 필요 합니다.<br>context 정보는 setools-console 패키지를 설치 하여 conext 정보를 확인 할수 있습니다.</p></div><ul><li>policycoreutils-python 패키지 주요 명령어</li></ul><table><thead><tr><th>명령어</th><th>설명</th></tr></thead><tbody><tr><td>sestatus</td><td>SELinux status tool</td></tr><tr><td>getenforce</td><td>get the current mode of SELinux</td></tr><tr><td>setenforce</td><td>modify the mode SELinux is running in</td></tr><tr><td>semanage</td><td>SELinux Policy Management tool</td></tr><tr><td>chcon</td><td>change file SELinux security context</td></tr><tr><td>restorecon</td><td>restore file(s) default SELinux security contexts</td></tr><tr><td>getsebool</td><td>get SELinux boolean value(s)</td></tr></tbody></table><ul><li>setools-console 패키지 주요 명령어</li></ul><table><thead><tr><th>명령어</th><th>설명</th></tr></thead><tbody><tr><td>sesearch</td><td>SELinux policy query tool</td></tr><tr><td>seinfo</td><td>SELinux policy query tool</td></tr><tr><td>sediff</td><td>SELinux policy difference tool</td></tr></tbody></table><ul><li>semanage 명령어</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@centos7 ~]# semanage -h
+usage: semanage [-h]
+
+                {import,export,login,user,port,ibpkey,ibendport,interface,module,node,fcontext,boolean,permissive,dontaudit}
+                ...
+
+semanage is used to configure certain elements of SELinux policy with-out
+requiring modification to or recompilation from policy source.
+
+positional arguments:
+  {import,export,login,user,port,ibpkey,ibendport,interface,module,node,fcontext,boolean,permissive,dontaudit}
+    import              Import local customizations
+    export              Output local customizations
+    login               Manage login mappings between linux users and SELinux
+                        confined users
+    user                Manage SELinux confined users (Roles and levels for an
+                        SELinux user)
+    port                Manage network port type definitions
+    ibpkey              Manage infiniband ibpkey type definitions
+    ibendport           Manage infiniband end port type definitions
+    interface           Manage network interface type definitions
+    module              Manage SELinux policy modules
+    node                Manage network node type definitions
+    fcontext            Manage file context mapping definitions
+    boolean             Manage booleans to selectively enable functionality
+    permissive          Manage process type enforcement mode
+    dontaudit           Disable/Enable dontaudit rules in policy
+
+optional arguments:
+  -h, --help            show this help message and exit
+[root@centos7 ~]#
+</code></pre></div><ul><li>apache selinux</li></ul><blockquote><p>test 를 위하여 httpd 를 설치 하고 기동을 하였습니다.<br>ls -Z 로 &ndash;context 를 확인시 httpd context 를 확인 할수 있습니다.<br>/var/www 디렉토리의 html 의 경우 Default apache 디렉토리 이며, 기본적으로 selinux 가 설정되어 있습니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@centos7 ~]# ls -Z /var/www/
+drwxr-xr-x. root root system_u:object_r:httpd_sys_script_exec_t:s0 cgi-bin
+drwxr-xr-x. root root system_u:object_r:httpd_sys_content_t:s0 html
+[root@centos7 ~]#
+
+- index.html 파일을 만들고 context 를 확인 합니다.  
+디렉토리 권한을 상속하여 httpd context 가 설정 됩니다.  
+[root@centos7 html]# vi index.html
+[root@centos7 html]# ls -Z
+-rw-r--r--. root root unconfined_u:object_r:httpd_sys_content_t:s0 index.html
+[root@centos7 html]#
+
+</code></pre></div><div class="notices note"><p>apache 운영시에는 /var/www/html 디렉토리보다 별도의 디렉토리를 설정 한후 사용을 합니다.<br>test.com 이라고 별도의 디렉토리를 만들고 APM 환경으로 Wordpress 환경을 구성 하여 테스트를 합니다.<br>apache 마지막 테스트시 ssl 인증서를 사용한 https 설정을 진행 합니다.</p></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight># /test.com 디렉토리의 context 를 확입니다. 
+apache 재시작시 정상적으로 동작 하지 않습니다. 
+
+root@centos7 ~]# ls -Z /test.com/
+drwxr-xr-x. root root unconfined_u:object_r:default_t:s0 logs
+drwxr-xr-x. root root unconfined_u:object_r:default_t:s0 public_html
+[root@centos7 ~]# systemctl restart httpd
+Job for httpd.service failed because the control process exited with error code. See &#34;systemctl status httpd.service&#34; and &#34;journalctl -xe&#34; for details.
+[root@centos7 ~]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: failed (Result: exit-code) since Fri 2020-03-27 08:12:47 KST; 6s ago
+     Docs: man:httpd(8)
+           man:apachectl(8)
+  Process: 3020 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=1/FAILURE)
+  Process: 3019 ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND (code=exited, status=1/FAILURE)
+ Main PID: 3019 (code=exited, status=1/FAILURE)
+
+Mar 27 08:12:47 centos7 systemd[1]: Starting The Apache HTTP Server...
+Mar 27 08:12:47 centos7 systemd[1]: httpd.service: main process exited, code=exited, status=1/FAILURE
+Mar 27 08:12:47 centos7 kill[3020]: kill: cannot find process &#34;&#34;
+Mar 27 08:12:47 centos7 systemd[1]: httpd.service: control process exited, code=exited status=1
+Mar 27 08:12:47 centos7 systemd[1]: Failed to start The Apache HTTP Server.
+Mar 27 08:12:47 centos7 systemd[1]: Unit httpd.service entered failed state.
+Mar 27 08:12:47 centos7 systemd[1]: httpd.service failed.
+[root@centos7 ~]# 
+</code></pre></div><h2 id=httpd-디렉토리-selinux-적용>httpd 디렉토리 selinux 적용</h2><blockquote><p>semanage 명령어를 이용하여 /test.com 하위 디렉토리 까지 httpd_sys_rw_content_t context 로 설정 하고,<br>restorecon 명령어로 /test.com 디렉토리에 context 를 적용합니다. restorecon 미 적용시 기존 context 를 유지 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@centos7 ~]# semanage fcontext -a -t httpd_sys_rw_content_t &#34;/test.com(/.*)?&#34;
+
+[root@centos7 ~]# ls -Z /test.com/
+drwxr-xr-x. root root unconfined_u:object_r:default_t:s0 logs
+drwxr-xr-x. root root unconfined_u:object_r:default_t:s0 public_html
+[root@centos7 ~]#
+
+[root@centos7 ~]# restorecon -RFvv /test.com/
+[root@centos7 ~]# ls -Z /test.com/
+drwxr-xr-x. root root system_u:object_r:httpd_sys_rw_content_t:s0 logs
+drwxr-xr-x. root root system_u:object_r:httpd_sys_rw_content_t:s0 public_html
+[root@centos7 ~]#
+</code></pre></div><ul><li>httpd 재시작 및 서비스 확인</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@centos7 ~]# systemctl restart httpd
+[root@centos7 ~]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Fri 2020-03-27 08:41:34 KST; 3s ago
+     Docs: man:httpd(8)
+           man:apachectl(8)
+  Process: 1709 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=1/FAILURE)
+ Main PID: 1731 (httpd)
+   Status: &#34;Processing requests...&#34;
+   CGroup: /system.slice/httpd.service
+           ├─1731 /usr/sbin/httpd -DFOREGROUND
+           ├─1732 /usr/sbin/httpd -DFOREGROUND
+           ├─1733 /usr/sbin/httpd -DFOREGROUND
+           ├─1734 /usr/sbin/httpd -DFOREGROUND
+           ├─1735 /usr/sbin/httpd -DFOREGROUND
+           ├─1736 /usr/sbin/httpd -DFOREGROUND
+           ├─1737 /usr/sbin/httpd -DFOREGROUND
+           ├─1738 /usr/sbin/httpd -DFOREGROUND
+           ├─1739 /usr/sbin/httpd -DFOREGROUND
+           ├─1740 /usr/sbin/httpd -DFOREGROUND
+           ├─1741 /usr/sbin/httpd -DFOREGROUND
+           └─1742 /usr/sbin/httpd -DFOREGROUND
+
+Mar 27 08:41:34 centos7 systemd[1]: Starting The Apache HTTP Server...
+Mar 27 08:41:34 centos7 systemd[1]: Started The Apache HTTP Server.
+[root@centos7 ~]#
+</code></pre></div><ul><li>mariadb 디렉토리 변경</li></ul><blockquote><p>mariadb 의 Default 디렉토리는 /var/lib/mysql 입니다. /db-data 라고 별도로 db 를 지정 selinux context 를 설정 합니다.<br>디렉토리 변경후 selinux context 설정 없이 mariadb 재기동이 정상적으로 되지 않습니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@centos7 ~]# systemctl restart mariadb
+Job for mariadb.service failed because the control process exited with error code. See &#34;systemctl status mariadb.service&#34; and &#34;journalctl -xe&#34; for details.
+[root@centos7 ~]#
+[root@centos7 ~]# ls -Z /var/lib/mysql/
+-rw-rw----. mysql mysql unconfined_u:object_r:mysqld_db_t:s0 aria_log.00000001
+-rw-rw----. mysql mysql unconfined_u:object_r:mysqld_db_t:s0 aria_log_control
+-rw-rw----. mysql mysql unconfined_u:object_r:mysqld_db_t:s0 ibdata1
+-rw-rw----. mysql mysql unconfined_u:object_r:mysqld_db_t:s0 ib_logfile0
+-rw-rw----. mysql mysql unconfined_u:object_r:mysqld_db_t:s0 ib_logfile1
+-rw-rw----. mysql mysql system_u:object_r:mysqld_db_t:s0 multi-master.info
+drwx------. mysql mysql unconfined_u:object_r:mysqld_db_t:s0 mysql
+drwx------. mysql mysql unconfined_u:object_r:mysqld_db_t:s0 performance_schema
+[root@centos7 ~]#
+
+</code></pre></div><h2 id=mariadb-디렉토리-selinux-적용>mariadb 디렉토리 selinux 적용</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@centos7 ~]# semanage fcontext -a -t mysqld_db_t &#34;/db-data(/.*)?&#34;
+[root@centos7 ~]# restorecon -RFvv /db-data
+</code></pre></div><ul><li>mariadb 재시작 및 서비스 확인</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@centos7 ~]# systemctl restart mariadb
+[root@centos7 ~]# systemctl status mariadb
+● mariadb.service - MariaDB 10.1.44 database server
+   Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; vendor preset: disabled)
+  Drop-In: /etc/systemd/system/mariadb.service.d
+           └─migrated-from-my.cnf-settings.conf
+   Active: active (running) since Fri 2020-03-27 08:58:34 KST; 4s ago
+     Docs: man:mysqld(8)
+           https://mariadb.com/kb/en/library/systemd/
+  Process: 2297 ExecStartPost=/bin/sh -c systemctl unset-environment _WSREP_START_POSITION (code=exited, status=0/SUCCESS)
+  Process: 2253 ExecStartPre=/bin/sh -c [ ! -e /usr/bin/galera_recovery ] &amp;&amp; VAR= ||   VAR=`/usr/bin/galera_recovery`; [ $? -eq 0 ]   &amp;&amp; systemctl set-environment _WSREP_START_POSITION=$VAR || exit 1 (code=exited, status=0/SUCCESS)
+  Process: 2251 ExecStartPre=/bin/sh -c systemctl unset-environment _WSREP_START_POSITION (code=exited, status=0/SUCCESS)
+ Main PID: 2268 (mysqld)
+   Status: &#34;Taking your SQL requests now...&#34;
+   CGroup: /system.slice/mariadb.service
+           └─2268 /usr/sbin/mysqld
+
+Mar 27 08:58:34 centos7 mysqld[2268]: 2020-03-27  8:58:34 140275675855104 [Note] InnoDB:  Percona XtraDB (http://www.percona.com) 5.6.46-86.2 started...er 1616737
+Mar 27 08:58:34 centos7 mysqld[2268]: 2020-03-27  8:58:34 140275675855104 [Note] Plugin &#39;FEEDBACK&#39; is disabled.
+Mar 27 08:58:34 centos7 mysqld[2268]: 2020-03-27  8:58:34 140275675855104 [Note] Recovering after a crash using tc.log
+Mar 27 08:58:34 centos7 mysqld[2268]: 2020-03-27  8:58:34 140275675855104 [Note] Starting crash recovery...
+Mar 27 08:58:34 centos7 mysqld[2268]: 2020-03-27  8:58:34 140275675855104 [Note] Crash recovery finished.
+Mar 27 08:58:34 centos7 mysqld[2268]: 2020-03-27  8:58:34 140274927888128 [Note] InnoDB: Dumping buffer pool(s) not yet started
+Mar 27 08:58:34 centos7 mysqld[2268]: 2020-03-27  8:58:34 140275675855104 [Note] Server socket created on IP: &#39;::&#39;.
+Mar 27 08:58:34 centos7 mysqld[2268]: 2020-03-27  8:58:34 140275675855104 [Note] /usr/sbin/mysqld: ready for connections.
+Mar 27 08:58:34 centos7 mysqld[2268]: Version: &#39;10.1.44-MariaDB&#39;  socket: &#39;/var/lib/mysql/mysql.sock&#39;  port: 3306  MariaDB Server
+Mar 27 08:58:34 centos7 systemd[1]: Started MariaDB 10.1.44 database server.
+Hint: Some lines were ellipsized, use -l to show in full.
+[root@centos7 ~]#
+</code></pre></div><h2 id=https-설정>https 설정</h2><blockquote><p>test.com 에 사설 인증서를 만들어 https 를 Test 하였습니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>ssl 설정
+&lt;VirtualHost *:443&gt;
+        SSLEngine on
+        SSLCertificateFile /etc/pki/tls/certs/test.crt
+        SSLCertificateKeyFile /etc/pki/tls/private/test.key
+        SSLCertificateChainFile /etc/pki/tls/certs/testca.crt
+        &lt;Directory /var/www/html/test.com/public_html&gt;
+        AllowOverride All
+        &lt;/Directory&gt;
+        DocumentRoot /var/www/html/test.com/public_html
+        ServerName test.com
+       ServerAlias www.test.com
+&lt;/VirtualHost&gt;
+
+
+
+# /etc/pki 디렉토리의 경우 cert_t context 로 설정 되어 있습니다.  
+[root@centos7 conf.d]# ls -Z /etc/pki
+drwxr-xr-x. root root system_u:object_r:cert_t:s0      CA
+drwxr-xr-x. root root system_u:object_r:cert_t:s0      ca-trust
+drwxr-xr-x. root root system_u:object_r:cert_t:s0      java
+drwxr-xr-x. root root system_u:object_r:cert_t:s0      nssdb
+drwxr-xr-x. root root system_u:object_r:cert_t:s0      nss-legacy
+drwxr-xr-x. root root system_u:object_r:cert_t:s0      rpm-gpg
+drwx------. root root system_u:object_r:cert_t:s0      rsyslog
+drwxr-xr-x. root root system_u:object_r:cert_t:s0      tls
+[root@centos7 conf.d]#
+
+
+# /etc/pki/tls/certs 디렉토리의 testca , test.crt 파일의 경우 self signed certificate 을 생성 한 것입니다. 
+cert_t context 로 자동 지정 됩니다.  
+[root@centos7 ~]# ls -Z /etc/pki/tls/certs/
+lrwxrwxrwx. root root system_u:object_r:cert_t:s0      ca-bundle.crt -&gt; /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+lrwxrwxrwx. root root system_u:object_r:cert_t:s0      ca-bundle.trust.crt -&gt; /etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+-rw-------. root root unconfined_u:object_r:cert_t:s0  localhost.crt
+-rwxr-xr-x. root root system_u:object_r:bin_t:s0       make-dummy-cert
+-rw-r--r--. root root system_u:object_r:cert_t:s0      Makefile
+-rwxr-xr-x. root root system_u:object_r:cert_t:s0      renew-dummy-cert
+-rw-r--r--. root root unconfined_u:object_r:cert_t:s0  testca.crt
+-rw-r--r--. root root unconfined_u:object_r:cert_t:s0  testca.csr
+-rw-r--r--. root root unconfined_u:object_r:cert_t:s0  testca.srl
+-rw-r--r--. root root unconfined_u:object_r:cert_t:s0  test.crt
+-rw-r--r--. root root unconfined_u:object_r:cert_t:s0  test.csr
+[root@centos7 ~]#
+
+
+# 별도의 디렉토리에 인증서를 생성 하였을 경우 동일하게 되는지 확인 해 보겠습니다.  
+/root 디렉토리에 별도의 인증서 디렉토리를 만들고 아래와 같이 사설 인증서를 생성 합니다.  
+인증서 생성시 /root 디렉토리 아래 만들어 자동적으로 admin_home_t 를 상속 받는것을 확인할수 있습니다.  
+/root 디렉토리의
+[root@centos7 ~]# ls -Z
+-rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 0
+-rw-------. root root system_u:object_r:admin_home_t:s0 anaconda-ks.cfg
+drwxr-xr-x. root root unconfined_u:object_r:admin_home_t:s0 sos
+drwxr-xr-x. root root unconfined_u:object_r:admin_home_t:s0 ssl_config
+drwxr-xr-x. root root unconfined_u:object_r:admin_home_t:s0 webca
+[root@centos7 ~]#
+
+
+[root@centos7 ~]# mkdir /root/webca
+[root@centos7 ~]# openssl genrsa -aes256 -out /root/webca/webca.key 2048
+Generating RSA private key, 2048 bit long modulus
+...................+++
+............+++
+e is 65537 (0x10001)
+Enter pass phrase for /root/webca/webca.key:
+Verifying - Enter pass phrase for /root/webca/webca.key:
+[root@centos7 ~]# ls -Z webca/
+-rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 webca.key
+[root@centos7 ~]#
+~ 중략 
+
+
+# /root 디렉토리와 동일한 context 를 상속 합니다.  
+context 변경 없이 apache 에서 인증서 설정시 정상적으로 동작하는지 확인해 봅니다.  
+[root@centos7 webca]# ls -Z
+-rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 webca.crt
+-rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 webca.csr
+-rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 webca.key
+-rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 webca.srl
+-rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 web.crt
+-rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 web.csr
+-rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 web.key
+[root@centos7 webca]#
+
+
+# httpd 재시작 하였을시 정상적으로 구동 되지 않습니다.  
+23번 라인 확인시 ssl 설정 구문을 확인 할수 있습니다.  
+setenforce 0 으로 selinux 설정을 Permissive 로 변경 하고 httpd 를 재시작 합니다. 
+정상적으로 구동이 됩니다.
+[root@centos7 ~]# systemctl restart httpd
+Job for httpd.service failed because the control process exited with error code. See &#34;systemctl status httpd.service&#34; and &#34;journalctl -xe&#34; for details.
+[root@centos7 ~]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: failed (Result: exit-code) since Fri 2020-04-03 22:49:49 KST; 3s ago                                &lt;-- 구동상태에서 failed 를 확인 할수 있습니다.  
+     Docs: man:httpd(8)
+           man:apachectl(8)
+  Process: 1669 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=1/FAILURE)
+  Process: 1668 ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND (code=exited, status=1/FAILURE)
+ Main PID: 1668 (code=exited, status=1/FAILURE)
+
+Apr 03 22:49:49 centos7 systemd[1]: Starting The Apache HTTP Server...
+Apr 03 22:49:49 centos7 httpd[1668]: AH00526: Syntax error on line 23 of /etc/httpd/conf.d/vhost.conf:         &lt;-- 23번 라인을 확인합니다.  
+Apr 03 22:49:49 centos7 httpd[1668]: SSLCertificateFile: file &#39;/root/webca/web.crt&#39; does not exist or is empty
+Apr 03 22:49:49 centos7 systemd[1]: httpd.service: main process exited, code=exited, status=1/FAILURE
+Apr 03 22:49:49 centos7 kill[1669]: kill: cannot find process &#34;&#34;
+Apr 03 22:49:49 centos7 systemd[1]: httpd.service: control process exited, code=exited status=1
+Apr 03 22:49:49 centos7 systemd[1]: Failed to start The Apache HTTP Server.
+Apr 03 22:49:49 centos7 systemd[1]: Unit httpd.service entered failed state.
+Apr 03 22:49:49 centos7 systemd[1]: httpd.service failed.
+[root@centos7 ~]#
+
+
+
+# setenforce 0 설정후 httpd 재기동  
+[root@centos7 ~]# setenforce 0
+[root@centos7 ~]# systemctl restart httpd
+[root@centos7 ~]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Fri 2020-04-03 22:51:52 KST; 5s ago                                           &lt;--  httpd running 상태를 확인 할수 있습니다.  
+     Docs: man:httpd(8)
+           man:apachectl(8)
+  Process: 1669 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=1/FAILURE)
+ Main PID: 1682 (httpd)
+   Status: &#34;Processing requests...&#34;
+   CGroup: /system.slice/httpd.service
+           ├─1682 /usr/sbin/httpd -DFOREGROUND
+           ├─1683 /usr/sbin/httpd -DFOREGROUND
+           ├─1684 /usr/sbin/httpd -DFOREGROUND
+           ├─1685 /usr/sbin/httpd -DFOREGROUND
+           ├─1686 /usr/sbin/httpd -DFOREGROUND
+           ├─1687 /usr/sbin/httpd -DFOREGROUND
+           ├─1688 /usr/sbin/httpd -DFOREGROUND
+           ├─1689 /usr/sbin/httpd -DFOREGROUND
+           ├─1690 /usr/sbin/httpd -DFOREGROUND
+           ├─1691 /usr/sbin/httpd -DFOREGROUND
+           ├─1692 /usr/sbin/httpd -DFOREGROUND
+           └─1693 /usr/sbin/httpd -DFOREGROUND
+
+Apr 03 22:51:52 centos7 systemd[1]: Starting The Apache HTTP Server...
+Apr 03 22:51:52 centos7 systemd[1]: Started The Apache HTTP Server.
+[root@centos7 ~]#
+
+
+# cert_t 로 context 변경후 httpd 재시작  
+/root/webca 디렉토리에 context 를 설정한 다음 httpd 구동이 정상적으로 되는것을 확인 할수 있습니다.  
+
+[root@centos7 ~]# semanage fcontext -a -t cert_t &#34;/root/webca(/.*)?&#34;
+[root@centos7 ~]# restorecon -RFvv /root/webca
+restorecon reset /root/webca context unconfined_u:object_r:admin_home_t:s0-&gt;system_u:object_r:cert_t:s0
+restorecon reset /root/webca/webca.key context unconfined_u:object_r:admin_home_t:s0-&gt;system_u:object_r:cert_t:s0
+restorecon reset /root/webca/webca.csr context unconfined_u:object_r:admin_home_t:s0-&gt;system_u:object_r:cert_t:s0
+restorecon reset /root/webca/webca.crt context unconfined_u:object_r:admin_home_t:s0-&gt;system_u:object_r:cert_t:s0
+restorecon reset /root/webca/web.key context unconfined_u:object_r:admin_home_t:s0-&gt;system_u:object_r:cert_t:s0
+restorecon reset /root/webca/web.csr context unconfined_u:object_r:admin_home_t:s0-&gt;system_u:object_r:cert_t:s0
+restorecon reset /root/webca/web.crt context unconfined_u:object_r:admin_home_t:s0-&gt;system_u:object_r:cert_t:s0
+restorecon reset /root/webca/webca.srl context unconfined_u:object_r:admin_home_t:s0-&gt;system_u:object_r:cert_t:s0
+[root@centos7 ~]#
+
+
+# httpd 재기동  
+[root@centos7 ~]# systemctl restart httpd
+[root@centos7 ~]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Fri 2020-04-03 22:57:03 KST; 3s ago
+     Docs: man:httpd(8)
+           man:apachectl(8)
+  Process: 1162 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=1/FAILURE)
+ Main PID: 1680 (httpd)
+   Status: &#34;Processing requests...&#34;
+   CGroup: /system.slice/httpd.service
+           ├─1680 /usr/sbin/httpd -DFOREGROUND
+           ├─1681 /usr/sbin/httpd -DFOREGROUND
+           ├─1682 /usr/sbin/httpd -DFOREGROUND
+           ├─1683 /usr/sbin/httpd -DFOREGROUND
+           ├─1684 /usr/sbin/httpd -DFOREGROUND
+           ├─1685 /usr/sbin/httpd -DFOREGROUND
+           ├─1686 /usr/sbin/httpd -DFOREGROUND
+           ├─1687 /usr/sbin/httpd -DFOREGROUND
+           ├─1688 /usr/sbin/httpd -DFOREGROUND
+           ├─1689 /usr/sbin/httpd -DFOREGROUND
+           ├─1690 /usr/sbin/httpd -DFOREGROUND
+           └─1691 /usr/sbin/httpd -DFOREGROUND
+
+Apr 03 22:57:03 centos7 systemd[1]: Starting The Apache HTTP Server...
+Apr 03 22:57:03 centos7 systemd[1]: Started The Apache HTTP Server.
+[root@centos7 ~]#
+</code></pre></div><blockquote><p>ssl 인증서 port 변경에 따른 selinux 테스트<br>http_port 는 80, 81, 443 등은 기본으로 사용 할수 있습니다. semanage port -l 으로 context 에 따른 사용 가능 포트를 확인 할수 있습니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@centos7 ~]# semanage port -l |grep -w http_port_t
+http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000
+[root@centos7 ~]#
+
+ssl.conf Listen 443 에서 8280 / vhost.conf 의 443 에서 8280 로 변경 합니다.  
+
+
+# httpd 재시작  
+[root@centos7 ~]# systemctl restart httpd
+Job for httpd.service failed because the control process exited with error code. See &#34;systemctl status httpd.service&#34; and &#34;journalctl -xe&#34; for details.
+[root@centos7 ~]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: failed (Result: exit-code) since Fri 2020-04-03 23:07:19 KST; 3s ago
+     Docs: man:httpd(8)
+           man:apachectl(8)
+  Process: 2219 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=1/FAILURE)
+  Process: 2218 ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND (code=exited, status=1/FAILURE)
+ Main PID: 2218 (code=exited, status=1/FAILURE)
+
+Apr 03 23:07:19 centos7 httpd[2218]: (13)Permission denied: AH00072: make_sock: could not bind to address [::]:8280
+Apr 03 23:07:19 centos7 httpd[2218]: (13)Permission denied: AH00072: make_sock: could not bind to address 0.0.0.0:8280
+Apr 03 23:07:19 centos7 httpd[2218]: no listening sockets available, shutting down
+Apr 03 23:07:19 centos7 httpd[2218]: AH00015: Unable to open logs
+Apr 03 23:07:19 centos7 systemd[1]: httpd.service: main process exited, code=exited, status=1/FAILURE
+Apr 03 23:07:19 centos7 kill[2219]: kill: cannot find process &#34;&#34;
+Apr 03 23:07:19 centos7 systemd[1]: httpd.service: control process exited, code=exited status=1
+Apr 03 23:07:19 centos7 systemd[1]: Failed to start The Apache HTTP Server.
+Apr 03 23:07:19 centos7 systemd[1]: Unit httpd.service entered failed state.
+Apr 03 23:07:19 centos7 systemd[1]: httpd.service failed.
+[root@centos7 ~]#
+
+
+#selinux port 추가후 재시작  
+정상적으로 httpd 를 시작 할수 있습니다.  
+[root@centos7 ~]# semanage port -a -t http_port_t -p tcp 8280
+[root@centos7 ~]# semanage port -l |grep -w http_port_t
+http_port_t                    tcp      8280, 80, 81, 443, 488, 8008, 8009, 8443, 9000
+[root@centos7 ~]#
+
+[root@centos7 ~]# systemctl start httpd
+[root@centos7 ~]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Fri 2020-04-03 23:09:00 KST; 4s ago
+     Docs: man:httpd(8)
+           man:apachectl(8)
+  Process: 2219 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=1/FAILURE)
+ Main PID: 2240 (httpd)
+   Status: &#34;Processing requests...&#34;
+   CGroup: /system.slice/httpd.service
+           ├─2240 /usr/sbin/httpd -DFOREGROUND
+           ├─2241 /usr/sbin/httpd -DFOREGROUND
+           ├─2246 /usr/sbin/httpd -DFOREGROUND
+           ├─2247 /usr/sbin/httpd -DFOREGROUND
+           ├─2248 /usr/sbin/httpd -DFOREGROUND
+           ├─2249 /usr/sbin/httpd -DFOREGROUND
+           ├─2250 /usr/sbin/httpd -DFOREGROUND
+           ├─2251 /usr/sbin/httpd -DFOREGROUND
+           ├─2252 /usr/sbin/httpd -DFOREGROUND
+           └─2253 /usr/sbin/httpd -DFOREGROUND
+
+Apr 03 23:09:00 centos7 systemd[1]: Starting The Apache HTTP Server...
+Apr 03 23:09:00 centos7 systemd[1]: Started The Apache HTTP Server.
+[root@centos7 ~]#
+
+</code></pre></div><h2 id=nfs-설정>NFS 설정</h2><blockquote><p>selinux01 NFS Server / selinux02 NFS Client<br>NFS context 는 public_content_rw_t 를 사용 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>
+# NFS Server 에서 설정  
+[root@selinux01 ~]# semanage fcontext -a -t public_content_rw_t &#39;/backup(/.*)?&#39;
+[root@selinux01 ~]# restorecon -vvFR /backup
+
+[root@selinux01 ~]# ls -Z / |grep -w backup
+drwxr-xr-x. root root system_u:object_r:public_content_rw_t:s0 backup
+[root@selinux01 ~]#
+
+
+# NFS Server 실행  
+[root@selinux01 ~]# systemctl start nfs-server
+[root@selinux01 ~]# systemctl status nfs-server
+● nfs-server.service - NFS server and services
+   Loaded: loaded (/usr/lib/systemd/system/nfs-server.service; enabled; vendor preset: disabled)
+  Drop-In: /run/systemd/generator/nfs-server.service.d
+           └─order-with-mounts.conf
+   Active: active (exited) since Sat 2020-04-04 00:01:50 KST; 5s ago
+  Process: 2230 ExecStopPost=/usr/sbin/exportfs -f (code=exited, status=0/SUCCESS)
+  Process: 2227 ExecStopPost=/usr/sbin/exportfs -au (code=exited, status=0/SUCCESS)
+  Process: 2226 ExecStop=/usr/sbin/rpc.nfsd 0 (code=exited, status=0/SUCCESS)
+  Process: 2260 ExecStartPost=/bin/sh -c if systemctl -q is-active gssproxy; then systemctl reload gssproxy ; fi (code=exited, status=0/SUCCESS)
+  Process: 2245 ExecStart=/usr/sbin/rpc.nfsd $RPCNFSDARGS (code=exited, status=0/SUCCESS)
+  Process: 2244 ExecStartPre=/usr/sbin/exportfs -r (code=exited, status=0/SUCCESS)
+ Main PID: 2245 (code=exited, status=0/SUCCESS)
+   CGroup: /system.slice/nfs-server.service
+
+Apr 04 00:01:50 selinux01 systemd[1]: Starting NFS server and services...
+Apr 04 00:01:50 selinux01 systemd[1]: Started NFS server and services.
+[root@selinux01 ~]#
+
+
+
+# NFS Client 에서 확인  
+[root@selinux02 ~]# mount -t nfs 192.168.0.10:/backup /data
+[root@selinux02 ~]# ls -Z / |grep -w data
+drwxr-xr-x. root root system_u:object_r:nfs_t:s0       data
+[root@selinux02 ~]#
+
+
+# NFS Client context 확인  
+[root@selinux02 ~]# mount -t nfs 192.168.0.10:/backup /data
+[root@selinux02 ~]# cd /data
+[root@selinux02 data]# ls
+[root@selinux02 data]# touch 1 2
+[root@selinux02 data]# ls -Z
+-rw-r--r--. root root system_u:object_r:nfs_t:s0       1
+-rw-r--r--. root root system_u:object_r:nfs_t:s0       2
+[root@selinux02 data]#
+</code></pre></div><h2 id=samba-설정>SAMBA 설정</h2><blockquote><p>samba config 부분은 생략 하였습니다. samba selinux 설정 부분만을 설명 합니다.<br>selinux01 SAMBA Server / selinux02 SAMBA Client</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight># selinux01 설정 samba context 는 지정 하지 않았습니다.  
+# samba 디렉토리 권한은 777 입니다.  
+[root@selinux01 ~]# systemctl start smb;systemctl start nmb
+[root@selinux01 ~]# ls -Z / |grep -w samba
+drwxrwxrwx. root root unconfined_u:object_r:default_t:s0 samba
+[root@selinux01 ~]# smbclient -L //192.168.0.10/samba -U test
+Enter SAMBA\test&#39;s password:
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        print$          Disk      Printer Drivers
+        samba           Disk      share data
+        IPC$            IPC       IPC Service (Samba 4.9.1)
+        test            Disk      Home Directories
+Reconnecting with SMB1 for workgroup listing.
+
+        Server               Comment
+        ---------            -------
+
+        Workgroup            Master
+        ---------            -------
+        SAMBA                SELINUX01
+[root@selinux01 ~]# #
+
+
+
+# selinux02 ls -Z 확인시 cifs_t context 가 설정 되어 있습니다.  
+selinux01 에서 samba context 를 지정 하지 않아 touch 하여 빈파일을 생성 할수 없습니다.  
+
+[root@selinux02 /]# ls -Z / |grep -w mnt
+drwxr-xr-x. root root system_u:object_r:cifs_t:s0      mnt
+[root@selinux02 /]#
+
+[root@selinux02 ~]# mount -t cifs -o user=test,password=password //192.168.0.10/samba /mnt
+[root@selinux02 ~]# cd /mnt/
+[root@selinux02 mnt]# touch 0
+touch: cannot touch ‘0’: Permission denied
+[root@selinux02 mnt]#
+
+
+# selinux01 samba context 적용후 테스트
+samba context 적용후에는 정상적으로 빈파일을 생성 할수 있습니다.  
+
+[root@selinux01 ~]# semanage fcontext -a -t samba_share_t &#39;/samba(/.*)?&#39;
+[root@selinux01 ~]# restorecon -vvFR /samba
+[root@selinux02 mnt]# touch 0
+[root@selinux02 mnt]# touch 1
+[root@selinux02 mnt]# ls -Z
+-rwxr-xr-x. root root system_u:object_r:cifs_t:s0      0
+-rwxr-xr-x. root root system_u:object_r:cifs_t:s0      1
+[root@selinux02 mnt]#
+</code></pre></div><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1585906001></script><script src=/js/perfect-scrollbar.min.js?1585906001></script><script src=/js/perfect-scrollbar.jquery.min.js?1585906001></script><script src=/js/jquery.sticky.js?1585906001></script><script src=/js/featherlight.min.js?1585906001></script><script src=/js/highlight.pack.js?1585906001></script><script>hljs.initHighlightingOnLoad();</script><script src=/js/modernizr.custom-3.6.0.js?1585906001></script><script src=/js/learn.js?1585906001></script><script src=/js/hugo-learn.js?1585906001></script><link href=/mermaid/mermaid.css?1585906001 rel=stylesheet><script src=/mermaid/mermaid.js?1585906001></script><script>mermaid.initialize({startOnLoad:true});</script></body></html>

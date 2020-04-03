@@ -1,19 +1,19 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.67.0"><meta name=description content="Linux Documentation Project"><link rel=icon href=/images/favicon.png type=image/png><title>RedHat Cluster Suite ::</title><link href=/css/nucleus.css?1584628994 rel=stylesheet><link href=/css/fontawesome-all.min.css?1584628994 rel=stylesheet><link href=/css/hybrid.css?1584628994 rel=stylesheet><link href=/css/featherlight.min.css?1584628994 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1584628994 rel=stylesheet><link href=/css/auto-complete.css?1584628994 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1584628994 rel=stylesheet><link href=/css/theme.css?1584628994 rel=stylesheet><link href=/css/hugo-theme.css?1584628994 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1584628994></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/redhat-enterprise-linux/redhat-cluster-suite/><nav id=sidebar><div id=header-wrapper><div id=header><a id=logo href=https://bksanjuk.github.io/><svg id="grav-logo" style="width:100%;height:100%" viewBox="0 0 504 140" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421"><path d="M235.832 71.564l-7.98-.001c-1.213.001-2.197.987-2.197 2.204v15.327l-.158.132c-4.696 3.962-10.634 6.14-16.719 6.14-14.356.0-26.034-11.68-26.034-26.037.0-14.358 11.678-26.035 26.034-26.035 5.582.0 10.919 1.767 15.437 5.113.877.649 2.093.56 2.866-.211l5.69-5.69c.444-.442.675-1.055.639-1.681-.034-.627-.336-1.206-.828-1.597-6.76-5.363-15.214-8.314-23.805-8.314-21.18.0-38.414 17.233-38.414 38.415.0 21.183 17.234 38.415 38.414 38.415 10.937.0 21.397-4.705 28.698-12.914.358-.403.556-.921.556-1.46v-19.603c0-1.217-.985-2.203-2.2-2.203" style="fill:#000;fill-rule:nonzero"/><path d="M502.794 34.445c-.408-.616-1.1-.989-1.838-.989h-8.684c-.879.0-1.673.522-2.022 1.329l-24.483 56.839-24.92-56.852c-.352-.799-1.142-1.316-2.012-1.316h-8.713c-.744.0-1.44.373-1.843.995-.408.623-.476 1.408-.174 2.09l30.186 68.858c.352.799 1.143 1.317 2.017 1.317h10.992c.879.0 1.673-.527 2.021-1.329l29.655-68.861c.289-.68.222-1.461-.182-2.081" style="fill:#000;fill-rule:nonzero"/><path d="M388.683 34.772c-.353-.798-1.142-1.316-2.017-1.316h-10.988c-.879.0-1.673.522-2.021 1.329l-29.655 68.861c-.294.675-.226 1.46.182 2.077.407.619 1.096.993 1.838.993h8.684c.879.0 1.673-.526 2.022-1.329l24.478-56.842 24.92 56.854c.353.798 1.143 1.317 2.013 1.317h8.717c.744.0 1.44-.374 1.843-.993.408-.624.471-1.41.174-2.094l-30.19-68.857z" style="fill:#000;fill-rule:nonzero"/><path d="M309.196 81.525l.476-.229c8.675-4.191 14.279-13.087 14.279-22.667.0-13.881-11.295-25.174-25.176-25.174h-31.863c-1.214.0-2.199.988-2.199 2.202v68.855c0 1.219.985 2.204 2.199 2.204h7.979c1.214.0 2.2-.985 2.2-2.204V45.833h21.684c7.059.0 12.799 5.739 12.799 12.796.0 5.885-3.996 10.989-9.728 12.408-1.032.261-2.064.393-3.071.393h-7.977c-.829.0-1.585.467-1.959 1.205-.378.74-.305 1.625.187 2.296l22.62 30.884c.412.566 1.07.901 1.771.901h9.915c.827.0 1.587-.467 1.96-1.207.378-.742.302-1.629-.186-2.296l-15.91-21.688z" style="fill:#000;fill-rule:nonzero"/><path d="M107.191 80.969c-7.255-4.794-11.4-8.845-15.011-16.109-2.47 4.977-8.236 12.376-17.962 18.198-4.856 15.106-27.954 44.015-35.43 39.916-2.213-1.212-2.633-2.808-2.133-4.456.536-4.129 9.078-13.62 9.078-13.62s.18 1.992 2.913 6.187c-3.609-11.205 5.965-25.031 8.5-29.738 3.985-1.269 4.274-6.387 4.274-6.387.255-7.909-3.278-13.635-6.701-17.059 2.459 3.002 3.255 7.539 3.372 11.694v.023c.012.469.012.93.011 1.39-.117 3.439-1.157 8.19-3.383 8.19l.006.03c-2.289-.098-5.115.391-7.639 1.18l-5.582 1.334s2.977-.136 4.584 1.252c-1.79 2.915-5.769 6.533-10.206 8.588-6.457 2.995-8.312-2.964-5.034-6.838.805-.946 1.618-1.745 2.387-2.399-.495-.513-.807-1.198-.889-2.068-.001-.005-.004-.009-.005-.013-.45-1.977-.202-4.543 2.596-8.623.551-.863 1.214-1.748 2.007-2.647.025-.031.046-.059.072-.089.034-.042.072-.08.108-.121.02-.023.039-.045.059-.068.2-.228.413-.45.639-.663 3.334-3.414 8.599-6.966 16.897-10.152 9.675-14.223 13.219-16.89 13.219-16.89 1.071-1.096 2.943-2.458 3.632-2.805-5.053-8.781-6.074-21.158-4.75-24.493-.107.18-.206.365-.287.556.49-1.143.819-1.509 1.328-2.111 1.381-1.632 6.058-2.488 7.737.971.895 1.844 1.063 4.232 1.034 6.023-3.704-.193-7.063 4.036-7.063 4.036s3.067-1.448 6.879-1.473c0 0 1.015.883 2.283 2.542-1.712 3.213-4.524 10.021-2.488 17.168.338 1.408.849 2.619 1.483 3.648.024.045.044.089.069.135.051.066.096.122.144.183 3.368 5.072 9.542 5.665 9.542 5.665-2.906-1.45-5.274-3.76-6.816-6.56-.8-1.498-1.291-2.762-1.592-3.761-1.636-6.313.771-9.999 2.149-12.471 3.17-4.917 8.944-7.893 15.151-7.185 8.712.995 14.968 8.862 13.973 17.571-.608 5.321-3.781 9.723-8.142 12.117 1.049 2.839-.073 6.28-.073 6.28 2.642 3.323 2.758 5.238 2.667 7.017-3.357-.565-6.618 1.701-6.618 1.701s6.476-1.546 10.238 1.81c2.446 2.631 4.078 5.009 5.051 6.766 1.393 2.505 7.859 2.683 7.123 7.188-.737 4.499-5.669 4.542-13.401-.56M69.571.0C31.147.0.0 31.148.0 69.567c0 38.422 31.147 69.573 69.571 69.573 38.42.0 69.568-31.151 69.568-69.573.0-38.42-31.148-69.567-69.568-69.567" style="fill:#000;fill-rule:nonzero"/><path d="M73.796 51.693c.813-.814.813-2.134.0-2.947-.815-.814-2.133-.814-2.947.0-.815.813-.815 2.133.0 2.947.814.813 2.132.813 2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M66.445 53.149c-.814.813-.814 2.133.0 2.947.813.814 2.133.814 2.947.0.813-.814.813-2.134.0-2.947-.814-.813-2.134-.813-2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M79.231 54.233c-1.274-1.274-3.339-1.272-4.611.0l-2.713 2.712c-1.274 1.275-1.274 3.339.0 4.612l2.978 2.978c1.274 1.275 3.338 1.274 4.611.0l2.712-2.712c1.274-1.274 1.274-3.339.0-4.612l-2.977-2.978z" style="fill:#000;fill-rule:nonzero"/><path d="M95.759 41.445c-2.151-2.578 1.869-7.257 4.391-4.463 4.645 5.148-2.237 7.041-4.391 4.463M105.004 44.132c3.442-6.553-1.427-10.381-4.773-13.523-5.36-5.039-10.706-7.217-16.811-.241-6.102 6.977-2.226 15.068 3.356 19.061 5.584 3.994 14.782 1.255 18.228-5.297" style="fill:#000;fill-rule:nonzero"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label><input data-search-input id=search-by type=search placeholder=Search...>
-<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1584628994></script><script type=text/javascript src=/js/auto-complete.js?1584628994></script><script type=text/javascript>var baseurl="https:\/\/bksanjuk.github.io\/";</script><script type=text/javascript src=/js/search.js?1584628994></script></div><div class=highlightable><ul class=topics><li data-nav-id=/overview/ title=Overview class=dd-item><a href=/overview/><b>1. </b>Overview</a></li><li data-nav-id=/linux/ title=Linux class=dd-item><a href=/linux/><b>2. </b>Linux</a><ul><li data-nav-id=/linux/linux-booting-process/ title="Linux Booting Process" class=dd-item><a href=/linux/linux-booting-process/>Linux Booting Process</a></li><li data-nav-id=/linux/file-system/ title="File System" class=dd-item><a href=/linux/file-system/>File System</a></li><li data-nav-id=/linux/systemd/ title=Systemd class=dd-item><a href=/linux/systemd/>Systemd</a></li><li data-nav-id=/linux/iptables/ title=IPTABLES class=dd-item><a href=/linux/iptables/>IPTABLES</a></li><li data-nav-id=/linux/selinux/ title=SELINUX class=dd-item><a href=/linux/selinux/>SELINUX</a></li></ul></li><li data-nav-id=/centos/ title=Centos class=dd-item><a href=/centos/><b>3. </b>Centos</a><ul><li data-nav-id=/centos/kernel-version-info/ title="Kernel Version Info" class=dd-item><a href=/centos/kernel-version-info/>Kernel Version Info</a></li><li data-nav-id=/centos/install/ title=Install class=dd-item><a href=/centos/install/>Install</a></li><li data-nav-id=/centos/hostname/ title=Hostname class=dd-item><a href=/centos/hostname/>Hostname</a></li><li data-nav-id=/centos/locale/ title=Locale class=dd-item><a href=/centos/locale/>Locale</a></li><li data-nav-id=/centos/time-zone/ title="Time Zone" class=dd-item><a href=/centos/time-zone/>Time Zone</a></li><li data-nav-id=/centos/network/ title=Network class=dd-item><a href=/centos/network/>Network</a></li><li data-nav-id=/centos/yum/ title=YUM class=dd-item><a href=/centos/yum/>YUM</a></li><li data-nav-id=/centos/rpm/ title=RPM class=dd-item><a href=/centos/rpm/>RPM</a></li><li data-nav-id=/centos/ntp/ title=NTP class=dd-item><a href=/centos/ntp/>NTP</a></li><li data-nav-id=/centos/reset-root-password/ title="Reset Root Password" class=dd-item><a href=/centos/reset-root-password/>Reset Root Password</a></li><li data-nav-id=/centos/rescue-mode/ title="Rescue Mode" class=dd-item><a href=/centos/rescue-mode/>Rescue Mode</a></li><li data-nav-id=/centos/mainternance-mode/ title="Mainternance Mode" class=dd-item><a href=/centos/mainternance-mode/>Mainternance Mode</a></li><li data-nav-id=/centos/firewalld/ title=Firewalld class=dd-item><a href=/centos/firewalld/>Firewalld</a></li><li data-nav-id=/centos/iscsi/ title=ISCSI class=dd-item><a href=/centos/iscsi/>ISCSI</a></li><li data-nav-id=/centos/multipath/ title=Multipath class=dd-item><a href=/centos/multipath/>Multipath</a></li><li data-nav-id=/centos/ftp/ title=FTP class=dd-item><a href=/centos/ftp/>FTP</a></li><li data-nav-id=/centos/postfix/ title=Postfix class=dd-item><a href=/centos/postfix/>Postfix</a></li><li data-nav-id=/centos/samba/ title=Samba class=dd-item><a href=/centos/samba/>Samba</a></li><li data-nav-id=/centos/software-raid/ title="Software RAID" class=dd-item><a href=/centos/software-raid/>Software RAID</a></li><li data-nav-id=/centos/vnc/ title=VNC class=dd-item><a href=/centos/vnc/>VNC</a></li><li data-nav-id=/centos/nfs/ title=NFS class=dd-item><a href=/centos/nfs/>NFS</a></li><li data-nav-id=/centos/dns/ title=DNS class=dd-item><a href=/centos/dns/>DNS</a></li><li data-nav-id=/centos/lamp-stack/ title="LAMP Stack" class=dd-item><a href=/centos/lamp-stack/>LAMP Stack</a></li><li data-nav-id=/centos/lemp-stack/ title="LEMP Stack" class=dd-item><a href=/centos/lemp-stack/>LEMP Stack</a></li></ul></li><li data-nav-id=/redhat-enterprise-linux/ title="RedHat Enterprise Linux" class="dd-item
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.67.0"><meta name=description content="Linux Documentation Project"><link rel=icon href=/images/favicon.png type=image/png><title>RedHat Cluster Suite ::</title><link href=/css/nucleus.css?1585906001 rel=stylesheet><link href=/css/fontawesome-all.min.css?1585906001 rel=stylesheet><link href=/css/hybrid.css?1585906001 rel=stylesheet><link href=/css/featherlight.min.css?1585906001 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1585906001 rel=stylesheet><link href=/css/auto-complete.css?1585906001 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1585906001 rel=stylesheet><link href=/css/theme.css?1585906001 rel=stylesheet><link href=/css/hugo-theme.css?1585906001 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1585906001></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/redhat-enterprise-linux/redhat-cluster-suite/><nav id=sidebar><div id=header-wrapper><div id=header><a id=logo href=https://docs.crois.net/><svg id="grav-logo" style="width:100%;height:100%" viewBox="0 0 504 140" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421"><path d="M235.832 71.564l-7.98-.001c-1.213.001-2.197.987-2.197 2.204v15.327l-.158.132c-4.696 3.962-10.634 6.14-16.719 6.14-14.356.0-26.034-11.68-26.034-26.037.0-14.358 11.678-26.035 26.034-26.035 5.582.0 10.919 1.767 15.437 5.113.877.649 2.093.56 2.866-.211l5.69-5.69c.444-.442.675-1.055.639-1.681-.034-.627-.336-1.206-.828-1.597-6.76-5.363-15.214-8.314-23.805-8.314-21.18.0-38.414 17.233-38.414 38.415.0 21.183 17.234 38.415 38.414 38.415 10.937.0 21.397-4.705 28.698-12.914.358-.403.556-.921.556-1.46v-19.603c0-1.217-.985-2.203-2.2-2.203" style="fill:#000;fill-rule:nonzero"/><path d="M502.794 34.445c-.408-.616-1.1-.989-1.838-.989h-8.684c-.879.0-1.673.522-2.022 1.329l-24.483 56.839-24.92-56.852c-.352-.799-1.142-1.316-2.012-1.316h-8.713c-.744.0-1.44.373-1.843.995-.408.623-.476 1.408-.174 2.09l30.186 68.858c.352.799 1.143 1.317 2.017 1.317h10.992c.879.0 1.673-.527 2.021-1.329l29.655-68.861c.289-.68.222-1.461-.182-2.081" style="fill:#000;fill-rule:nonzero"/><path d="M388.683 34.772c-.353-.798-1.142-1.316-2.017-1.316h-10.988c-.879.0-1.673.522-2.021 1.329l-29.655 68.861c-.294.675-.226 1.46.182 2.077.407.619 1.096.993 1.838.993h8.684c.879.0 1.673-.526 2.022-1.329l24.478-56.842 24.92 56.854c.353.798 1.143 1.317 2.013 1.317h8.717c.744.0 1.44-.374 1.843-.993.408-.624.471-1.41.174-2.094l-30.19-68.857z" style="fill:#000;fill-rule:nonzero"/><path d="M309.196 81.525l.476-.229c8.675-4.191 14.279-13.087 14.279-22.667.0-13.881-11.295-25.174-25.176-25.174h-31.863c-1.214.0-2.199.988-2.199 2.202v68.855c0 1.219.985 2.204 2.199 2.204h7.979c1.214.0 2.2-.985 2.2-2.204V45.833h21.684c7.059.0 12.799 5.739 12.799 12.796.0 5.885-3.996 10.989-9.728 12.408-1.032.261-2.064.393-3.071.393h-7.977c-.829.0-1.585.467-1.959 1.205-.378.74-.305 1.625.187 2.296l22.62 30.884c.412.566 1.07.901 1.771.901h9.915c.827.0 1.587-.467 1.96-1.207.378-.742.302-1.629-.186-2.296l-15.91-21.688z" style="fill:#000;fill-rule:nonzero"/><path d="M107.191 80.969c-7.255-4.794-11.4-8.845-15.011-16.109-2.47 4.977-8.236 12.376-17.962 18.198-4.856 15.106-27.954 44.015-35.43 39.916-2.213-1.212-2.633-2.808-2.133-4.456.536-4.129 9.078-13.62 9.078-13.62s.18 1.992 2.913 6.187c-3.609-11.205 5.965-25.031 8.5-29.738 3.985-1.269 4.274-6.387 4.274-6.387.255-7.909-3.278-13.635-6.701-17.059 2.459 3.002 3.255 7.539 3.372 11.694v.023c.012.469.012.93.011 1.39-.117 3.439-1.157 8.19-3.383 8.19l.006.03c-2.289-.098-5.115.391-7.639 1.18l-5.582 1.334s2.977-.136 4.584 1.252c-1.79 2.915-5.769 6.533-10.206 8.588-6.457 2.995-8.312-2.964-5.034-6.838.805-.946 1.618-1.745 2.387-2.399-.495-.513-.807-1.198-.889-2.068-.001-.005-.004-.009-.005-.013-.45-1.977-.202-4.543 2.596-8.623.551-.863 1.214-1.748 2.007-2.647.025-.031.046-.059.072-.089.034-.042.072-.08.108-.121.02-.023.039-.045.059-.068.2-.228.413-.45.639-.663 3.334-3.414 8.599-6.966 16.897-10.152 9.675-14.223 13.219-16.89 13.219-16.89 1.071-1.096 2.943-2.458 3.632-2.805-5.053-8.781-6.074-21.158-4.75-24.493-.107.18-.206.365-.287.556.49-1.143.819-1.509 1.328-2.111 1.381-1.632 6.058-2.488 7.737.971.895 1.844 1.063 4.232 1.034 6.023-3.704-.193-7.063 4.036-7.063 4.036s3.067-1.448 6.879-1.473c0 0 1.015.883 2.283 2.542-1.712 3.213-4.524 10.021-2.488 17.168.338 1.408.849 2.619 1.483 3.648.024.045.044.089.069.135.051.066.096.122.144.183 3.368 5.072 9.542 5.665 9.542 5.665-2.906-1.45-5.274-3.76-6.816-6.56-.8-1.498-1.291-2.762-1.592-3.761-1.636-6.313.771-9.999 2.149-12.471 3.17-4.917 8.944-7.893 15.151-7.185 8.712.995 14.968 8.862 13.973 17.571-.608 5.321-3.781 9.723-8.142 12.117 1.049 2.839-.073 6.28-.073 6.28 2.642 3.323 2.758 5.238 2.667 7.017-3.357-.565-6.618 1.701-6.618 1.701s6.476-1.546 10.238 1.81c2.446 2.631 4.078 5.009 5.051 6.766 1.393 2.505 7.859 2.683 7.123 7.188-.737 4.499-5.669 4.542-13.401-.56M69.571.0C31.147.0.0 31.148.0 69.567c0 38.422 31.147 69.573 69.571 69.573 38.42.0 69.568-31.151 69.568-69.573.0-38.42-31.148-69.567-69.568-69.567" style="fill:#000;fill-rule:nonzero"/><path d="M73.796 51.693c.813-.814.813-2.134.0-2.947-.815-.814-2.133-.814-2.947.0-.815.813-.815 2.133.0 2.947.814.813 2.132.813 2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M66.445 53.149c-.814.813-.814 2.133.0 2.947.813.814 2.133.814 2.947.0.813-.814.813-2.134.0-2.947-.814-.813-2.134-.813-2.947.0" style="fill:#000;fill-rule:nonzero"/><path d="M79.231 54.233c-1.274-1.274-3.339-1.272-4.611.0l-2.713 2.712c-1.274 1.275-1.274 3.339.0 4.612l2.978 2.978c1.274 1.275 3.338 1.274 4.611.0l2.712-2.712c1.274-1.274 1.274-3.339.0-4.612l-2.977-2.978z" style="fill:#000;fill-rule:nonzero"/><path d="M95.759 41.445c-2.151-2.578 1.869-7.257 4.391-4.463 4.645 5.148-2.237 7.041-4.391 4.463M105.004 44.132c3.442-6.553-1.427-10.381-4.773-13.523-5.36-5.039-10.706-7.217-16.811-.241-6.102 6.977-2.226 15.068 3.356 19.061 5.584 3.994 14.782 1.255 18.228-5.297" style="fill:#000;fill-rule:nonzero"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label><input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1585906001></script><script type=text/javascript src=/js/auto-complete.js?1585906001></script><script type=text/javascript>var baseurl="https:\/\/docs.crois.net\/";</script><script type=text/javascript src=/js/search.js?1585906001></script></div><div class=highlightable><ul class=topics><li data-nav-id=/overview/ title=Overview class=dd-item><a href=/overview/><b>1. </b>Overview</a></li><li data-nav-id=/linux/ title=Linux class=dd-item><a href=/linux/><b>2. </b>Linux</a><ul><li data-nav-id=/linux/linux-booting-process/ title="Linux Booting Process" class=dd-item><a href=/linux/linux-booting-process/>Linux Booting Process</a></li><li data-nav-id=/linux/file-system/ title="File System" class=dd-item><a href=/linux/file-system/>File System</a></li><li data-nav-id=/linux/linux-directory/ title="Linux Directory" class=dd-item><a href=/linux/linux-directory/>Linux Directory</a></li><li data-nav-id=/linux/basic-linux-command/ title="Basic Linux Command" class=dd-item><a href=/linux/basic-linux-command/>Basic Linux Command</a></li><li data-nav-id=/linux/systemd/ title=Systemd class=dd-item><a href=/linux/systemd/>Systemd</a></li><li data-nav-id=/linux/iptables/ title=IPTABLES class=dd-item><a href=/linux/iptables/>IPTABLES</a></li><li data-nav-id=/linux/selinux/ title=SELINUX class=dd-item><a href=/linux/selinux/>SELINUX</a></li></ul></li><li data-nav-id=/centos/ title=Centos class=dd-item><a href=/centos/><b>3. </b>Centos</a><ul><li data-nav-id=/centos/kernel-version-info/ title="Kernel Version Info" class=dd-item><a href=/centos/kernel-version-info/>Kernel Version Info</a></li><li data-nav-id=/centos/install/ title=Install class=dd-item><a href=/centos/install/>Install</a></li><li data-nav-id=/centos/hostname/ title=Hostname class=dd-item><a href=/centos/hostname/>Hostname</a></li><li data-nav-id=/centos/locale/ title=Locale class=dd-item><a href=/centos/locale/>Locale</a></li><li data-nav-id=/centos/time-zone/ title="Time Zone" class=dd-item><a href=/centos/time-zone/>Time Zone</a></li><li data-nav-id=/centos/network/ title=Network class=dd-item><a href=/centos/network/>Network</a></li><li data-nav-id=/centos/yum/ title=YUM class=dd-item><a href=/centos/yum/>YUM</a></li><li data-nav-id=/centos/rpm/ title=RPM class=dd-item><a href=/centos/rpm/>RPM</a></li><li data-nav-id=/centos/ntp/ title=NTP class=dd-item><a href=/centos/ntp/>NTP</a></li><li data-nav-id=/centos/reset-root-password/ title="Reset Root Password" class=dd-item><a href=/centos/reset-root-password/>Reset Root Password</a></li><li data-nav-id=/centos/rescue-mode/ title="Rescue Mode" class=dd-item><a href=/centos/rescue-mode/>Rescue Mode</a></li><li data-nav-id=/centos/mainternance-mode/ title="Mainternance Mode" class=dd-item><a href=/centos/mainternance-mode/>Mainternance Mode</a></li><li data-nav-id=/centos/firewalld/ title=Firewalld class=dd-item><a href=/centos/firewalld/>Firewalld</a></li><li data-nav-id=/centos/iscsi/ title=ISCSI class=dd-item><a href=/centos/iscsi/>ISCSI</a></li><li data-nav-id=/centos/multipath/ title=Multipath class=dd-item><a href=/centos/multipath/>Multipath</a></li><li data-nav-id=/centos/ftp/ title=FTP class=dd-item><a href=/centos/ftp/>FTP</a></li><li data-nav-id=/centos/postfix/ title=Postfix class=dd-item><a href=/centos/postfix/>Postfix</a></li><li data-nav-id=/centos/samba/ title=Samba class=dd-item><a href=/centos/samba/>Samba</a></li><li data-nav-id=/centos/software-raid/ title="Software RAID" class=dd-item><a href=/centos/software-raid/>Software RAID</a></li><li data-nav-id=/centos/vnc/ title=VNC class=dd-item><a href=/centos/vnc/>VNC</a></li><li data-nav-id=/centos/nfs/ title=NFS class=dd-item><a href=/centos/nfs/>NFS</a></li><li data-nav-id=/centos/dns/ title=DNS class=dd-item><a href=/centos/dns/>DNS</a></li><li data-nav-id=/centos/lamp-stack/ title="LAMP Stack" class=dd-item><a href=/centos/lamp-stack/>LAMP Stack</a></li><li data-nav-id=/centos/lemp-stack/ title="LEMP Stack" class=dd-item><a href=/centos/lemp-stack/>LEMP Stack</a></li></ul></li><li data-nav-id=/redhat-enterprise-linux/ title="RedHat Enterprise Linux" class="dd-item
 parent"><a href=/redhat-enterprise-linux/><b>4. </b>RedHat Enterprise Linux</a><ul><li data-nav-id=/redhat-enterprise-linux/redhat-cluster-suite/ title="RedHat Cluster Suite" class="dd-item
 parent
-active"><a href=/redhat-enterprise-linux/redhat-cluster-suite/>RedHat Cluster Suite</a></li></ul></li><li data-nav-id=/ubuntu/ title=Ubuntu class=dd-item><a href=/ubuntu/><b>5. </b>Ubuntu</a><ul><li data-nav-id=/ubuntu/install/ title=Install class=dd-item><a href=/ubuntu/install/>Install</a></li><li data-nav-id=/ubuntu/system-upgrade/ title="System Upgrade" class=dd-item><a href=/ubuntu/system-upgrade/>System Upgrade</a></li><li data-nav-id=/ubuntu/hostname/ title=Hostname class=dd-item><a href=/ubuntu/hostname/>Hostname</a></li><li data-nav-id=/ubuntu/locale/ title=Locale class=dd-item><a href=/ubuntu/locale/>Locale</a></li><li data-nav-id=/ubuntu/repository/ title=Repository class=dd-item><a href=/ubuntu/repository/>Repository</a></li><li data-nav-id=/ubuntu/network/ title=Network class=dd-item><a href=/ubuntu/network/>Network</a></li><li data-nav-id=/ubuntu/apt-command/ title="Apt Command" class=dd-item><a href=/ubuntu/apt-command/>Apt Command</a></li><li data-nav-id=/ubuntu/x-windows/ title="X Windows" class=dd-item><a href=/ubuntu/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/freebsd/ title=Freebsd class=dd-item><a href=/freebsd/><b>6. </b>Freebsd</a><ul><li data-nav-id=/freebsd/install/ title=Install class=dd-item><a href=/freebsd/install/>Install</a></li><li data-nav-id=/freebsd/hostname/ title=Hostname class=dd-item><a href=/freebsd/hostname/>Hostname</a></li><li data-nav-id=/freebsd/network/ title=Network class=dd-item><a href=/freebsd/network/>Network</a></li><li data-nav-id=/freebsd/ports/ title=Ports class=dd-item><a href=/freebsd/ports/>Ports</a></li><li data-nav-id=/freebsd/user-management/ title="User Management" class=dd-item><a href=/freebsd/user-management/>User Management</a></li><li data-nav-id=/freebsd/disk-management/ title="Disk Management" class=dd-item><a href=/freebsd/disk-management/>Disk Management</a></li><li data-nav-id=/freebsd/x-windows/ title="X Windows" class=dd-item><a href=/freebsd/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/docker/ title=Docker class=dd-item><a href=/docker/><b>7. </b>Docker</a><ul><li data-nav-id=/docker/install/ title=Install class=dd-item><a href=/docker/install/>Install</a></li><li data-nav-id=/docker/remove-all-containers/ title="Remove All Containers" class=dd-item><a href=/docker/remove-all-containers/>Remove All Containers</a></li><li data-nav-id=/docker/docker-tutorial/ title="Docker Tutorial" class=dd-item><a href=/docker/docker-tutorial/>Docker Tutorial</a></li><li data-nav-id=/docker/docker-command/ title="Docker Command" class=dd-item><a href=/docker/docker-command/>Docker Command</a></li><li data-nav-id=/docker/dockerfile/ title=Dockerfile class=dd-item><a href=/docker/dockerfile/>Dockerfile</a></li><li data-nav-id=/docker/dockerfile-use-ssh-server/ title="Dockerfile Use SSH Server" class=dd-item><a href=/docker/dockerfile-use-ssh-server/>Dockerfile Use SSH Server</a></li><li data-nav-id=/docker/docker-compose/ title="Docker Compose" class=dd-item><a href=/docker/docker-compose/>Docker Compose</a></li><li data-nav-id=/docker/docker-volumes/ title="Docker Volumes" class=dd-item><a href=/docker/docker-volumes/>Docker Volumes</a></li><li data-nav-id=/docker/docker-machine/ title="Docker Machine" class=dd-item><a href=/docker/docker-machine/>Docker Machine</a></li><li data-nav-id=/docker/docker-swarm/ title="Docker Swarm" class=dd-item><a href=/docker/docker-swarm/>Docker Swarm</a></li><li data-nav-id=/docker/docker-swarm-nfs-volume/ title="Docker Swarm NFS Volume" class=dd-item><a href=/docker/docker-swarm-nfs-volume/>Docker Swarm NFS Volume</a></li></ul></li><li data-nav-id=/kubernetes/ title=Kubernetes class=dd-item><a href=/kubernetes/><b>8. </b>Kubernetes</a><ul><li data-nav-id=/kubernetes/install/ title=Install class=dd-item><a href=/kubernetes/install/>Install</a></li></ul></li></ul><section id=footer><p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a>from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span><span class=links>RedHat Cluster Suite</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#os-설정>OS 설정</a></li><li><a href=#패키지-설치>패키지 설치</a></li><li><a href=#클러스터-생성>클러스터 생성</a></li><li><a href=#pcs-cluster-를-실행>pcs cluster 를 실행</a></li><li><a href=#fence-device-설정>Fence Device 설정</a></li><li><a href=#resource-설정>Resource 설정</a></li><li><a href=#fencing-test>fencing test</a></li><li><a href=#ha-lvm>HA-LVM</a></li><li><a href=#lvm2-패키지-설치>lvm2 패키지 설치</a></li><li><a href=#halvm-구성>HALVM 구성</a></li><li><a href=#httpd-resource-추가>httpd Resource 추가</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>RedHat Cluster Suite</h1><div class="notices warning"><p>작성중인 문서 입니다.<br>KVM 내용은 차후 작성할 예정 입니다.</p></div><blockquote><p>2019-05-21-vmware-fence-rhcs-install.md<br>본 문서는 vmware ESXi 5.5 와 vcenter 로 테스트 하였습니다.<br>OS Version 은 rhel 7.6 입니다.<br>pcmk_reboot_action fence option 사용시 vmware 에서는 정상적으로 작동하지 않습니다.</p></blockquote><h2 id=os-설정>OS 설정</h2><blockquote><p>방화벽 및 selinux 를 disable 합니다.<br>ha-node01 , ha-node02 에서 작업</p></blockquote><pre><code># systemctl disable firewalld
+active"><a href=/redhat-enterprise-linux/redhat-cluster-suite/>RedHat Cluster Suite</a></li></ul></li><li data-nav-id=/ubuntu/ title=Ubuntu class=dd-item><a href=/ubuntu/><b>5. </b>Ubuntu</a><ul><li data-nav-id=/ubuntu/install/ title=Install class=dd-item><a href=/ubuntu/install/>Install</a></li><li data-nav-id=/ubuntu/system-upgrade/ title="System Upgrade" class=dd-item><a href=/ubuntu/system-upgrade/>System Upgrade</a></li><li data-nav-id=/ubuntu/hostname/ title=Hostname class=dd-item><a href=/ubuntu/hostname/>Hostname</a></li><li data-nav-id=/ubuntu/locale/ title=Locale class=dd-item><a href=/ubuntu/locale/>Locale</a></li><li data-nav-id=/ubuntu/repository/ title=Repository class=dd-item><a href=/ubuntu/repository/>Repository</a></li><li data-nav-id=/ubuntu/network/ title=Network class=dd-item><a href=/ubuntu/network/>Network</a></li><li data-nav-id=/ubuntu/apt-command/ title="Apt Command" class=dd-item><a href=/ubuntu/apt-command/>Apt Command</a></li><li data-nav-id=/ubuntu/x-windows/ title="X Windows" class=dd-item><a href=/ubuntu/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/freebsd/ title=Freebsd class=dd-item><a href=/freebsd/><b>6. </b>Freebsd</a><ul><li data-nav-id=/freebsd/install/ title=Install class=dd-item><a href=/freebsd/install/>Install</a></li><li data-nav-id=/freebsd/hostname/ title=Hostname class=dd-item><a href=/freebsd/hostname/>Hostname</a></li><li data-nav-id=/freebsd/network/ title=Network class=dd-item><a href=/freebsd/network/>Network</a></li><li data-nav-id=/freebsd/ports/ title=Ports class=dd-item><a href=/freebsd/ports/>Ports</a></li><li data-nav-id=/freebsd/user-management/ title="User Management" class=dd-item><a href=/freebsd/user-management/>User Management</a></li><li data-nav-id=/freebsd/disk-management/ title="Disk Management" class=dd-item><a href=/freebsd/disk-management/>Disk Management</a></li><li data-nav-id=/freebsd/x-windows/ title="X Windows" class=dd-item><a href=/freebsd/x-windows/>X Windows</a></li></ul></li><li data-nav-id=/docker/ title=Docker class=dd-item><a href=/docker/><b>7. </b>Docker</a><ul><li data-nav-id=/docker/install/ title=Install class=dd-item><a href=/docker/install/>Install</a></li><li data-nav-id=/docker/remove-all-containers/ title="Remove All Containers" class=dd-item><a href=/docker/remove-all-containers/>Remove All Containers</a></li><li data-nav-id=/docker/docker-tutorial/ title="Docker Tutorial" class=dd-item><a href=/docker/docker-tutorial/>Docker Tutorial</a></li><li data-nav-id=/docker/docker-command/ title="Docker Command" class=dd-item><a href=/docker/docker-command/>Docker Command</a></li><li data-nav-id=/docker/dockerfile/ title=Dockerfile class=dd-item><a href=/docker/dockerfile/>Dockerfile</a></li><li data-nav-id=/docker/dockerfile-use-ssh-server/ title="Dockerfile Use SSH Server" class=dd-item><a href=/docker/dockerfile-use-ssh-server/>Dockerfile Use SSH Server</a></li><li data-nav-id=/docker/docker-compose/ title="Docker Compose" class=dd-item><a href=/docker/docker-compose/>Docker Compose</a></li><li data-nav-id=/docker/docker-volumes/ title="Docker Volumes" class=dd-item><a href=/docker/docker-volumes/>Docker Volumes</a></li><li data-nav-id=/docker/docker-machine/ title="Docker Machine" class=dd-item><a href=/docker/docker-machine/>Docker Machine</a></li><li data-nav-id=/docker/docker-swarm/ title="Docker Swarm" class=dd-item><a href=/docker/docker-swarm/>Docker Swarm</a></li></ul></li><li data-nav-id=/kubernetes/ title=Kubernetes class=dd-item><a href=/kubernetes/><b>8. </b>Kubernetes</a><ul><li data-nav-id=/kubernetes/install/ title=Install class=dd-item><a href=/kubernetes/install/>Install</a></li></ul></li></ul><section id=footer><p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a>from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span><span class=links>RedHat Cluster Suite</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#os-설정>OS 설정</a></li><li><a href=#패키지-설치>패키지 설치</a></li><li><a href=#클러스터-생성>클러스터 생성</a></li><li><a href=#pcs-cluster-를-실행>pcs cluster 를 실행</a></li><li><a href=#fence-device-설정>Fence Device 설정</a></li><li><a href=#resource-설정>Resource 설정</a></li><li><a href=#fencing-test>fencing test</a></li><li><a href=#ha-lvm>HA-LVM</a></li><li><a href=#lvm2-패키지-설치>lvm2 패키지 설치</a></li><li><a href=#halvm-구성>HALVM 구성</a></li><li><a href=#httpd-resource-추가>httpd Resource 추가</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>RedHat Cluster Suite</h1><div class="notices warning"><p>작성중인 문서 입니다.<br>KVM 내용은 차후 작성할 예정 입니다.</p></div><blockquote><p>2019-05-21-vmware-fence-rhcs-install.md<br>본 문서는 vmware ESXi 5.5 와 vcenter 로 테스트 하였습니다.<br>OS Version 은 rhel 7.6 입니다.<br>pcmk_reboot_action fence option 사용시 vmware 에서는 정상적으로 작동하지 않습니다.</p></blockquote><h2 id=os-설정>OS 설정</h2><blockquote><p>방화벽 및 selinux 를 disable 합니다.<br>ha-node01 , ha-node02 에서 작업</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight># systemctl disable firewalld
 
 
-# echo 'GRUB_CMDLINE_LINUX=&quot;net.ifnames=0&quot;' &gt;&gt;/etc/default/grub
+# echo &#39;GRUB_CMDLINE_LINUX=&#34;net.ifnames=0&#34;&#39; &gt;&gt;/etc/default/grub
 # grub2-mkconfig -o /boot/grub2/grub.cfg
-</code></pre><blockquote><p>hosts 파일 설정<br>ha-node01 , ha-node02 에서 작업</p></blockquote><pre><code>[root@ha-node01 ~]# cat /etc/hosts
+</code></pre></div><blockquote><p>hosts 파일 설정<br>ha-node01 , ha-node02 에서 작업</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# cat /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 10.10.10.32     ha-node01
 10.10.10.33     ha-node02
-</code></pre><blockquote><p>iso.repo 파일 생성<br>ha-node01 , ha-node02 에서 작업</p></blockquote><pre><code>[root@ha-node01 ~]# vi /etc/yum.repos.d/iso.repo
+</code></pre></div><blockquote><p>iso.repo 파일 생성<br>ha-node01 , ha-node02 에서 작업</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# vi /etc/yum.repos.d/iso.repo
 
 [iso]
 name=iso
@@ -29,7 +29,7 @@ gpgcheck=0
 name=RS
 baseurl=file:///mnt/addons/ResilientStorage
 gpgcheck=0
-</code></pre><blockquote><p>network 설정</p></blockquote><pre><code>[root@ha-node01 ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0
+</code></pre></div><blockquote><p>network 설정</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0
 
 TYPE=Ethernet
 BOOTPROTO=none
@@ -45,7 +45,7 @@ DEVICE=eth0
 ONBOOT=yes
 IPADDR=10.10.10.33
 NETMASK=255.255.255.0
-</code></pre><h2 id=패키지-설치>패키지 설치</h2><blockquote><p>High-availability 패키지 설치</p></blockquote><pre><code>[root@ha-node01 ~]# yum install -y pcs fence-agents-all
+</code></pre></div><h2 id=패키지-설치>패키지 설치</h2><blockquote><p>High-availability 패키지 설치</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# yum install -y pcs fence-agents-all
 [root@ha-node02 ~]# yum install -y pcs fence-agents-all
 
 
@@ -60,23 +60,23 @@ ha-node01 , ha-node02 에 동일하게 설정 합니다.
 
 [root@ha-node01 ~]# systemctl enable pcsd
 [root@ha-node01 ~]# systemctl start pcsd
-</code></pre><blockquote><p>ha-node01 에서만 인증을 실행 합니다.</p></blockquote><pre><code>root@ha-node01 ~]# pcs cluster auth ha-node01 ha-node02
+</code></pre></div><blockquote><p>ha-node01 에서만 인증을 실행 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>root@ha-node01 ~]# pcs cluster auth ha-node01 ha-node02
 Username: hacluster
 Password:
 ha-node02: Authorized
 ha-node01: Authorized
 [root@ha-node01 ~]#
 
-</code></pre><h2 id=클러스터-생성>클러스터 생성</h2><blockquote><p>클러스터를 만들고 노드를 추가한후 Cluster 서비스를 시작 합니다.<br>ha-node01 에서만 실행</p></blockquote><pre><code>[root@ha-node01 ~]# pcs cluster setup --name ha-scv ha-node01 ha-node02
+</code></pre></div><h2 id=클러스터-생성>클러스터 생성</h2><blockquote><p>클러스터를 만들고 노드를 추가한후 Cluster 서비스를 시작 합니다.<br>ha-node01 에서만 실행</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs cluster setup --name ha-scv ha-node01 ha-node02
 Destroying cluster on nodes: ha-node01, ha-node02...
 ha-node02: Stopping Cluster (pacemaker)...
 ha-node01: Stopping Cluster (pacemaker)...
 ha-node02: Successfully destroyed cluster
 ha-node01: Successfully destroyed cluster
 
-Sending 'pacemaker_remote authkey' to 'ha-node01', 'ha-node02'
-ha-node01: successful distribution of the file 'pacemaker_remote authkey'
-ha-node02: successful distribution of the file 'pacemaker_remote authkey'
+Sending &#39;pacemaker_remote authkey&#39; to &#39;ha-node01&#39;, &#39;ha-node02&#39;
+ha-node01: successful distribution of the file &#39;pacemaker_remote authkey&#39;
+ha-node02: successful distribution of the file &#39;pacemaker_remote authkey&#39;
 Sending cluster config files to the nodes...
 ha-node01: Succeeded
 ha-node02: Succeeded
@@ -88,8 +88,8 @@ Restarting pcsd on the nodes in order to reload the certificates...
 ha-node02: Success
 ha-node01: Success
 [root@ha-node01 ~]#
-</code></pre><blockquote><p>Cluster 서비스가 부팅후 자동으로 실행 될수 있도록 enable 합니다.<br>ha-node01 에서만 실행</p></blockquote><pre><code>[root@ha-node01 ~]# pcs cluster enable --all
-</code></pre><h2 id=pcs-cluster-를-실행>pcs cluster 를 실행</h2><blockquote><p>ha-node01 , ha-node02 에서 실행</p></blockquote><pre><code>[root@ha-node01 ~]# pcs cluster start
+</code></pre></div><blockquote><p>Cluster 서비스가 부팅후 자동으로 실행 될수 있도록 enable 합니다.<br>ha-node01 에서만 실행</p></blockquote><pre><code class=language-no-highligh data-lang=no-highligh>[root@ha-node01 ~]# pcs cluster enable --all
+</code></pre><h2 id=pcs-cluster-를-실행>pcs cluster 를 실행</h2><blockquote><p>ha-node01 , ha-node02 에서 실행</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs cluster start
 [root@ha-node02 ~]# pcs cluster start
 
 
@@ -119,18 +119,18 @@ Daemon Status:
 
   pcsd: active/enabled
 [root@ha-node01 ~]#
-</code></pre><h2 id=fence-device-설정>Fence Device 설정</h2><blockquote><p>vmware 환경 , vcenter 로 로그인 해야 합니다<br>ha-node01 에서 작업</p></blockquote><pre><code>vm node 를 검색 합니다.  
+</code></pre></div><h2 id=fence-device-설정>Fence Device 설정</h2><blockquote><p>vmware 환경 , vcenter 로 로그인 해야 합니다<br>ha-node01 에서 작업</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>vm node 를 검색 합니다.  
  # fence_vmware_soap -a 10.10.10.201 -l administrator@vsphere.local -p Dkdlxlqmfpdls1! -z --ssl-insecure -o list |grep -i ha-node
 
 
 ha-node01 / ha-node02 fence-device 를 생성 합니다.  
 
 ha-node01
-action=&quot;reboot&quot; 와 pcmk_reboot_action 차이는 ? 
+action=&#34;reboot&#34; 와 pcmk_reboot_action 차이는 ? 
 
-[root@ha-node01 ~]# pcs stonith create fence_node01 fence_vmware_soap pcmk_host_list=&quot;ha-node01&quot; port=&quot;ha-node01&quot; ipaddr=&quot;10.10.10.201&quot; ssl_insecure=1 login=&quot;administrator@vsphere.local&quot; passwd='Dkdlxlqmfpdls1!'  ssl_insecure=1 action=&quot;reboot&quot; pcmk_monitor_timeout=60s --force
+[root@ha-node01 ~]# pcs stonith create fence_node01 fence_vmware_soap pcmk_host_list=&#34;ha-node01&#34; port=&#34;ha-node01&#34; ipaddr=&#34;10.10.10.201&#34; ssl_insecure=1 login=&#34;administrator@vsphere.local&#34; passwd=&#39;Dkdlxlqmfpdls1!&#39;  ssl_insecure=1 action=&#34;reboot&#34; pcmk_monitor_timeout=60s --force
 
-[root@ha-node01 ~]# pcs stonith create fence_node02 fence_vmware_soap pcmk_host_list=&quot;ha-node02&quot; port=&quot;ha-node02&quot; ipaddr=&quot;10.10.10.201&quot; ssl_insecure=1 login=&quot;administrator@vsphere.local&quot; passwd='Dkdlxlqmfpdls1!'  ssl_insecure=1 action=&quot;reboot&quot; pcmk_monitor_timeout=60s --force
+[root@ha-node01 ~]# pcs stonith create fence_node02 fence_vmware_soap pcmk_host_list=&#34;ha-node02&#34; port=&#34;ha-node02&#34; ipaddr=&#34;10.10.10.201&#34; ssl_insecure=1 login=&#34;administrator@vsphere.local&#34; passwd=&#39;Dkdlxlqmfpdls1!&#39;  ssl_insecure=1 action=&#34;reboot&#34; pcmk_monitor_timeout=60s --force
 
 
 [root@ha-node01 ~]# pcs property set stonith-timeout=120s
@@ -141,10 +141,10 @@ Cleaned up fence_node02 on ha-node01
 Waiting for 1 replies from the CRMd. OK
 [root@ha-node01 ~]#
 
-</code></pre><h2 id=resource-설정>Resource 설정</h2><blockquote><p>vip 설정</p></blockquote><pre><code>[root@ha-node01 ~]# pcs resource create VIP IPaddr2 ip=10.10.10.40 cidr_netmask=22 nic=eth0 --group test-svc
-</code></pre><blockquote><p>모니터링 설정</p></blockquote><pre><code>[root@ha-node01 ~]# pcs resource create svcnet-monitor ethmonitor interface=eth0 --clone
+</code></pre></div><h2 id=resource-설정>Resource 설정</h2><blockquote><p>vip 설정</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs resource create VIP IPaddr2 ip=10.10.10.40 cidr_netmask=22 nic=eth0 --group test-svc
+</code></pre></div><blockquote><p>모니터링 설정</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs resource create svcnet-monitor ethmonitor interface=eth0 --clone
 [root@ha-node01 ~]# pcs constraint location VIP rule score=-INFINITY ethmonitor-eth0 ne 1
-</code></pre><blockquote><p>Cluster 상태 확인</p></blockquote><pre><code>[root@ha-node01 ~]# ip addr show
+</code></pre></div><blockquote><p>Cluster 상태 확인</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# ip addr show
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -160,8 +160,8 @@ Waiting for 1 replies from the CRMd. OK
     inet6 fe80::250:56ff:fe9f:79e7/64 scope link
        valid_lft forever preferred_lft forever
 [root@ha-node01 ~]#
-</code></pre><blockquote><p>pcs resource 삭제</p></blockquote><pre><code>[root@ha-node01 ~]# pcs resource delete  fence_node01
-</code></pre><blockquote><p>Resource Group 이관</p></blockquote><pre><code>[root@ha-node02 ~]# pcs status 
+</code></pre></div><blockquote><p>pcs resource 삭제</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs resource delete  fence_node01
+</code></pre></div><blockquote><p>Resource Group 이관</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node02 ~]# pcs status 
 
 ~중략
  fence_node01   (stonith:fence_vmware_soap):    Started ha-node02
@@ -181,7 +181,7 @@ Resource Group 상태 확인
  Clone Set: svcnet-monitor-clone [svcnet-monitor]
      Started: [ ha-node01 ha-node02 ]
 
-</code></pre><h2 id=fencing-test>fencing test</h2><blockquote><p>ha-node02 에서 ha-node01 시스템을 리부팅 시킵니다.<br><a href=https://access.redhat.com/solutions/1172133>https://access.redhat.com/solutions/1172133</a><br><a href=https://access.redhat.com/solutions/3994601>https://access.redhat.com/solutions/3994601</a></p></blockquote><pre><code>
+</code></pre></div><h2 id=fencing-test>fencing test</h2><blockquote><p>ha-node02 에서 ha-node01 시스템을 리부팅 시킵니다.<br><a href=https://access.redhat.com/solutions/1172133>https://access.redhat.com/solutions/1172133</a><br><a href=https://access.redhat.com/solutions/3994601>https://access.redhat.com/solutions/3994601</a></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>
 [root@ha-node02 ~]#  stonith_admin --reboot ha-node01
 약 120s 정도의 시간이 걸립니다. 
 
@@ -190,7 +190,7 @@ Cluster 상태를 확인 합니다.
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set 'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node02 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -229,7 +229,7 @@ Cleaned up all resources on all nodes
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set 'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node02 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -256,8 +256,7 @@ Daemon Status:
   pcsd: active/enabled
 [root@ha-node02 ~]#
 
-
-</code></pre><blockquote><p>Nic 장애 테스트<br>장애 시나리오: ha-node01 의 eth0 Nic Down 현상 시 ha-node01 이 정상적으로 시스템 리부팅이 되는지 확인 합니다.<br>서비스 상태 확인 후 ha-node01 의 eth0 Nic 를 Down 합니다.<br>Network 이 단절된 관계로 vmware local(물리장비) 에서 확인 합니다.</p></blockquote><pre><code>
+</code></pre></div><blockquote><p>Nic 장애 테스트<br>장애 시나리오: ha-node01 의 eth0 Nic Down 현상 시 ha-node01 이 정상적으로 시스템 리부팅이 되는지 확인 합니다.<br>서비스 상태 확인 후 ha-node01 의 eth0 Nic 를 Down 합니다.<br>Network 이 단절된 관계로 vmware local(물리장비) 에서 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>
 [root@ha-node01 ~]# pcs status
 ~중략 
  Resource Group: test-svc
@@ -283,8 +282,7 @@ ha-node02 확인
      Started: [ ha-node02 ]
      Stopped: [ ha-node01 ]
 
-</code></pre><h2 id=ha-lvm>HA-LVM</h2><blockquote><p>ha-storage vm 을 설정 합니다.<br>운영 장비에서는 Storage Data 보호를 위하여 HA-LVM 을 사용 해야 합니다.<br>Resource 를 사용 하는 node 에서 Storage mount 시 다른 한쪽에서는 mount 할수 없습니다.<br>동일볼륨을 모든 node 에서 마운트 하였을시 filesystem 이 깨지는것을 방지 하기 위하여 사용 합니다.</p></blockquote><ul><li>/etc/hosts 설정
-ha-node01 , ha-node02 , ha-storage 에 동일하게 추가 합니다.</li></ul><pre><code>[root@ha-storage ~]# cat /etc/hosts
+</code></pre></div><h2 id=ha-lvm>HA-LVM</h2><blockquote><p>ha-storage vm 을 설정 합니다.<br>운영 장비에서는 Storage Data 보호를 위하여 HA-LVM 을 사용 해야 합니다.<br>Resource 를 사용 하는 node 에서 Storage mount 시 다른 한쪽에서는 mount 할수 없습니다.<br>동일볼륨을 모든 node 에서 마운트 하였을시 filesystem 이 깨지는것을 방지 하기 위하여 사용 합니다.</p></blockquote><ul><li>/etc/hosts 설정</li></ul><blockquote><p>ha-node01 , ha-node02 , ha-storage 에 동일하게 추가 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-storage ~]# cat /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 
 10.10.10.35     ha-node01
@@ -300,8 +298,8 @@ sda      8:0    0   16G  0 disk
 ├─sda2   8:2    0    1G  0 part [SWAP]
 └─sda3   8:3    0   14G  0 part /
 sdb      8:16   0   10G  0 disk
-</code></pre><blockquote><p>패키지 설치</p></blockquote><pre><code>[root@ha-storage ~]# yum install targetcli
-</code></pre><blockquote><p>fdisk 작업</p></blockquote><pre><code>[root@ha-storage ~]# fdisk /dev/sdb
+</code></pre></div><blockquote><p>패키지 설치</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-storage ~]# yum install targetcli
+</code></pre></div><blockquote><p>fdisk 작업</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-storage ~]# fdisk /dev/sdb
 
 iscsi 용 볼륨을 생성 합니다. 
 용량은 전체 용량을 설정 하였습니다. 
@@ -317,7 +315,7 @@ Partition 1 of type Linux and of size 10 GiB is set
 Command (m for help): t
 Selected partition 1
 Hex code (type L to list all codes): 8e
-Changed type of partition 'Linux' to 'Linux LVM'
+Changed type of partition &#39;Linux&#39; to &#39;Linux LVM&#39;
 
 Command (m for help): wq
 The partition table has been altered!
@@ -327,16 +325,16 @@ Syncing disks.
 [root@ha-storage ~]# partprobe
 Warning: Unable to open /dev/sr0 read-write (Read-only file system).  /das been opened read-only.
 [root@ha-storage ~]#
-</code></pre><blockquote><p>LVM 패키지를 설치 및 LVM 을 생성 합니다.</p></blockquote><pre><code>[root@ha-storage ~]# yum install -y lvm2
+</code></pre></div><blockquote><p>LVM 패키지를 설치 및 LVM 을 생성 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-storage ~]# yum install -y lvm2
 
 [root@ha-storage ~]# vgcreate vg00 /dev/sdb1
-  Volume group &quot;vg00&quot; successfully created
+  Volume group &#34;vg00&#34; successfully created
 [root@ha-storage ~]# lvcreate -L 1G -n lv-vol1 vg00
-  Logical volume &quot;lv-vol1&quot; created.
+  Logical volume &#34;lv-vol1&#34; created.
 [root@ha-storage ~]# lvcreate -L 1G -n lv-vol2 vg00
-  Logical volume &quot;lv-vol2&quot; created.
+  Logical volume &#34;lv-vol2&#34; created.
 [root@ha-storage ~]# lvcreate -L 1G -n lv-vol3 vg00
-  Logical volume &quot;lv-vol3&quot; created.
+  Logical volume &#34;lv-vol3&#34; created.
 [root@ha-storage ~]#
 [root@ha-storage ~]# lvs
   LV      VG   Attr       LSize Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
@@ -344,7 +342,7 @@ Warning: Unable to open /dev/sr0 read-write (Read-only file system).  /das been 
   lv-vol2 vg00 -wi-a----- 1.00g
   lv-vol3 vg00 -wi-a----- 1.00g
 [root@ha-storage ~]#
-</code></pre><blockquote><p>iscsi block 생성</p></blockquote><pre><code>[root@ha-storage ~]# targetcli
+</code></pre></div><blockquote><p>iscsi block 생성</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-storage ~]# targetcli
 /iscsi/iqn.20...:target1/tpg1&gt; cd /backstores/block
 /backstores/block&gt; create lv-vol1 /dev/vg00/lv-vol1
 /backstores/block&gt; create lv-vol2 /dev/vg00/lv-vol2
@@ -362,13 +360,13 @@ Warning: Unable to open /dev/sr0 read-write (Read-only file system).  /das been 
 /iscsi/iqn.20...:target1/tpg1&gt; set attribute demo_mode_write_protect=0
 /iscsi/iqn.20...:target1/tpg1&gt; set attribute generate_node_acls=1
 /iscsi/iqn.20...:target1/tpg1&gt; exit
-</code></pre><blockquote><p>ha-node01 / ha-node01 iscsi 연결<br>iscsi-initiator-utils 패키지를 설치 합니다.</p></blockquote><pre><code>[root@ha-node01 ~]# yum install -y iscsi-initiator-utils
+</code></pre></div><blockquote><p>ha-node01 / ha-node01 iscsi 연결<br>iscsi-initiator-utils 패키지를 설치 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# yum install -y iscsi-initiator-utils
 [root@ha-node02 ~]# yum install -y iscsi-initiator-utils
-</code></pre><blockquote><p>ha-node01 에서 ha-storage 볼륨을 확인 합니다.</p></blockquote><pre><code>[root@ha-node01 ~]# iscsiadm --mode discoverydb --type sendtargets --portal ha-storage --discover
+</code></pre></div><blockquote><p>ha-node01 에서 ha-storage 볼륨을 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# iscsiadm --mode discoverydb --type sendtargets --portal ha-storage --discover
 10.10.10.37:3260,1 iqn.2019-05.com.hacluster:target1
-</code></pre><blockquote><p>ha-node02 에서 ha-storage 볼륨을 확인 합니다.</p></blockquote><pre><code>[root@ha-node02 ~]# iscsiadm --mode discoverydb --type sendtargets --portal ha-storage --discover
+</code></pre></div><blockquote><p>ha-node02 에서 ha-storage 볼륨을 확인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node02 ~]# iscsiadm --mode discoverydb --type sendtargets --portal ha-storage --discover
 10.10.10.37:3260,1 iqn.2019-05.com.hacluster:target1
-</code></pre><blockquote><p>iscsi server 에 로그인 합니다.</p></blockquote><pre><code>[root@ha-node01 ~]# iscsiadm --mode node --targetname iqn.2019-05.com.hacluster:target1 --portal ha-storage --login
+</code></pre></div><blockquote><p>iscsi server 에 로그인 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# iscsiadm --mode node --targetname iqn.2019-05.com.hacluster:target1 --portal ha-storage --login
 
 [root@ha-node02 ~]# iscsiadm --mode node --targetname iqn.2019-05.com.hacluster:target1 --portal ha-storage --login
 
@@ -382,7 +380,7 @@ sda      8:0    0   16G  0 disk
 └─sda3   8:3    0   14G  0 part /
 sdb      8:16   0    1G  0 disk         &lt;---   iscsi 볼륨
 sdc      8:32   0    1G  0 disk         &lt;---   iscsi 볼륨
-sdd      8:48   0    1G  0 disk         &lt;---  iscsi 볼륨
+sdd      8:48   0    1G  0 disk         &lt;---   iscsi 볼륨
 [root@ha-node01 ~]#
 
 
@@ -395,12 +393,12 @@ sda      8:0    0   16G  0 disk
 └─sda3   8:3    0   14G  0 part /
 sdb      8:16   0    1G  0 disk       &lt;---   iscsi 볼륨
 sdc      8:32   0    1G  0 disk       &lt;---   iscsi 볼륨
-sdd      8:48   0    1G  0 disk       &lt;---  iscsi 볼륨
+sdd      8:48   0    1G  0 disk       &lt;---   iscsi 볼륨
 [root@ha-node02 ~]#
-</code></pre><blockquote><p>iscsi Volume 정보 확인<br>ha-storage 시스템 에서 확인 가능 합니다.</p></blockquote><pre><code>[root@ha-storage ~]# targetcli
+</code></pre></div><blockquote><p>iscsi Volume 정보 확인<br>ha-storage 시스템 에서 확인 가능 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-storage ~]# targetcli
 targetcli shell version 2.1.fb41
 Copyright 2011-2013 by Datera, Inc and others.
-For help on commands, type 'help'.
+For help on commands, type &#39;help&#39;.
 
 /iscsi/iqn.20...:target2/tpg1&gt; ls
 o- tpg1 ............................................................ [gen-acls, no-auth]
@@ -472,9 +470,9 @@ o- / ...........................................................................
   |       o- 0.0.0.0:3260 .......................................................... [OK]
   o- loopback .............................................................. [Targets: 0]
 /&gt;
-</code></pre><h2 id=lvm2-패키지-설치>lvm2 패키지 설치</h2><blockquote><p>ha-node01 , ha-node02 에 설치 합니다.<br>cluster 에서 lvm 사용시 설정 하며 lvm 을 설정할 경우 clvm 을 이용한 halvm 을 구성 해야 합니다.</p></blockquote><pre><code>[root@ha-node01 ~]# yum install -y lvm2
+</code></pre></div><h2 id=lvm2-패키지-설치>lvm2 패키지 설치</h2><blockquote><p>ha-node01 , ha-node02 에 설치 합니다.<br>cluster 에서 lvm 사용시 설정 하며 lvm 을 설정할 경우 clvm 을 이용한 halvm 을 구성 해야 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# yum install -y lvm2
 [root@ha-node02 ~]# yum install -y lvm2
-</code></pre><ul><li>lvm 생성</li></ul><blockquote><p>ha-node01 에서 작업 합니다. (한쪽 노드에서만 작업을 합니다.)</p></blockquote><pre><code>[root@ha-node01 ~]# pvcreate /dev/sdb /dev/sdc /dev/sdd
+</code></pre></div><ul><li>lvm 생성</li></ul><blockquote><p>ha-node01 에서 작업 합니다. (한쪽 노드에서만 작업을 합니다.)</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pvcreate /dev/sdb /dev/sdc /dev/sdd
 [root@ha-node01 ~]# vgcreate vg00 /dev/sdb /dev/sdc /dev/sdd
 [root@ha-node01 ~]# lvcreate -l 100%free -n halvm vg00
 
@@ -484,7 +482,7 @@ lvm 정보를 확인 합니다.
   LV    VG   Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
   halvm vg00 -wi-a----- &lt;2.91g
 [root@ha-node01 ~]#
-</code></pre><blockquote><p>HA-LVM Resource 추가<br>ha-node01 , ha-node02 에서 작업<br>lvmconf 실행시 Warning 메세지는 무시 합니다.</p></blockquote><pre><code>[root@ha-node01 ~]# systemctl stop lvm2-lvmetad
+</code></pre></div><blockquote><p>HA-LVM Resource 추가<br>ha-node01 , ha-node02 에서 작업<br>lvmconf 실행시 Warning 메세지는 무시 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# systemctl stop lvm2-lvmetad
 [root@ha-node01 ~]# systemctl disable lvm2-lvmetad
 [root@ha-node01 ~]# systemctl stop lvm2-lvmetad.socket
 [root@ha-node01 ~]# systemctl disable lvm2-lvmetad.socket
@@ -505,12 +503,12 @@ Removed symlink /etc/systemd/system/sysinit.target.wants/lvm2-lvmetad.socket.
 
 - lvm.conf 확인 
 
-[root@ha-node01 ~]# grep -e &quot;locking_type = 1&quot; -e &quot;use_lvmetad = 0&quot; /etc/lvm/lvm.conf
+[root@ha-node01 ~]# grep -e &#34;locking_type = 1&#34; -e &#34;use_lvmetad = 0&#34; /etc/lvm/lvm.conf
     locking_type = 1
     use_lvmetad = 0
 [root@ha-node01 ~]#
 
-[root@ha-node02 ~]# grep -e &quot;locking_type = 1&quot; -e &quot;use_lvmetad = 0&quot; /etc/lvm/lvm.conf
+[root@ha-node02 ~]# grep -e &#34;locking_type = 1&#34; -e &#34;use_lvmetad = 0&#34; /etc/lvm/lvm.conf
     locking_type = 1
     use_lvmetad = 0
 [root@ha-node02 ~]#
@@ -527,11 +525,11 @@ Removed symlink /etc/systemd/system/sysinit.target.wants/lvm2-lvmetad.socket.
    Loaded: loaded (/usr/lib/systemd/system/lvm2-lvmetad.service; static; vendor preset: enabled)
    Active: inactive (dead) since Fri 2019-05-17 23:08:31 KST; 1min 28s ago
 [root@ha-node01 ~]# 
-</code></pre><blockquote><p>OS 에서 항상 사용중인 LVM 이 있을경우 volume_list 에 추가 합니다.<br>halvm resource 를 설정 하면 안됩니다.</p></blockquote><ul><li>ha-node01 , ha-node02 에서 작업</li></ul><pre><code>[root@ha-node01 ~]# vi /etc/lvm/lvm.conf
+</code></pre></div><blockquote><p>OS 에서 항상 사용중인 LVM 이 있을경우 volume_list 에 추가 합니다.<br>halvm resource 를 설정 하면 안됩니다.</p></blockquote><ul><li>ha-node01 , ha-node02 에서 작업</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# vi /etc/lvm/lvm.conf
 
         # Example
-        # volume_list = [ &quot;vg1&quot;, &quot;vg2/lvol1&quot;, &quot;@tag1&quot;, &quot;@*&quot; ]
-         volume_list = [&quot;VGOS&quot;]
+        # volume_list = [ &#34;vg1&#34;, &#34;vg2/lvol1&#34;, &#34;@tag1&#34;, &#34;@*&#34; ]
+         volume_list = [&#34;VGOS&#34;]
 
 
 만약 설정할 내용이 없을 경우 아래와 같이 설정 합니다.  
@@ -569,7 +567,7 @@ cluster 정보를 확인 합니다.
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set 'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node01 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -596,11 +594,11 @@ Daemon Status:
   pacemaker: active/enabled
   pcsd: active/enabled
 [root@ha-node02 ~]# 
-</code></pre><ul><li>halvm resource 가 정상적으로 기동이 안되는 경우</li></ul><pre><code>[root@ha-node01 ~]# pcs status
+</code></pre></div><ul><li>halvm resource 가 정상적으로 기동이 안되는 경우</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs status
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set                                                                                                                                    'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set                                                                                                                                    &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node02 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -624,8 +622,8 @@ Full list of resources:
      Stopped: [ ha-node02 ]
 
 Failed Actions:
-* halvm_monitor_0 on ha-node02 'unknown error' (1): call=30, status=complete, ex                                                                                                                                   itreason='WARNING: vg00 is active without the cluster tag, &quot;pacemaker&quot;',
-    last-rc-change='Tue May 21 18:47:05 2019', queued=1ms, exec=291ms
+* halvm_monitor_0 on ha-node02 &#39;unknown error&#39; (1): call=30, status=complete, ex                                                                                                                                   itreason=&#39;WARNING: vg00 is active without the cluster tag, &#34;pacemaker&#34;&#39;,
+    last-rc-change=&#39;Tue May 21 18:47:05 2019&#39;, queued=1ms, exec=291ms
 
 
 Daemon Status:
@@ -636,7 +634,7 @@ Daemon Status:
 
 
 [root@ha-node01 ~]# vgchange -ay /dev/vg00
-  0 logical volume(s) in volume group &quot;vg00&quot; now active
+  0 logical volume(s) in volume group &#34;vg00&#34; now active
 
 
 [root@ha-node01 ~]# pcs resource cleanup --all
@@ -646,7 +644,7 @@ Waiting for 2 replies from the CRMd.. OK
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set                                                                                                                                    'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set                                                                                                                                    &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node01 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -676,11 +674,11 @@ Daemon Status:
   pcsd: active/enabled
 [root@ha-node01 ~]#
 
-</code></pre><blockquote><p>HA-LVM 을 Mount 하기 위하여 xfs 파일시스템 으로 포멧합니다.<br>xfs 파일시스템 포멧시 test-svc Resource 를 가지고 있는 node 에서 작업 해야 합니다.</p></blockquote><pre><code>[root@ha-node01 ~]# pcs status
+</code></pre></div><blockquote><p>HA-LVM 을 Mount 하기 위하여 xfs 파일시스템 으로 포멧합니다.<br>xfs 파일시스템 포멧시 test-svc Resource 를 가지고 있는 node 에서 작업 해야 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs status
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set 'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node01 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -707,7 +705,7 @@ Daemon Status:
   pacemaker: active/enabled
   pcsd: active/enabled
 [root@ha-node01 ~]#
-</code></pre><blockquote><p>ha-node02 에서 xfs 파일시스템으로 포멧을 합니다.</p></blockquote><pre><code>[root@ha-node01 ~]# mkfs.xfs /dev/mapper/vg00-halvm -f
+</code></pre></div><blockquote><p>ha-node02 에서 xfs 파일시스템으로 포멧을 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# mkfs.xfs /dev/mapper/vg00-halvm -f
 meta-data=/dev/mapper/vg00-halvm isize=512    agcount=4, agsize=190464 blks
          =                       sectsz=512   attr=2, projid32bit=1
          =                       crc=1        finobt=0, sparse=0
@@ -725,14 +723,14 @@ ha-node01 , ha-node02 에서 작업 합니다.
 
 [root@ha-node01 ~]# mkdir /test
 [root@ha-node02 ~]# mkdir /test
-</code></pre><blockquote><p>xfs 파일시스템 리소스를 추가 합니다. (ha-node01 에서만 작업 합니다.)</p></blockquote><pre><code>[root@ha-node01 ~]# pcs resource create testlv_FS Filesystem device=&quot;/dev/mapper/vg00-halvm&quot; directory=&quot;/test&quot; fstype=&quot;xfs&quot; force_unmount=true --group test-svc
+</code></pre></div><blockquote><p>xfs 파일시스템 리소스를 추가 합니다. (ha-node01 에서만 작업 합니다.)</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs resource create testlv_FS Filesystem device=&#34;/dev/mapper/vg00-halvm&#34; directory=&#34;/test&#34; fstype=&#34;xfs&#34; force_unmount=true --group test-svc
 
 Cluster 확인 
 [root@ha-node01 ~]# pcs status
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set 'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node01 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -760,7 +758,7 @@ Daemon Status:
   pacemaker: active/enabled
   pcsd: active/enabled
 [root@ha-node01 ~]#
-</code></pre><blockquote><p>mount 확인</p></blockquote><pre><code>[root@ha-node01 ~]# df -h
+</code></pre></div><blockquote><p>mount 확인</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# df -h
 Filesystem              Size  Used Avail Use% Mounted on
 /dev/sda3                14G  1.4G   13G  10% /
 devtmpfs                990M     0  990M   0% /dev
@@ -781,7 +779,7 @@ ha-node01 에서 ha-node02 로 서비스 구룹을 이관 합니다.
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set 'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node01 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -822,7 +820,7 @@ tmpfs                  1000M     0 1000M   0% /sys/fs/cgroup
 tmpfs                   200M     0  200M   0% /run/user/0
 /dev/mapper/vg00-halvm  2.9G   33M  2.9G   2% /test           &lt;-- /test 디렉토리가 Mount 되었습니다. 
 [root@ha-node02 ~]#
-</code></pre><h2 id=halvm-구성>HALVM 구성</h2><blockquote><p>ha-node01 , ha-node02 에서 작업 합니다.<br>Resilient Storage package group 을 설치 합니다.<br>iscsi 에 login 합니다.</p></blockquote><pre><code>[root@ha-node01 ~]# yum groupinstall 'Resilient Storage' -y 
+</code></pre></div><h2 id=halvm-구성>HALVM 구성</h2><blockquote><p>ha-node01 , ha-node02 에서 작업 합니다.<br>Resilient Storage package group 을 설치 합니다.<br>iscsi 에 login 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# yum groupinstall &#39;Resilient Storage&#39; -y 
 [root@ha-node01 ~]# yum install iscsi-init* -y
 [root@ha-node01 ~]# iscsiadm --mode discoverydb --type sendtargets --portal ha-storage --discover
 10.10.10.37:3260,1 iqn.2019-05.com.hacluster:target1
@@ -844,7 +842,7 @@ sdb      8:16   0    1G  0 disk
 sdc      8:32   0    1G  0 disk
 sdd      8:48   0    1G  0 disk
 [root@ha-node01 ~]# 
-</code></pre><ul><li>fdisk 작업</li></ul><blockquote><p>ha-node01 에서 작업<br>/dev/sdd /dev/sdc /dev/sdd</p></blockquote><pre><code>[root@ha-node01 ~]# fdisk /dev/sdb
+</code></pre></div><ul><li>fdisk 작업</li></ul><blockquote><p>ha-node01 에서 작업<br>/dev/sdd /dev/sdc /dev/sdd</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# fdisk /dev/sdb
 Welcome to fdisk (util-linux 2.23.2).
 
 Changes will remain in memory only, until you decide to write them.
@@ -879,7 +877,7 @@ Partition 1 of type Linux and of size 992 MiB is set
 Command (m for help): t
 Selected partition 1
 Hex code (type L to list all codes): 8e
-Changed type of partition 'Linux' to 'Linux LVM'
+Changed type of partition &#39;Linux&#39; to &#39;Linux LVM&#39;
 
 Command (m for help): wq
 The partition table has been altered!
@@ -895,7 +893,7 @@ Syncing disks.
 &gt; lvmconf 부분만 ha-node01 , ha-node02 에서 작업 합니다.   
 [root@ha-node01 ~]# lvmconf --enable-cluster
 
-[root@ha-node01 ~]# grep 'locking_type =' /etc/lvm/lvm.conf          &lt;--- ha-node01 , ha-node02 에서 작업
+[root@ha-node01 ~]# grep &#39;locking_type =&#39; /etc/lvm/lvm.conf          &lt;--- ha-node01 , ha-node02 에서 작업
     locking_type = 3
 
 [root@ha-node01 ~]# pvcreate /dev/sdb1 /dev/sdc1 /dev/sdd1
@@ -917,7 +915,7 @@ realtime =none                   extsz=4096   blocks=0, rtextents=0
 [root@ha-node01 ~]#
 root@ha-node01 ~]# vi /etc/lvm/lvm.conf
 locking_type = 3
-</code></pre><ul><li>CLVM 작업</li></ul><blockquote><p>ha-node2 에서 작업</p></blockquote><pre><code>[root@ha-node01 ~]# pcs resource create dlm ocf:pacemaker:controld op monitor interval=30s on-fail=fence clone interleave=true ordered=true
+</code></pre></div><ul><li>CLVM 작업</li></ul><blockquote><p>ha-node2 에서 작업</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs resource create dlm ocf:pacemaker:controld op monitor interval=30s on-fail=fence clone interleave=true ordered=true
 [root@ha-node01 ~]# pcs resource create clvmd ocf:heartbeat:clvm op monitor interval=30s on-fail=fence clone interleave=true ordered=true
 [root@ha-node01 ~]# pcs constraint order start dlm-clone then clvmd-clone
 [root@ha-node01 ~]# pcs constraint colocation add clvmd-clone with dlm-clone
@@ -925,18 +923,18 @@ locking_type = 3
 [root@ha-node01 ~]# mkdir /test
 [root@ha-node02 ~]# mkdir /test                  &lt;--- ha-node02 에서 작업 합니다.
 [root@ha-node01 ~]# pcs resource create test-xfs Filesystem device=/dev/mapper/vg00-halvm directory=/test fstype=xfs force_unmount=true --group test-svc
-</code></pre><blockquote><p>ha-node01 , ha-node02 에서 작업</p></blockquote><pre><code>[root@ha-node01 ~]# systemctl stop lvm2-lvmetad.socket
+</code></pre></div><blockquote><p>ha-node01 , ha-node02 에서 작업</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# systemctl stop lvm2-lvmetad.socket
 [root@ha-node01 ~]# systemctl stop lvm2-lvmetad.service
 [root@ha-node01 ~]# systemctl disable lvm2-lvmetad.socket
 [root@ha-node01 ~]# systemctl disable lvm2-lvmetad.service
 [root@ha-node01 ~]# dracut -H -f /boot/initramfs-$(uname -r).img $(uname -r)
 [root@ha-node01 ~]# init 6 
-</code></pre><blockquote><p>ha-node01 에서 resource 확인을 진행 합니다.<br>노드 리부팅후 cleanup 후 정상적으로 cluster 구동이 안될경우 ha-node01 , ha-node02 에서<br>lvmconf &ndash;enable-cluster 실행후 pcs resource cleanup &ndash;all 을 합니다.</p></blockquote><pre><code>[root@ha-node01 ~]# pcs resource cleanup --all 
+</code></pre></div><blockquote><p>ha-node01 에서 resource 확인을 진행 합니다.<br>노드 리부팅후 cleanup 후 정상적으로 cluster 구동이 안될경우 ha-node01 , ha-node02 에서<br>lvmconf &ndash;enable-cluster 실행후 pcs resource cleanup &ndash;all 을 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs resource cleanup --all 
 [root@ha-node01 ~]# pcs status
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set 'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node01 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -980,11 +978,11 @@ tmpfs                  1000M     0 1000M   0% /sys/fs/cgroup
 tmpfs                   200M     0  200M   0% /run/user/0
 /dev/mapper/vg00-halvm  2.9G   33M  2.8G   2% /test
 [root@ha-node01 ~]#
-</code></pre><blockquote><p>서비스 이관 테스트</p></blockquote><pre><code>[root@ha-node02 ~]# pcs status
+</code></pre></div><blockquote><p>서비스 이관 테스트</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node02 ~]# pcs status
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set 'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node01 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -1027,7 +1025,7 @@ tmpfs                  1000M     0 1000M   0% /sys/fs/cgroup
 tmpfs                   200M     0  200M   0% /run/user/0
 /dev/mapper/vg00-halvm  2.9G   33M  2.8G   2% /test
 [root@ha-node02 ~]#
-</code></pre><h2 id=httpd-resource-추가>httpd Resource 추가</h2><blockquote><p>ha-node01 , ha-node02 에서 작업<br>httpd 패키지를 설치 합니다.<br>httpd.conf 파일을 설정 합니다.</p></blockquote><pre><code>[root@ha-node01 ~]# yum install -y httpd wget
+</code></pre></div><h2 id=httpd-resource-추가>httpd Resource 추가</h2><blockquote><p>ha-node01 , ha-node02 에서 작업<br>httpd 패키지를 설치 합니다.<br>httpd.conf 파일을 설정 합니다.</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# yum install -y httpd wget
 [root@ha-node01 ~]# systemctl status httpd
 ● httpd.service - The Apache HTTP Server
    Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)
@@ -1040,10 +1038,10 @@ tmpfs                   200M     0  200M   0% /run/user/0
 
 [root@ha-node01 ~]# vi /etc/httpd/conf/httpd.conf
 
-#DocumentRoot &quot;/var/www/html&quot;
-#&lt;Directory &quot;/var/www/html&quot;&gt;
-DocumentRoot &quot;/test&quot;
-&lt;Directory &quot;/test&quot;&gt;
+#DocumentRoot &#34;/var/www/html&#34;
+#&lt;Directory &#34;/var/www/html&#34;&gt;
+DocumentRoot &#34;/test&#34;
+&lt;Directory &#34;/test&#34;&gt;
 
 IncludeOptional conf.d/*.conf
 &lt;Location /server-status&gt;
@@ -1052,14 +1050,14 @@ IncludeOptional conf.d/*.conf
   Deny from all
   Allow from 127.0.0.1
 &lt;/Location&gt;
-</code></pre><ul><li>httpd resource 추가</li></ul><pre><code>[root@ha-node01 ~]# pcs resource create web-service ocf:heartbeat:apache configfile=&quot;/etc/httpd/conf/httpd.conf&quot; \
-statusurl=&quot;http://127.0.0.1/server-status&quot; --group test-svc
+</code></pre></div><ul><li>httpd resource 추가</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node01 ~]# pcs resource create web-service ocf:heartbeat:apache configfile=&#34;/etc/httpd/conf/httpd.conf&#34; \
+statusurl=&#34;http://127.0.0.1/server-status&#34; --group test-svc
 
 [root@ha-node02 ~]# pcs status
 Cluster name: ha-scv
 
 WARNINGS:
-Following stonith devices have the 'action' option set, it is recommended to set 'pcmk_off_action', 'pcmk_reboot_action' instead: fence_node01, fence_node02
+Following stonith devices have the &#39;action&#39; option set, it is recommended to set &#39;pcmk_off_action&#39;, &#39;pcmk_reboot_action&#39; instead: fence_node01, fence_node02
 
 Stack: corosync
 Current DC: ha-node01 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
@@ -1092,8 +1090,8 @@ Daemon Status:
   pacemaker: active/enabled
   pcsd: active/enabled
 [root@ha-node02 ~]#
-</code></pre><ul><li>httpd 디렉토리에 index.html 파일을 생성 합니다.</li></ul><pre><code>[root@ha-node02 ~]# vi /test/index.html
+</code></pre></div><ul><li>httpd 디렉토리에 index.html 파일을 생성 합니다.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-no-highlight data-lang=no-highlight>[root@ha-node02 ~]# vi /test/index.html
 &lt;html&gt;
 &lt;body&gt;ha-test&lt;/body&gt;
 &lt;/html&gt;
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1584628994></script><script src=/js/perfect-scrollbar.min.js?1584628994></script><script src=/js/perfect-scrollbar.jquery.min.js?1584628994></script><script src=/js/jquery.sticky.js?1584628994></script><script src=/js/featherlight.min.js?1584628994></script><script src=/js/highlight.pack.js?1584628994></script><script>hljs.initHighlightingOnLoad();</script><script src=/js/modernizr.custom-3.6.0.js?1584628994></script><script src=/js/learn.js?1584628994></script><script src=/js/hugo-learn.js?1584628994></script><link href=/mermaid/mermaid.css?1584628994 rel=stylesheet><script src=/mermaid/mermaid.js?1584628994></script><script>mermaid.initialize({startOnLoad:true});</script></body></html>
+</code></pre></div><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1585906001></script><script src=/js/perfect-scrollbar.min.js?1585906001></script><script src=/js/perfect-scrollbar.jquery.min.js?1585906001></script><script src=/js/jquery.sticky.js?1585906001></script><script src=/js/featherlight.min.js?1585906001></script><script src=/js/highlight.pack.js?1585906001></script><script>hljs.initHighlightingOnLoad();</script><script src=/js/modernizr.custom-3.6.0.js?1585906001></script><script src=/js/learn.js?1585906001></script><script src=/js/hugo-learn.js?1585906001></script><link href=/mermaid/mermaid.css?1585906001 rel=stylesheet><script src=/mermaid/mermaid.js?1585906001></script><script>mermaid.initialize({startOnLoad:true});</script></body></html>
