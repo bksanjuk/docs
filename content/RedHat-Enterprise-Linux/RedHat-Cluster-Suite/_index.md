@@ -18,29 +18,29 @@ KVM 내용은 차후 작성할 예정 입니다.
 ## OS 설정  
 > 방화벽 및 selinux 를 disable 합니다.  
 > ha-node01 , ha-node02 에서 작업  
-~~~
+```no-highlight
 # systemctl disable firewalld
 
 
 # echo 'GRUB_CMDLINE_LINUX="net.ifnames=0"' >>/etc/default/grub
 # grub2-mkconfig -o /boot/grub2/grub.cfg
-~~~
+```
 
 > hosts 파일 설정  
 > ha-node01 , ha-node02 에서 작업  
-~~~
+```no-highlight
 [root@ha-node01 ~]# cat /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 10.10.10.32     ha-node01
 10.10.10.33     ha-node02
-~~~
+```
 
 > iso.repo 파일 생성  
 > ha-node01 , ha-node02 에서 작업  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# vi /etc/yum.repos.d/iso.repo
 
 [iso]
@@ -57,12 +57,12 @@ gpgcheck=0
 name=RS
 baseurl=file:///mnt/addons/ResilientStorage
 gpgcheck=0
-~~~
+```
 
 
 > network 설정  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0
 
 TYPE=Ethernet
@@ -79,14 +79,14 @@ DEVICE=eth0
 ONBOOT=yes
 IPADDR=10.10.10.33
 NETMASK=255.255.255.0
-~~~
+```
 
 
 ## 패키지 설치  
 
 > High-availability 패키지 설치  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# yum install -y pcs fence-agents-all
 [root@ha-node02 ~]# yum install -y pcs fence-agents-all
 
@@ -102,11 +102,11 @@ ha-node01 , ha-node02 에 동일하게 설정 합니다.
 
 [root@ha-node01 ~]# systemctl enable pcsd
 [root@ha-node01 ~]# systemctl start pcsd
-~~~
+```
 
 > ha-node01 에서만 인증을 실행 합니다.  
 
-~~~
+```no-highlight
 root@ha-node01 ~]# pcs cluster auth ha-node01 ha-node02
 Username: hacluster
 Password:
@@ -114,14 +114,14 @@ ha-node02: Authorized
 ha-node01: Authorized
 [root@ha-node01 ~]#
 
-~~~
+```
 
 ## 클러스터 생성  
 
 > 클러스터를 만들고 노드를 추가한후 Cluster 서비스를 시작 합니다.  
 > ha-node01 에서만 실행  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# pcs cluster setup --name ha-scv ha-node01 ha-node02
 Destroying cluster on nodes: ha-node01, ha-node02...
 ha-node02: Stopping Cluster (pacemaker)...
@@ -143,20 +143,20 @@ Restarting pcsd on the nodes in order to reload the certificates...
 ha-node02: Success
 ha-node01: Success
 [root@ha-node01 ~]#
-~~~
+```
 
 > Cluster 서비스가 부팅후 자동으로 실행 될수 있도록 enable 합니다.  
-> ha-node01 에서만 실행 
-~~~
+> ha-node01 에서만 실행  
+```no-highligh
 [root@ha-node01 ~]# pcs cluster enable --all
-~~~
+```
 
 
 
 ## pcs cluster 를 실행  
 > ha-node01 , ha-node02 에서 실행  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# pcs cluster start
 [root@ha-node02 ~]# pcs cluster start
 
@@ -187,13 +187,14 @@ Daemon Status:
 
   pcsd: active/enabled
 [root@ha-node01 ~]#
-~~~
+```
 
 
 ## Fence Device 설정 
 > vmware 환경 , vcenter 로 로그인 해야 합니다  
 > ha-node01 에서 작업  
-~~~
+
+```no-highlight
 vm node 를 검색 합니다.  
  # fence_vmware_soap -a 10.10.10.201 -l administrator@vsphere.local -p Dkdlxlqmfpdls1! -z --ssl-insecure -o list |grep -i ha-node
 
@@ -216,24 +217,26 @@ Cleaned up fence_node02 on ha-node01
 Waiting for 1 replies from the CRMd. OK
 [root@ha-node01 ~]#
 
-~~~
+```
 
 ## Resource 설정  
 
 > vip 설정  
 
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# pcs resource create VIP IPaddr2 ip=10.10.10.40 cidr_netmask=22 nic=eth0 --group test-svc
-~~~
+```
 
 > 모니터링 설정  
-~~~
+```no-highlight
 [root@ha-node01 ~]# pcs resource create svcnet-monitor ethmonitor interface=eth0 --clone
 [root@ha-node01 ~]# pcs constraint location VIP rule score=-INFINITY ethmonitor-eth0 ne 1
-~~~
+```
 
-> Cluster 상태 확인 
-~~~
+> Cluster 상태 확인  
+
+```no-highlight
 [root@ha-node01 ~]# ip addr show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -250,17 +253,19 @@ Waiting for 1 replies from the CRMd. OK
     inet6 fe80::250:56ff:fe9f:79e7/64 scope link
        valid_lft forever preferred_lft forever
 [root@ha-node01 ~]#
-~~~
+```
 
 
 > pcs resource 삭제  
 
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# pcs resource delete  fence_node01
-~~~
+```
 
 > Resource Group 이관  
-~~~
+
+```no-highlight
 [root@ha-node02 ~]# pcs status 
 
 ~중략
@@ -281,7 +286,7 @@ Resource Group 상태 확인
  Clone Set: svcnet-monitor-clone [svcnet-monitor]
      Started: [ ha-node01 ha-node02 ]
 
-~~~
+```
 
 ## fencing test  
 > ha-node02 에서 ha-node01 시스템을 리부팅 시킵니다.  
@@ -290,7 +295,7 @@ Resource Group 상태 확인
 
 
 
-~~~
+```no-highlight
 
 [root@ha-node02 ~]#  stonith_admin --reboot ha-node01
 약 120s 정도의 시간이 걸립니다. 
@@ -366,14 +371,14 @@ Daemon Status:
   pcsd: active/enabled
 [root@ha-node02 ~]#
 
-
-~~~
+```
 
 > Nic 장애 테스트  
 > 장애 시나리오: ha-node01 의 eth0 Nic Down 현상 시 ha-node01 이 정상적으로 시스템 리부팅이 되는지 확인 합니다.  
 > 서비스 상태 확인 후 ha-node01 의 eth0 Nic 를 Down 합니다.  
 > Network 이 단절된 관계로 vmware local(물리장비) 에서 확인 합니다.  
-~~~
+
+```no-highlight
 
 [root@ha-node01 ~]# pcs status
 ~중략 
@@ -400,7 +405,7 @@ ha-node02 확인
      Started: [ ha-node02 ]
      Stopped: [ ha-node01 ]
 
-~~~
+```
 
 
 ## HA-LVM  
@@ -411,8 +416,9 @@ ha-node02 확인
 > 동일볼륨을 모든 node 에서 마운트 하였을시 filesystem 이 깨지는것을 방지 하기 위하여 사용 합니다.  
 
 - /etc/hosts 설정 
-ha-node01 , ha-node02 , ha-storage 에 동일하게 추가 합니다. 
-~~~
+> ha-node01 , ha-node02 , ha-storage 에 동일하게 추가 합니다. 
+
+```no-highlight
 [root@ha-storage ~]# cat /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 
@@ -429,15 +435,18 @@ sda      8:0    0   16G  0 disk
 ├─sda2   8:2    0    1G  0 part [SWAP]
 └─sda3   8:3    0   14G  0 part /
 sdb      8:16   0   10G  0 disk
-~~~
+```
 
-> 패키지 설치 
-~~~
+> 패키지 설치  
+
+```no-highlight
 [root@ha-storage ~]# yum install targetcli
-~~~
+```
+
 
 > fdisk 작업  
-~~~
+
+```no-highlight
 [root@ha-storage ~]# fdisk /dev/sdb
 
 iscsi 용 볼륨을 생성 합니다. 
@@ -464,11 +473,11 @@ Syncing disks.
 [root@ha-storage ~]# partprobe
 Warning: Unable to open /dev/sr0 read-write (Read-only file system).  /das been opened read-only.
 [root@ha-storage ~]#
-~~~
+```
 
 > LVM 패키지를 설치 및 LVM 을 생성 합니다.  
 
-~~~
+```no-highlight
 [root@ha-storage ~]# yum install -y lvm2
 
 [root@ha-storage ~]# vgcreate vg00 /dev/sdb1
@@ -486,12 +495,12 @@ Warning: Unable to open /dev/sr0 read-write (Read-only file system).  /das been 
   lv-vol2 vg00 -wi-a----- 1.00g
   lv-vol3 vg00 -wi-a----- 1.00g
 [root@ha-storage ~]#
-~~~
+```
 
 > iscsi block 생성  
 
 
-~~~
+```no-highlight
 [root@ha-storage ~]# targetcli
 /iscsi/iqn.20...:target1/tpg1> cd /backstores/block
 /backstores/block> create lv-vol1 /dev/vg00/lv-vol1
@@ -510,34 +519,37 @@ Warning: Unable to open /dev/sr0 read-write (Read-only file system).  /das been 
 /iscsi/iqn.20...:target1/tpg1> set attribute demo_mode_write_protect=0
 /iscsi/iqn.20...:target1/tpg1> set attribute generate_node_acls=1
 /iscsi/iqn.20...:target1/tpg1> exit
-~~~
+```
 
 
 > ha-node01 / ha-node01 iscsi 연결  
 > iscsi-initiator-utils 패키지를 설치 합니다.  
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# yum install -y iscsi-initiator-utils
 [root@ha-node02 ~]# yum install -y iscsi-initiator-utils
-~~~
+```
 
 
 
 > ha-node01 에서 ha-storage 볼륨을 확인 합니다.  
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# iscsiadm --mode discoverydb --type sendtargets --portal ha-storage --discover
 10.10.10.37:3260,1 iqn.2019-05.com.hacluster:target1
-~~~
+```
 
 > ha-node02 에서 ha-storage 볼륨을 확인 합니다.  
-~~~
+
+```no-highlight
 [root@ha-node02 ~]# iscsiadm --mode discoverydb --type sendtargets --portal ha-storage --discover
 10.10.10.37:3260,1 iqn.2019-05.com.hacluster:target1
-~~~
+```
 
 
 > iscsi server 에 로그인 합니다.  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# iscsiadm --mode node --targetname iqn.2019-05.com.hacluster:target1 --portal ha-storage --login
 
 [root@ha-node02 ~]# iscsiadm --mode node --targetname iqn.2019-05.com.hacluster:target1 --portal ha-storage --login
@@ -552,7 +564,7 @@ sda      8:0    0   16G  0 disk
 └─sda3   8:3    0   14G  0 part /
 sdb      8:16   0    1G  0 disk         <---   iscsi 볼륨
 sdc      8:32   0    1G  0 disk         <---   iscsi 볼륨
-sdd      8:48   0    1G  0 disk         <---  iscsi 볼륨
+sdd      8:48   0    1G  0 disk         <---   iscsi 볼륨
 [root@ha-node01 ~]#
 
 
@@ -565,14 +577,14 @@ sda      8:0    0   16G  0 disk
 └─sda3   8:3    0   14G  0 part /
 sdb      8:16   0    1G  0 disk       <---   iscsi 볼륨
 sdc      8:32   0    1G  0 disk       <---   iscsi 볼륨
-sdd      8:48   0    1G  0 disk       <---  iscsi 볼륨
+sdd      8:48   0    1G  0 disk       <---   iscsi 볼륨
 [root@ha-node02 ~]#
-~~~
+```
 
 > iscsi Volume 정보 확인  
 > ha-storage 시스템 에서 확인 가능 합니다.  
 
-~~~
+```no-highlight
 [root@ha-storage ~]# targetcli
 targetcli shell version 2.1.fb41
 Copyright 2011-2013 by Datera, Inc and others.
@@ -648,7 +660,7 @@ o- / ...........................................................................
   |       o- 0.0.0.0:3260 .......................................................... [OK]
   o- loopback .............................................................. [Targets: 0]
 />
-~~~
+```
 
 
 
@@ -656,15 +668,15 @@ o- / ...........................................................................
 > ha-node01 , ha-node02 에 설치 합니다.  
 > cluster 에서 lvm 사용시 설정 하며 lvm 을 설정할 경우 clvm 을 이용한 halvm 을 구성 해야 합니다.  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# yum install -y lvm2
 [root@ha-node02 ~]# yum install -y lvm2
-~~~
+```
 
 - lvm 생성  
 > ha-node01 에서 작업 합니다. (한쪽 노드에서만 작업을 합니다.)  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# pvcreate /dev/sdb /dev/sdc /dev/sdd
 [root@ha-node01 ~]# vgcreate vg00 /dev/sdb /dev/sdc /dev/sdd
 [root@ha-node01 ~]# lvcreate -l 100%free -n halvm vg00
@@ -675,13 +687,13 @@ lvm 정보를 확인 합니다.
   LV    VG   Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
   halvm vg00 -wi-a----- <2.91g
 [root@ha-node01 ~]#
-~~~
+```
 
 > HA-LVM Resource 추가  
 > ha-node01 , ha-node02 에서 작업  
 > lvmconf 실행시 Warning 메세지는 무시 합니다.  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# systemctl stop lvm2-lvmetad
 [root@ha-node01 ~]# systemctl disable lvm2-lvmetad
 [root@ha-node01 ~]# systemctl stop lvm2-lvmetad.socket
@@ -725,14 +737,15 @@ Removed symlink /etc/systemd/system/sysinit.target.wants/lvm2-lvmetad.socket.
    Loaded: loaded (/usr/lib/systemd/system/lvm2-lvmetad.service; static; vendor preset: enabled)
    Active: inactive (dead) since Fri 2019-05-17 23:08:31 KST; 1min 28s ago
 [root@ha-node01 ~]# 
-~~~
+```
 
 
 > OS 에서 항상 사용중인 LVM 이 있을경우 volume_list 에 추가 합니다.  
 > halvm resource 를 설정 하면 안됩니다.  
  
 - ha-node01 , ha-node02 에서 작업  
-~~~ 
+
+```no-highlight
 [root@ha-node01 ~]# vi /etc/lvm/lvm.conf
 
         # Example
@@ -802,10 +815,11 @@ Daemon Status:
   pacemaker: active/enabled
   pcsd: active/enabled
 [root@ha-node02 ~]# 
-~~~
+```
 
 - halvm resource 가 정상적으로 기동이 안되는 경우  
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# pcs status
 Cluster name: ha-scv
 
@@ -886,13 +900,13 @@ Daemon Status:
   pcsd: active/enabled
 [root@ha-node01 ~]#
 
-~~~
+```
 
 
 > HA-LVM 을 Mount 하기 위하여 xfs 파일시스템 으로 포멧합니다.  
 > xfs 파일시스템 포멧시 test-svc Resource 를 가지고 있는 node 에서 작업 해야 합니다.  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# pcs status
 Cluster name: ha-scv
 
@@ -924,10 +938,11 @@ Daemon Status:
   pacemaker: active/enabled
   pcsd: active/enabled
 [root@ha-node01 ~]#
-~~~
+```
 
 > ha-node02 에서 xfs 파일시스템으로 포멧을 합니다.  
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# mkfs.xfs /dev/mapper/vg00-halvm -f
 meta-data=/dev/mapper/vg00-halvm isize=512    agcount=4, agsize=190464 blks
          =                       sectsz=512   attr=2, projid32bit=1
@@ -946,12 +961,13 @@ ha-node01 , ha-node02 에서 작업 합니다.
 
 [root@ha-node01 ~]# mkdir /test
 [root@ha-node02 ~]# mkdir /test
-~~~
+```
 
 
 
 > xfs 파일시스템 리소스를 추가 합니다. (ha-node01 에서만 작업 합니다.)  
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# pcs resource create testlv_FS Filesystem device="/dev/mapper/vg00-halvm" directory="/test" fstype="xfs" force_unmount=true --group test-svc
 
 Cluster 확인 
@@ -987,11 +1003,11 @@ Daemon Status:
   pacemaker: active/enabled
   pcsd: active/enabled
 [root@ha-node01 ~]#
-~~~
+```
 
 > mount 확인  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# df -h
 Filesystem              Size  Used Avail Use% Mounted on
 /dev/sda3                14G  1.4G   13G  10% /
@@ -1054,7 +1070,7 @@ tmpfs                  1000M     0 1000M   0% /sys/fs/cgroup
 tmpfs                   200M     0  200M   0% /run/user/0
 /dev/mapper/vg00-halvm  2.9G   33M  2.9G   2% /test           <-- /test 디렉토리가 Mount 되었습니다. 
 [root@ha-node02 ~]#
-~~~
+```
 
 
 ## HALVM 구성  
@@ -1063,7 +1079,7 @@ tmpfs                   200M     0  200M   0% /run/user/0
 > Resilient Storage package group 을 설치 합니다.  
 > iscsi 에 login 합니다.  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# yum groupinstall 'Resilient Storage' -y 
 [root@ha-node01 ~]# yum install iscsi-init* -y
 [root@ha-node01 ~]# iscsiadm --mode discoverydb --type sendtargets --portal ha-storage --discover
@@ -1086,12 +1102,13 @@ sdb      8:16   0    1G  0 disk
 sdc      8:32   0    1G  0 disk
 sdd      8:48   0    1G  0 disk
 [root@ha-node01 ~]# 
-~~~
+```
 
-- fdisk 작업 
+- fdisk 작업  
 > ha-node01 에서 작업  
 > /dev/sdd /dev/sdc /dev/sdd  
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# fdisk /dev/sdb
 Welcome to fdisk (util-linux 2.23.2).
 
@@ -1165,13 +1182,14 @@ realtime =none                   extsz=4096   blocks=0, rtextents=0
 [root@ha-node01 ~]#
 root@ha-node01 ~]# vi /etc/lvm/lvm.conf
 locking_type = 3
-~~~
+```
 
 
 
 - CLVM 작업  
 > ha-node2 에서 작업  
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# pcs resource create dlm ocf:pacemaker:controld op monitor interval=30s on-fail=fence clone interleave=true ordered=true
 [root@ha-node01 ~]# pcs resource create clvmd ocf:heartbeat:clvm op monitor interval=30s on-fail=fence clone interleave=true ordered=true
 [root@ha-node01 ~]# pcs constraint order start dlm-clone then clvmd-clone
@@ -1180,23 +1198,24 @@ locking_type = 3
 [root@ha-node01 ~]# mkdir /test
 [root@ha-node02 ~]# mkdir /test                  <--- ha-node02 에서 작업 합니다.
 [root@ha-node01 ~]# pcs resource create test-xfs Filesystem device=/dev/mapper/vg00-halvm directory=/test fstype=xfs force_unmount=true --group test-svc
-~~~
+```
 
 > ha-node01 , ha-node02 에서 작업  
 
-~~~
+```no-highlight
 [root@ha-node01 ~]# systemctl stop lvm2-lvmetad.socket
 [root@ha-node01 ~]# systemctl stop lvm2-lvmetad.service
 [root@ha-node01 ~]# systemctl disable lvm2-lvmetad.socket
 [root@ha-node01 ~]# systemctl disable lvm2-lvmetad.service
 [root@ha-node01 ~]# dracut -H -f /boot/initramfs-$(uname -r).img $(uname -r)
 [root@ha-node01 ~]# init 6 
-~~~
+```
 
 > ha-node01 에서 resource 확인을 진행 합니다.  
 > 노드 리부팅후 cleanup 후 정상적으로 cluster 구동이 안될경우 ha-node01 , ha-node02 에서  
 > lvmconf --enable-cluster 실행후 pcs resource cleanup --all 을 합니다.  
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# pcs resource cleanup --all 
 [root@ha-node01 ~]# pcs status
 Cluster name: ha-scv
@@ -1246,10 +1265,11 @@ tmpfs                  1000M     0 1000M   0% /sys/fs/cgroup
 tmpfs                   200M     0  200M   0% /run/user/0
 /dev/mapper/vg00-halvm  2.9G   33M  2.8G   2% /test
 [root@ha-node01 ~]#
-~~~
+```
 
 > 서비스 이관 테스트  
-~~~
+
+```no-highlight
 [root@ha-node02 ~]# pcs status
 Cluster name: ha-scv
 
@@ -1297,14 +1317,16 @@ tmpfs                  1000M     0 1000M   0% /sys/fs/cgroup
 tmpfs                   200M     0  200M   0% /run/user/0
 /dev/mapper/vg00-halvm  2.9G   33M  2.8G   2% /test
 [root@ha-node02 ~]#
-~~~
+```
 
 
 ## httpd Resource 추가  
 > ha-node01 , ha-node02 에서 작업  
 > httpd 패키지를 설치 합니다.  
 > httpd.conf 파일을 설정 합니다.  
-~~~
+
+
+```no-highlight
 [root@ha-node01 ~]# yum install -y httpd wget
 [root@ha-node01 ~]# systemctl status httpd
 ● httpd.service - The Apache HTTP Server
@@ -1330,10 +1352,11 @@ IncludeOptional conf.d/*.conf
   Deny from all
   Allow from 127.0.0.1
 </Location>
-~~~
+```
 
 - httpd resource 추가  
-~~~
+
+```no-highlight
 [root@ha-node01 ~]# pcs resource create web-service ocf:heartbeat:apache configfile="/etc/httpd/conf/httpd.conf" \
 statusurl="http://127.0.0.1/server-status" --group test-svc
 
@@ -1374,12 +1397,13 @@ Daemon Status:
   pacemaker: active/enabled
   pcsd: active/enabled
 [root@ha-node02 ~]#
-~~~
+```
 
 - httpd 디렉토리에 index.html 파일을 생성 합니다.  
-~~~
+
+```no-highlight
 [root@ha-node02 ~]# vi /test/index.html
 <html>
 <body>ha-test</body>
 </html>
-~~~
+```

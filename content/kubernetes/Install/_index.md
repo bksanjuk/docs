@@ -26,18 +26,18 @@ k8s Kubernetes 설치시 모든 node (master 를 포함한 모든노드) , 또�
 
 
 > 1) hosts 파일 설정  
-~~~
+```no-highlight
 모든 노드에서 작업
 # vi /etc/hosts
 
 10.10.10.27     k8s-master
 10.10.10.28     k8s-node01
 10.10.10.29     k8s-node02
-~~~
+```
 
 > 2) selinux disable  
 
-~~~
+```no-highlight
 모든 노드에서 작업
 # vi /etc/selinux/config
  
@@ -47,12 +47,15 @@ k8s Kubernetes 설치시 모든 node (master 를 포함한 모든노드) , 또�
 #     permissive - SELinux prints warnings instead of enforcing.
 #     disabled - No SELinux policy is loaded.
 SELINUX=disabled
-~~~
+```
 
 
 > 3) sysctl.conf 설정  
 
-~~~
+
+
+```no-highlight
+모든 노드에서 작업
 모든 노드에서 작업 
 # cat <<EOF >  /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
@@ -79,10 +82,11 @@ fs.protected_symlinks = 1
 * Applying /etc/sysctl.d/k8s.conf ...
 * Applying /etc/sysctl.conf ...
 
-~~~
+```
 
 > 4) swapoff (k8s 의 경우 swap 을 사용하지 않습니다.)  
-~~~
+
+```no-highlight
 모든 노드에서 작업 
 # swapoff -a
  
@@ -93,12 +97,11 @@ UUID=d7bb5d3b-5b37-47e0-8c26-fe40f7311597 /                       xfs     defaul
 UUID=43ec35ea-2e35-46f1-864c-b13603a8acac /boot                   xfs     defaults        0 0
 #UUID=2de336ec-4a33-36r1-8w2s-asdf2342ccgg swap                   swap     defaults        0 0
 
-~~~
-
+```
 
 > 5) docker-ce 설치  
 
-~~~
+```no-highlight
 모든 노드에서 작업
 # yum install -y yum-utils device-mapper-persistent-data lvm2
 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
@@ -125,13 +128,15 @@ EOF
 # mkdir -p /etc/systemd/system/docker.service.d
 # systemctl daemon-reload
 # systemctl restart docker
-~~~
+```
 
 
 
 
 > 6) kubernetes 설치 및 system 리부팅  
-~~~
+
+
+```no-highlight
 # vi /etc/yum.repos.d/kubernetes.repo
 
 [kubernetes]
@@ -148,7 +153,7 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
  
 # systemctl start docker ; systemctl enable docker
 # systemctl start kubelet ; systemctl enable kubelet
-~~~
+```
 
 
 {{% notice note %}}
@@ -158,7 +163,7 @@ k8s-master node 에서만 작업 합니다.
 
 > 7) k8s-master node 에서 apiserver 와 pod-network 를 설정 합니다.  
 
-~~~
+```no-highlight
 [root@k8s-master ~]# kubeadm init --apiserver-advertise-address=10.10.10.27 --pod-network-cidr=20.20.0.0/16
 ~중략
  
@@ -201,33 +206,32 @@ kube-system   kube-flannel-ds-amd64-5rft8          1/1     Running   0          
 kube-system   kube-proxy-fvf6z                     1/1     Running   0          112s
 kube-system   kube-scheduler-k8s-master            1/1     Running   0          82s
 [root@k8s-master ~]#
-~~~
-
+```
 
 > 8) k8s-node01 / k8s-node02 에서 작업  
 
-~~~
+```no-highlight
 [root@k8s-node01 ~]# kubeadm join 10.10.10.27:6443 --token syojz8.svxybs8x0f3iy28a \
     --discovery-token-ca-cert-hash sha256:b28c6474e92e2bc87e8f7b470119e506df36ae6ae08a8f50dd070f5d714a28e1
  
 [root@k8s-node02 ~]# kubeadm join 10.10.10.27:6443 --token syojz8.svxybs8x0f3iy28a \
     --discovery-token-ca-cert-hash sha256:b28c6474e92e2bc87e8f7b470119e506df36ae6ae08a8f50dd070f5d714a28e1
-~~~
+```
 
 > 9) k9s-master 에서 확인  
-~~~
+```no-highlight
 [root@k8s-master ~]# kubectl get nodes
 NAME         STATUS     ROLES    AGE     VERSION
 k8s-master   Ready      master   4m32s   v1.14.1
 k8s-node01   Ready      <none>   79s     v1.14.1
 k8s-node02   NotReady   <none>   17s     v1.14.1
 [root@k8s-master ~]#
-~~~
+```
 
 
 > 10) k8s Testing  (k8s-master 에서만 진행 합니다.)
 
-~~~
+```no-highlight
 [root@k8s-master ~]# kubectl create deployment nginx --image=nginx
 [root@k8s-master ~]# kubectl describe deployment nginx
 Name:                   nginx
@@ -271,11 +275,11 @@ Events:
 NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
 kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP        6m33s
 nginx        NodePort    10.102.109.228   <none>        80:30187/TCP   21s
-~~~
+```
 
 > 11) k8s-master node 에서 nginx 확인  
 
-~~~
+```no-highlight
 [root@k8s-master ~]#  curl k8s-node01:30187
 <!DOCTYPE html>
 <html>
@@ -303,10 +307,11 @@ Commercial support is available at
 </body>
 </html>
 [root@k8s-master ~]#
-~~~
+```
 
 > 12) pods scale up  (k8s-master 에서 진행)  
-~~~
+
+```no-highlight
 최초 생성시 1개의 pods 입니다. 
  
 [root@k8s-master ~]# kubectl get pods
@@ -327,4 +332,4 @@ nginx-65f88748fd-8lqrb   1/1     Running             0          12m
 nginx-65f88748fd-pq8p8   0/1     ContainerCreating   0          13s
 nginx-65f88748fd-w4tq8   0/1     ContainerCreating   0          13s
 [root@k8s-master ~]#
-~~~
+```

@@ -17,13 +17,13 @@ network 를 통한 이기종 linux / window 파일 디렉토리 공유
 * Samba 설치  
 
 ```no-highlight
-[root@centos7 ~]# yum install -y samba-*
+[root@samba ~]# yum install -y samba-*
 ```
 
 * Samba Daemon 실행 및 활성화  
 ```no-highlight
-[root@centos7 ~]# systemctl start smb
-[root@centos7 ~]# systemctl enable smb
+[root@samba ~]# systemctl start smb;systemctl start nmb
+[root@samba ~]# systemctl enable smb;systemctl enable nmb
 ```
 
 
@@ -39,22 +39,23 @@ example 파일은 참고용 파일이며 설정값이 들어가는 파일은 smb
 
 
 ```no-highlight
-[root@centos7 ~]# ls -al /etc/samba/
-합계 32
-drwxr-xr-x   2 root root    61 10월 16 22:07 .
-drwxr-xr-x. 81 root root  8192 10월 16 21:59 ..
--rw-r--r--   1 root root    20  8월 17 00:49 lmhosts
--rw-r--r--   1 root root   706  8월 17 00:49 smb.conf
--rw-r--r--   1 root root 11327  8월 17 00:49 smb.conf.example
-[root@centos7 ~]#
-[root@centos7 ~]# cat /etc/samba/smb.conf
+[root@samba ~]# ls -al /etc/samba/
+total 32
+drwxr-xr-x   2 root root    61 Apr  4 01:27 .
+drwxr-xr-x. 80 root root  8192 Apr  4 01:27 ..
+-rw-r--r--   1 root root    20 Dec  3 02:48 lmhosts
+-rw-r--r--   1 root root   706 Dec  3 02:48 smb.conf
+-rw-r--r--   1 root root 11327 Dec  3 02:48 smb.conf.example
+[root@samba ~]#
+
+[root@samba ~]# cat /etc/samba/smb.conf
 # See smb.conf.example for a more detailed config file or
 # read the smb.conf manpage.
 # Run 'testparm' to verify the config is correct after
 # you modified it.
 
 [global]
-        workgroup = SAMBA
+        workgroup = WORK  <--default SAMBA 에서 WORK 로 변경  
         security = user
 
         passdb backend = tdbsam
@@ -85,7 +86,7 @@ drwxr-xr-x. 81 root root  8192 10월 16 21:59 ..
         force group = @printadmin
         create mask = 0664
         directory mask = 0775
-[root@centos7 ~]#
+[root@samba ~]#
 
 ```
 
@@ -93,10 +94,10 @@ drwxr-xr-x. 81 root root  8192 10월 16 21:59 ..
 * smb.conf 수정  
 
 ```no-highlight
-[root@centos7 ~]# vi /etc/samba/smb.conf
+[root@samba ~]# vi /etc/samba/smb.conf
 [share]
         comment = share data
-        path = /smb-test
+        path = /share
         printable = no
         public = no
         writable = yes
@@ -142,7 +143,7 @@ drwxr-xr-x. 81 root root  8192 10월 16 21:59 ..
 
 ```no-highlight
 [global]
-        workgroup = SAMBA
+        workgroup = WORK
         security = user
         passdb backend = tdbsam
         map to guest = Bad User
@@ -163,14 +164,16 @@ drwxr-xr-x. 81 root root  8192 10월 16 21:59 ..
 * smb.conf 오류 체크  
 
 ```no-highlight
-[root@centos7 ~]# testparm
+[root@samba ~]# testparm
+rlimit_max: increasing rlimit_max (1024) to minimum Windows limit (16384)
+Registered MSG_REQ_POOL_USAGE
+Registered MSG_REQ_DMALLOC_MARK and LOG_CHANGED
 Load smb config files from /etc/samba/smb.conf
 rlimit_max: increasing rlimit_max (1024) to minimum Windows limit (16384)
 Processing section "[homes]"
 Processing section "[printers]"
 Processing section "[print$]"
 Processing section "[share]"
-Processing section "[pub]"
 Loaded services file OK.
 Server role: ROLE_STANDALONE
 
@@ -178,10 +181,9 @@ Press enter to see a dump of your service definitions
 
 # Global parameters
 [global]
-        map to guest = Bad User
         printcap name = cups
         security = USER
-        workgroup = SAMBA
+        workgroup = WORK
         idmap config * : backend = tdb
         cups options = raw
 
@@ -215,53 +217,126 @@ Press enter to see a dump of your service definitions
         comment = share data
         create mask = 0777
         directory mask = 0777
-        path = /smb-test
+        path = /share
         read only = No
+[root@samba ~]#
 
-
-[pub]
-        comment = public data
-        create mask = 0777
-        directory mask = 0777
-        guest ok = Yes
-        path = /public
-        read only = No
-[root@centos7 ~]#
 ```
 
 
 * Samba Test 디렉토리 생성 및 User 생성  
 ```no-highlight
-[root@centos7 ~]# mkdir /smb-test
-[root@centos7 ~]# chmod 777 /smb-test
-[root@centos7 ~]# smbpasswd -a test
+# SAMBA 디렉토리 생성 
+[root@samba ~]# mkdir /share
+[root@samba ~]# chmod 777 /share
+[root@samba ~]# smbpasswd -a test
 New SMB password:
 Retype new SMB password:
 Added user test.
-[root@centos7 ~]#
+[root@samba ~]#
+
+
+# User 생성 
+[root@samba ~]# useradd test
+[root@samba ~]# smbpasswd -a test
+New SMB password:
+Retype new SMB password:
+Added user test.
+[root@samba ~]#
+
+
+# 방화벽 오픈 
+[root@samba ~]# firewall-cmd --permanent --add-service=samba
+[root@samba ~]# firewall-cmd --reload
+
 ```
 
 {{% notice tip %}}
 Samba mount 테스트  
 윈도우즈 이용시 윈도우 key + R 에서 \\host-ip 로 접속 userID/Pass 입력후 접속 하시면 됩니다.  
-Linux 이용시 아래와 같이 mount -t cifs -o username=x,password=xx //호스트/공유이름 /마운트포인트 로 Mount 하시면 됩니다.  
+Linux 이용시 아래와 같이 mount -t cifs -o username=$User_name,password=$Password //호스트/공유이름 /마운트포인트 로 Mount 할수 있습니다.  
 {{% /notice %}}
 
 ```no-highlight
-[root@centos75 ~]# mount -t cifs -o username=test,password=test-password //192.168.0.10/share /mnt
+# SAMBA Client 에서 cifs util을 설치 합니다.  
+[root@client ~]# yum install -y samba-client cifs-utils
 
-[root@centos75 ~]# df -h
+
+# SAMBA 접속 테스트 
+[root@client ~]# smbclient -L //192.168.0.10/share -U test
+Enter SAMBA\test's password:
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        print$          Disk      Printer Drivers
+        share           Disk      share data
+        IPC$            IPC       IPC Service (Samba 4.9.1)
+        test            Disk      Home Directories
+Reconnecting with SMB1 for workgroup listing.
+
+        Server               Comment
+        ---------            -------
+        SAMBA                Samba 4.9.1
+
+        Workgroup            Master
+        ---------            -------
+        SAMBA                SAMBA
+[root@client ~]#
+
+
+# SAMBA mount  
+[root@client ~]# mount -t cifs -o username=test,password=password //192.168.0.10/share /mnt
+[root@client ~]# df -h
 Filesystem            Size  Used Avail Use% Mounted on
-/dev/sda3              16G  4.6G   12G  29% /
 devtmpfs              1.9G     0  1.9G   0% /dev
 tmpfs                 1.9G     0  1.9G   0% /dev/shm
-tmpfs                 1.9G   13M  1.9G   1% /run
+tmpfs                 1.9G   12M  1.9G   1% /run
 tmpfs                 1.9G     0  1.9G   0% /sys/fs/cgroup
-/dev/sda1             2.0G  178M  1.9G   9% /boot
-tmpfs                 378M   28K  378M   1% /run/user/0
-tmpfs                 378M   12K  378M   1% /run/user/42
-//192.168.0.10/share   16G  2.0G   15G  13% /mnt
-[root@centos75 ~]#
+/dev/sda3             8.0G  1.3G  6.8G  16% /
+/dev/sda1            1014M  141M  874M  14% /boot
+tmpfs                 378M     0  378M   0% /run/user/0
+//192.168.0.10/share  8.0G  2.5G  5.6G  31% /mnt
+[root@client ~]#
+
+[root@client ~]# cd /mnt
+[root@client mnt]# ls
+[root@client mnt]# touch 1
+[root@client mnt]# touch 2
+[root@client mnt]# ls -al
+total 0
+drwxr-xr-x   2 root root   0 Apr  4 02:16 .
+dr-xr-xr-x. 17 root root 244 Apr  4 01:25 ..
+-rwxr-xr-x   1 root root   0 Apr  4 02:16 1
+-rwxr-xr-x   1 root root   0 Apr  4 02:16 2
+[root@client mnt]#
+
+
+#fstab 등록시 password 파일 생성 후 /etc/fstab 을 수정 해야 합니다.  
+[root@client ~]# vi /root/pass.txt
+username=test
+password=password
+
+
+#fstab 수정 
+[root@client ~]# vi /etc/fstab
+~중략
+//192.168.0.10/share                    /mnt                      cifs    cred=/root/pass.txt 0 0
+
+
+# mount 
+[root@client ~]# mount -a
+[root@client ~]# df -h
+Filesystem            Size  Used Avail Use% Mounted on
+devtmpfs              1.9G     0  1.9G   0% /dev
+tmpfs                 1.9G     0  1.9G   0% /dev/shm
+tmpfs                 1.9G   12M  1.9G   1% /run
+tmpfs                 1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/sda3             8.0G  1.3G  6.8G  16% /
+/dev/sda1            1014M  141M  874M  14% /boot
+tmpfs                 378M     0  378M   0% /run/user/0
+//192.168.0.10/share  8.0G  2.5G  5.6G  31% /mnt
+[root@client ~]#
+
 ```
 
 {{% notice info %}}
@@ -270,21 +345,24 @@ smbclient 명령어를 이용하여 samba Server 의 정보를 확인 할수 있
 {{% /notice %}}
 
 ```no-highlight
-[root@centos75 ~]# smbclient -L 192.168.0.10 -U%
-
+[root@client ~]# smbclient -L 192.168.0.10 -U%
+\
         Sharename       Type      Comment
         ---------       ----      -------
         print$          Disk      Printer Drivers
-        share           Disk      share data
-        IPC$            IPC       IPC Service (Samba 4.7.1)
+        share           Disk      share data                         <-- share
+        IPC$            IPC       IPC Service (Samba 4.9.1)
 Reconnecting with SMB1 for workgroup listing.
 
         Server               Comment
         ---------            -------
+        SAMBA                Samba 4.9.1
 
         Workgroup            Master
         ---------            -------
-[root@centos75 ~]#
+        SAMBA                SAMBA
+[root@client ~]# \
+
 ```
 
 {{% notice note %}}
@@ -294,18 +372,15 @@ smbclient Samba Server 접속
 {{% /notice %}}
 
 ```no-highlight
-[root@centos75 ~]# smbclient -U test //192.168.0.10/share
+[root@client ~]# smbclient -U test //192.168.0.10/share
 Enter SAMBA\test's password:
 Try "help" to get a list of possible commands.
 smb: \> ls
-  .                                   D        0  Tue Oct 16 22:32:17 2018
-  ..                                 DR        0  Tue Oct 16 22:22:35 2018
+  .                                   D        0  Sat Apr  4 01:40:52 2020
+  ..                                  D        0  Sat Apr  4 01:40:52 2020
 
-                16765952 blocks of size 1024. 14682328 blocks available
-smb: \> pwd
-Current directory is \\192.168.0.10\share\
-smb: \> quit
-[root@centos75 ~]#
+                8377344 blocks of size 1024. 5785376 blocks available
+smb: \>
 ```
 
 
@@ -313,21 +388,22 @@ smb: \> quit
 접속자 확인시 smbstatus 를 사용 합니다.  
 
 ```no-highlight
-[root@centos7 ~]# smbstatus
+[root@samba ~]# smbstatus
 
-Samba version 4.7.1
+Samba version 4.9.1
 PID     Username     Group        Machine                                   Protocol Version  Encryption           Signing
 ----------------------------------------------------------------------------------------------------------------------------------------
-4007    test         test         192.168.0.11 (ipv4:192.168.0.11:51252)    NT1               -                    -
+2393    test         test         192.168.0.20 (ipv4:192.168.0.20:58354)    SMB3_02           -                    partial(AES-128-CMAC)
 
 Service      pid     Machine       Connected at                     Encryption   Signing
 ---------------------------------------------------------------------------------------------
-share        4007    192.168.0.11  Tue Oct 16 10:42:30 PM 2018 KST  -            -
-IPC$         4007    192.168.0.11  Tue Oct 16 10:42:30 PM 2018 KST  -            -
+IPC$         2393    192.168.0.20  Sat Apr  4 01:52:50 AM 2020 KST  -            -
+share        2393    192.168.0.20  Sat Apr  4 01:52:50 AM 2020 KST  -            -
 
 No locked files
 
-[root@centos7 ~]#
+[root@samba ~]#
+
 ```
 
 > Public share 디렉토리  
@@ -335,14 +411,20 @@ No locked files
 > [설정참고 wiki.samba.org](https://wiki.samba.org/index.php/Setting_up_Samba_as_a_Standalone_Server)  
 
 ```no-highlight
+[root@samba ~]# vi /etc/samba/smb.conf
 
-[root@centos7 ~]# vi /etc/samba/smb.conf
 [global]
-        workgroup = SAMBA
+        workgroup = WORK
         security = user
 
         passdb backend = tdbsam
-        map to guest = Bad User
+        map to guest = Bad User    <-- map to guest 옵션을 추가 합니다.  
+
+        printing = cups
+        printcap name = cups
+        load printers = yes
+        cups options = raw
+
 
 
 [pub]
@@ -354,23 +436,22 @@ No locked files
         create mask = 0777
         directory mask = 0777
 
-
-[root@centos7 ~]# mkdir /public
-[root@centos7 ~]# chmod 777 /public/
-[root@centos7 ~]# systemctl reload smb 
+[root@samba ~]# mkdir /public
+[root@samba ~]# chmod 777 /public/
+[root@samba ~]# systemctl restart smb ; systemctl restart nmb
 ```
 
 
 * Public share 디렉토리 확인  
 ```no-highlight
-[root@centos75 ~]# smbclient -L 192.168.0.10 -U%
+[root@client ~]# smbclient -L 192.168.0.10 -U%
 
         Sharename       Type      Comment
         ---------       ----      -------
         print$          Disk      Printer Drivers
-        share           Disk      share data
-        IPC$            IPC       IPC Service (Samba 4.7.1)
-        pub             Disk      public data
+        share           Disk      share data                           <-- share
+        pub             Disk      public data                          <-- pub
+        IPC$            IPC       IPC Service (Samba 4.9.1)
 Reconnecting with SMB1 for workgroup listing.
 
         Server               Comment
@@ -378,32 +459,27 @@ Reconnecting with SMB1 for workgroup listing.
 
         Workgroup            Master
         ---------            -------
-[root@centos75 ~]#
+        WORK                 SAMBA
+[root@client ~]#
+
 ```
 
 * Public share 디렉토리 mount  
 패스워드 입력시 엔터를 치면 됩니다.  
 ```no-highlight
-[root@centos75 ~]# mount -t cifs  //192.168.0.10/pub /mnt
+[root@client ~]# mount -t cifs  //192.168.0.10/pub /mnt
 Password for root@//192.168.0.10/pub:
-[root@centos75 ~]# df -h
+[root@client ~]# df -h
 Filesystem          Size  Used Avail Use% Mounted on
-/dev/sda3            16G  4.5G   12G  29% /
 devtmpfs            1.9G     0  1.9G   0% /dev
 tmpfs               1.9G     0  1.9G   0% /dev/shm
-tmpfs               1.9G   13M  1.9G   1% /run
+tmpfs               1.9G   12M  1.9G   1% /run
 tmpfs               1.9G     0  1.9G   0% /sys/fs/cgroup
-/dev/sda1           2.0G  178M  1.9G   9% /boot
-tmpfs               378M   28K  378M   1% /run/user/0
-tmpfs               378M   12K  378M   1% /run/user/42
-//192.168.0.10/pub   16G  2.0G   15G  13% /mnt
-[root@centos75 ~]#
-```
-
-* Samba 방화벽 설정  
-```no-highlight
-[root@centos7 ~]# firewall-cmd --permanent --zone=public --add-service=samba
-[root@centos7 ~]# firewall-cmd --reload
+/dev/sda3           8.0G  1.3G  6.8G  16% /
+/dev/sda1          1014M  141M  874M  14% /boot
+tmpfs               378M     0  378M   0% /run/user/0
+//192.168.0.10/pub  8.0G  2.5G  5.6G  31% /mnt
+[root@client ~]#
 ```
 
 {{% notice tip %}}

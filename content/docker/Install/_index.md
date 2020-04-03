@@ -7,7 +7,8 @@ weight = 1
 
 
 > CentOS7 Quick install  
-```
+
+```no-highlight
 [root@CentOS7 ~]# yum install -y yum-utils device-mapper-persistent-data lvm2
 [root@CentOS7 ~]# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 [root@CentOS7 ~]# yum install -y docker-ce
@@ -18,15 +19,18 @@ weight = 1
 ```
 
 > Docker 특정버전 설치  
-```
+
+```no-highlight
 [root@CentOS7 ~]# curl https://releases.rancher.com/install-docker/18.06.sh | sh
 ```
 
 <br></br>
+
 ## Binary install
 
 
 > wget 을 이용하여 docker 설치 파일을 다운로드 합니다. 
+
 ```no-highlight
 test@ubuntu1604:~$ wget https://download.docker.com/linux/static/stable/x86_64/docker-17.12.0-ce.tgz
 --2018-02-05 18:21:58--  https://download.docker.com/linux/static/stable/x86_64/docker-17.12.0-ce.tgz

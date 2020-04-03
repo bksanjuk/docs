@@ -228,7 +228,7 @@ public (active)
 [root@centos7 ~]#
 ```
 
-* public zone 에 포트범위로 포트 허용
+* public zone 에 포트범위로 접근 허용
 ```no-highlight
 [root@centos7 ~]# firewall-cmd --permanent --zone=public --add-port=2000-2200/tcp
 [root@centos7 ~]# firewall-cmd --reload
@@ -237,6 +237,30 @@ public (active)
 * IP 대역으로 접근 허용
 ```no-highlight
 [root@centos7 ~]# firewall-cmd --permanent --zone=public --add-source=192.168.0.0/24 --add-port=22/tcp
+```
+
+{{% notice tip %}}
+--add-service 를 이용하여 Service 별로 허용해 줄수도 있습니다.  
+{{% /notice %}}
+
+* http 서비스 허용  
+```no-highlight
+[root@CentOS7 ~]# firewall-cmd --permanent --add-service=http
+[root@CentOS7 ~]# firewall-cmd --permanent --add-service=https
+[root@CentOS7 ~]# firewall-cmd --reload
+```
+
+* NFS 서비스 허용  
+```no-highlight
+[root@CentOS7 ~]# firewall-cmd --permanent --add-service=nfs
+[root@CentOS7 ~]# firewall-cmd --permanent --add-service=rpc-bind
+[root@CentOS7 ~]# firewall-cmd --reload
+```
+
+* SAMBA 서비스 허용  
+```no-highlight
+[root@CentOS7 ~]# firewall-cmd --permanent --add-service=samba
+[root@CentOS7 ~]# firewall-cmd --reload
 ```
 
 <br></br>

@@ -22,13 +22,6 @@ NFS 프로토콜은 NAS (Network Attached Storage)를위한 여러 분산 파일
 nfs 실행시 필요한 데몬들을 모두 구성 합니다.  
 ```no-highlight
 [root@centos75 ~]# systemctl start nfs-server
-[root@centos75 ~]# systemctl start nfs-lock
-[root@centos75 ~]# systemctl start nfs-idmap
-[root@centos75 ~]# systemctl start rpcbind
-[root@centos75 ~]# systemctl enable nfs-server
-[root@centos75 ~]# systemctl enable nfs-lock
-[root@centos75 ~]# systemctl enable nfs-idmap
-[root@centos75 ~]# systemctl enable rpcbind
 ```
 
 * nfs 디렉토리 생성  
@@ -72,9 +65,8 @@ nfs 실행시 필요한 데몬들을 모두 구성 합니다.
 
 * 방화벽 설정  
 ```no-highlight
-[root@centos75 ~]# firewall-cmd --permanent --zone=public --add-service=nfs
-[root@centos75 ~]# firewall-cmd --permanent --zone=public --add-service=mountd
-[root@centos75 ~]# firewall-cmd --permanent --zone=public --add-service=rpc-bind
+[root@centos75 ~]# firewall-cmd --permanent --add-service=nfs
+[root@centos75 ~]# firewall-cmd --permanent --add-service=rpc-bind
 [root@centos75 ~]# firewall-cmd --reload
 ```
 
