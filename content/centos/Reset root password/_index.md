@@ -8,7 +8,7 @@ weight = 11
 - root Password Reset  
 
 {{% notice note %}}
-Root password 분실시 참고 문서 입니다.  
+root password 분실시 참고 문서 입니다.  
 grub 매뉴에서 rd.break 를 입력하여 부팅을 진행한후 password 를 변경 합니다.  
 {{% /notice %}}
 

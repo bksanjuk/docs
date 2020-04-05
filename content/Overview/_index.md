@@ -12,7 +12,7 @@ pre = "<b>1. </b>"
 * Reference 참고 사이트및 문서의 마지막 수정일
 
 
-|Reference docs         |Officail Site          |Fix Date       |
+|Reference docs         |Official Site          |Fix Date       |
 |---    |---    |---    |
 |Linux          |[Linux Document](https://www.kernel.org/doc/)          |2018-10-28     |
 |RedHat         |[RedHat Document](https://access.redhat.com/documentation/en-us/)      | N/A   |

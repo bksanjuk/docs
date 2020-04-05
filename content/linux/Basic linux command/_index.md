@@ -2213,7 +2213,7 @@ sr0     11:0    1  4.4G  0 rom  /mnt
 
 
 
-# iso 파일 마운트 -o loop 옵션은 생각해도 됩니다.  
+# iso 파일 마운트 -o loop 옵션은 생략해도 됩니다.  
 [root@linux ~]# mount CentOS-7-x86_64-DVD-1908.iso /mnt
 mount: /dev/loop0 is write-protected, mounting read-only
 [root@linux ~]# lsblk
